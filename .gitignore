@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
  .devcontainer/php/apache2/logs/**
 .devcontainer/php/apache2/logs/access.log
 .gitignore
+=======
+.devcontainer/php/apache2/logs/** 
+>>>>>>> Stashed changes
