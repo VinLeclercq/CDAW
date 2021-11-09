@@ -36,13 +36,13 @@
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
+        <header class="masthead" style="background-image: url('assets/img/contact-bg.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="page-heading">
-                            <h1>Connexion</h1>
-                            <span class="subheading">pour mieux naviguer</span>
+                            <h1>Inscription</h1>
+                            <span class="subheading">Rejoignez l'équipage de Deule Prime!</span>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>Connectez vous!</p>
+                        <p>Vous voulez rester à flot dans la merée du divertissement ? Rejoignez nous!</p>
                         <div class="my-5">
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
@@ -64,15 +64,29 @@
                             <!-- to get an API token!-->
                             <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                                 <div class="form-floating">
-                                    <input class="form-control" id="identifiant" type="text" placeholder="xXjeanKKTuning_du62Xx" data-sb-validations="required" />
+                                    <input class="form-control" id="identifiant" type="text" placeholder="Saississez un identifiant" data-sb-validations="required" />
                                     <label for="identifiant">Identifiant</label>
-                                    <div class="invalid-feedback" data-sb-feedback="pseudo:required">Veuillez renseigner votre identifiant.</div>
+                                    <div class="invalid-feedback" data-sb-feedback="identifiant:required">Veuillez renseigner votre identifiant.</div>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" id="nom" type="tel" placeholder="Saississez votre nom"/>
+                                    <label for="nom">Nom</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" id="prenom" type="tel" placeholder="Saississez votre prénom"/>
+                                    <label for="prenom">Prénom</label>
                                 </div>
                                 <div class="form-floating">
                                     <input type="password" class="form-control" id="mdp" type="mdp" placeholder="********" data-sb-validations="required,email" />
                                     <label for="mdp">Mot de passe</label>
                                     <div class="invalid-feedback" data-sb-feedback="mdp:required">Veullez renseigner votre mot de passe.</div>
                                     <div class="invalid-feedback" data-sb-feedback="mdp:mdp">Le mot de passe n'est pas valide</div>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" id="email" type="email" placeholder="deule@prime.com" data-sb-validations="required,email" />
+                                    <label for="email">adresse mail</label>
+                                    <div class="invalid-feedback" data-sb-feedback="email:required">Veuillez renseigner votre adresse mail.</div>
+                                    <div class="invalid-feedback" data-sb-feedback="email:email">Cette eMail n'est pas valide</div>
                                 </div>
                                 <br />
                                 <!-- Submit success message-->
@@ -81,8 +95,7 @@
                                 <!-- has successfully submitted-->
                                 <div class="d-none" id="submitSuccessMessage">
                                     <div class="text-center mb-3">
-                                        <div class="fw-bolder">Connexion reussi!</div>
-                                        To activate this form, sign up at
+                                        <div class="fw-bolder">Bienvenue sur Deule Prime !</div>
                                         <br />
                                         <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                                     </div>
@@ -91,11 +104,11 @@
                                 <!---->
                                 <!-- This is what your users will see when there is-->
                                 <!-- an error submitting the form-->
-                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">La connexion a échouée</div></div>
-                                <!-- link to the subscribe page-->
-                                <a class="nav-link px-lg-3 py-3 py-lg-4" href="subscribe.html">Vous êtes nouveau ? Inscrivez vous.</a>
+                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Certain des champs ne sont pas remplis correctement!</div></div>
+                               <!-- link to the subscribe page-->
+                               <a class="nav-link px-lg-3 py-3 py-lg-4" href="logIn.html">Déjà un compte ? Connectez vous.</a>
                                 <!-- Submit Button-->
-                                <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Connexion</button>
+                                <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Inscription</button>
                             </form>
                         </div>
                     </div>
@@ -142,5 +155,10 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
