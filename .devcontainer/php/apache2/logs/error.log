@@ -20,3 +20,9 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
 [Sun Nov 14 18:09:14.808502 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/8.0.12 configured -- resuming normal operations
 [Sun Nov 14 18:09:14.808934 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Mon Nov 15 09:28:26.634523 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/8.0.12 configured -- resuming normal operations
+[Mon Nov 15 09:28:26.714548 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Mon Nov 15 10:42:03.118485 2021] [php:notice] [pid 170] [client 172.18.0.1:45324] Xdebug: [Step Debug] Could not connect to debugging client. Tried: 172.18.0.1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(, referer: http://localhost:8080/exorest/
+[Mon Nov 15 10:43:15.573296 2021] [php:notice] [pid 169] [client 172.18.0.1:45334] Xdebug: [Step Debug] Could not connect to debugging client. Tried: 172.18.0.1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(, referer: http://localhost:8080/exorest/
+[Mon Nov 15 10:45:38.800936 2021] [php:notice] [pid 173] [client 172.18.0.1:45344] Xdebug: [Step Debug] Could not connect to debugging client. Tried: 172.18.0.1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(, referer: http://localhost:8080/exorest/
