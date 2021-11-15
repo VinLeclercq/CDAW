@@ -14,5 +14,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'hello world :-)';
+    // return view('welcome');
+});
+
+Route::get('/{name}/{forname}', function($name, $forname){
+    return 'bonjour '.$name.' '.$forname;
+});
+
+Route::get('/foPaFer', function(){
+    echo('<!doctype html>
+    <html lang="fr">
+    <head>
+    <meta charset="UTF-8">
+    <title>Mauvaise façon</title>
+    </head>
+    <body>
+    <p>Le fichier risque d être longggggg</p>
+    </body>
+    </html>') ;
+});
+
+Route::get('/{title}', function($title){
+    return $title;
+})->whereAlpha('title');
+
+Route::get('/listeFilms', function(){
+    return "Liste des films";
 });
