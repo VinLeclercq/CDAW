@@ -18,6 +18,10 @@ Route::get('/', function () {
     // return view('welcome');
 });
 
+Route::get('/DeulePrime', function(){
+    return view('template');
+});
+
 Route::get('/{name}/{forname}', function($name, $forname){
     return 'bonjour '.$name.' '.$forname;
 });
