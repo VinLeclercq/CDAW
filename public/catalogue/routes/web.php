@@ -22,6 +22,10 @@ Route::get('/DeulePrime', function(){
     return view('template');
 });
 
+Route::get('/listeFilms', function(){
+    return view('listeMedias');
+});
+
 Route::get('/{name}/{forname}', function($name, $forname){
     return 'bonjour '.$name.' '.$forname;
 });
@@ -42,7 +46,3 @@ Route::get('/foPaFer', function(){
 Route::get('/{title}', function($title){
     return $title;
 })->whereAlpha('title');
-
-Route::get('/listeFilms', function(){
-    return "Liste des films";
-});
