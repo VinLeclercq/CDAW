@@ -1,6 +1,6 @@
 @extends("template")
 
-@section("contentBody")
+@section("content")
     <div class="container">
         <p>Test Categories</p>
         @foreach ($categories as $category)

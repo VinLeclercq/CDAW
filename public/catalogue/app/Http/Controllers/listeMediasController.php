@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\film;
 
 class listeMediasController extends Controller
 {
@@ -23,4 +24,13 @@ class listeMediasController extends Controller
         $categories = Category::all();
         return view('listeCategories', ["categories" => $categories]);
     }
+
+    public function getAllFilms()
+    {
+        $film = film::with('category')->get();
+        $data = ["film" => $film];
+
+        return $data;
+    }
+
 }

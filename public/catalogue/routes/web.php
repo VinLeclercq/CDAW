@@ -18,6 +18,8 @@ Route::get('/{type}/{annee}', 'App\Http\Controllers\listeMediasController@getLis
 
 Route::get('categories', 'App\Http\Controllers\listeMediasController@getCategories');
 
+Route::get('films', 'App\Http\Controllers\listeMediasController@getAllFilms');
+
 Route::get('/', function () {
     return 'hello world :-)';
     // return view('welcome');

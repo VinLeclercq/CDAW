@@ -1,0 +1,5 @@
+API Key: 187cf9fba8a31a9d85cf232a13033069
+Images link: https://image.tmdb.org/t/p/original/[CODE_FOURNI_DANS_LA_REQUETE].jpg
+
+Example: https://api.themoviedb.org/3/movie/top_rated?api_key=187cf9fba8a31a9d85cf232a13033069
+Doc: https://developers.themoviedb.org/3/getting-started/introduction
