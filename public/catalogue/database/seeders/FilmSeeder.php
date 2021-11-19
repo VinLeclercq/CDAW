@@ -16,8 +16,8 @@ class FilmSeeder extends Seeder
     public function run()
     {
         DB::table('film')->insert([
-             'name' => 'La La Land',
-             'director' => 'Damien Chazel',
+             'name' => 'Le voyage de Chihiro',
+             'director' => 'Hayao Miyazaki',
              'category_id' => 1,
             ]);
 

@@ -28,9 +28,8 @@ class listeMediasController extends Controller
     public function getAllFilms()
     {
         $film = film::with('category')->get();
-        $data = ["film" => $film];
 
-        return $data;
+        return view('medias', ["films" => $film]);
     }
 
 }
