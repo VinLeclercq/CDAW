@@ -19,6 +19,7 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
              'name' => Str::random(10)
             ]);
+        
 
         //Etape 2
         //\App\Models\Category::factory(10)->create();
