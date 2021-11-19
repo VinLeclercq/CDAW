@@ -19,18 +19,18 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <p>Un poisson en plus dans le banc ! </p>
-
                 <div class="my-5">
-                    <form url="addFilm", method="POST">
+                    <form url="addFilm" method="POST">
+                        @csrf
                         <div class="form-floating">
-                            <input class="form-control" id="nom" placeholder="nom du film"/>
+                            <input class="form-control" id="name" name="name"/>
                             <label for="nom">Nom</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control" id="realisateur" placeholder="réalisateur" />
+                            <input class="form-control" id="director" name="director"/>
                             <label for="realisateur">Réalisateur</label>
                         </div>
-                        <select class="form-select" aria-label="Default select example" wire:model="account.0">
+                        <select class="form-select" aria-label="Default select example" id="category" name="category">
                             @foreach ($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
@@ -41,7 +41,7 @@
                                 <div class="fw-bolder">Film ajouté !</div>
                             </div>
                         </div>
-                        <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Ajouter</button>
+                        <input class="btn btn-primary text-uppercase" id="submitButton" type="submit" value="Ajouter">
                     </form>
                 </div>
             </div>

@@ -42,13 +42,28 @@ class listeMediasController extends Controller
     public function formCreateFilm()
     {
         $categories = Category::all();
-
         return view('nouveauMedia', ["categories" => $categories]);
     }
 
-    public function createFilm()
+    public function createFilm(Request $request)
     {
-        echo "ADD";
+        var_dump($request);
+
+        $name = $request->input("name");
+        $director = $request->input("director");
+        $category_id = $request->input("category");
+
+        $data = [
+            "name" => $name,
+            "director" => $director,
+            "category_id" => $category_id,
+        ];
+
+
+        Film::create($data);
+
+        return redirect('/films');
+
     }
 
 }

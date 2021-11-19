@@ -13,7 +13,7 @@ class film extends Model
 
     protected $table = 'film';
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     public function category()
     {
