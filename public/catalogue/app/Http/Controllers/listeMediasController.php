@@ -59,10 +59,24 @@ class listeMediasController extends Controller
             "category_id" => $category_id,
         ];
 
-
         Film::create($data);
 
         return redirect('/films');
+
+    }
+
+    public function formModifyFilm()
+    {
+
+    }
+
+    public function modifyFilm()
+    {
+
+    }
+
+    public function deleteFilm()
+    {
 
     }
 

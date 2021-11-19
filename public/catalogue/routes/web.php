@@ -24,6 +24,9 @@ Route::get('oneFilm', 'App\Http\Controllers\listeMediasController@getOneFilm');
 Route::get('addFilm', 'App\Http\Controllers\listeMediasController@formCreateFilm');
 Route::post('addFilm', 'App\Http\Controllers\listeMediasController@createFilm');
 
+Route::get('ModifyFilm', 'App\Http\Controllers\listeMediasController@formModifyFilm');
+Route::put('ModifyFilm', 'App\Http\Controllers\listeMediasController@modifyFilm');
+
 Route::get('/', function () {
     return 'hello world :-)';
     // return view('welcome');
