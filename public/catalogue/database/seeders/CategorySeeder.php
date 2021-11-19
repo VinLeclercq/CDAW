@@ -17,11 +17,15 @@ class CategorySeeder extends Seeder
     {
         //Etape 1
         DB::table('categories')->insert([
-             'name' => Str::random(10)
+             'name' => "Comédie musicale"
             ]);
-        
 
-        //Etape 2
-        //\App\Models\Category::factory(10)->create();
+        DB::table('categories')->insert([
+            'name' => "Drame"
+            ]);
+
+        DB::table('categories')->insert([
+            'name' => "Animation"
+            ]);
     }
 }

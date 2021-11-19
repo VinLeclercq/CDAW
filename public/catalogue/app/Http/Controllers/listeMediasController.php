@@ -27,9 +27,28 @@ class listeMediasController extends Controller
 
     public function getAllFilms()
     {
-        $film = film::with('category')->get();
+        $films = film::with('category')->get();
+
+        return view('medias', ["films" => $films]);
+    }
+
+    public function getOneFilm()
+    {
+        $film = film::where('id', 1)->with('category')->get();
 
         return view('medias', ["films" => $film]);
+    }
+
+    public function formCreateFilm()
+    {
+        $categories = Category::all();
+
+        return view('nouveauMedia', ["categories" => $categories]);
+    }
+
+    public function createFilm()
+    {
+        echo "ADD";
     }
 
 }

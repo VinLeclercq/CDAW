@@ -19,6 +19,10 @@ Route::get('/{type}/{annee}', 'App\Http\Controllers\listeMediasController@getLis
 Route::get('categories', 'App\Http\Controllers\listeMediasController@getCategories');
 
 Route::get('films', 'App\Http\Controllers\listeMediasController@getAllFilms');
+Route::get('oneFilm', 'App\Http\Controllers\listeMediasController@getOneFilm');
+
+Route::get('addFilm', 'App\Http\Controllers\listeMediasController@formCreateFilm');
+Route::post('addFilm', 'App\Http\Controllers\listeMediasController@createFilm');
 
 Route::get('/', function () {
     return 'hello world :-)';

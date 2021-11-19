@@ -19,6 +19,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <p>Un poisson en plus dans le banc ! </p>
+
                 <div class="my-5">
                     <form url="addFilm", method="POST">
                         <div class="form-floating">
@@ -30,9 +31,8 @@
                             <label for="realisateur">Réalisateur</label>
                         </div>
                         <select class="form-select" aria-label="Default select example" wire:model="account.0">
-                            <option selected>Account</option>
                             @foreach ($categories as $category)
-                                <option value="$category->name">$category->name</option>
+                                <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
                         </select>
                         <br />
