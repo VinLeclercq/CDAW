@@ -38,11 +38,6 @@
                             @endforeach
                         </select>
                         <br />
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Film ajouté !</div>
-                            </div>
-                        </div>
                         <input class="btn btn-primary text-uppercase" id="submitButton" type="submit" value="Ajouter">
                     </form>
                 </div>

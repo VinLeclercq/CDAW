@@ -22,10 +22,10 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <p>Voilà, c'est bien mieux !</p>
                 <div class="my-5">
-                    <form url="addFilm" method="POST">
+                    <form url="modifyFilm" method="POST">
                         @csrf
                         <div class="form-floating">
-                            <input class="form-control" id="name" name="name"/>
+                            <input class="form-control" id="name" name="name" value="oui"/>
                             <label for="nom">Nom</label>
                         </div>
                         <div class="form-floating">

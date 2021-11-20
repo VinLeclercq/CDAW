@@ -18,19 +18,19 @@ class FilmSeeder extends Seeder
         DB::table('film')->insert([
              'name' => 'La La Land',
              'director' => 'Damien Chazel',
-             'category_id' => 2,
+             'category_id' => 1,
             ]);
 
         DB::table('film')->insert([
             'name' => 'Le voyage de Chihiro',
             'director' => 'Hayao Miyazaki',
-            'category_id' => 4,
+            'category_id' => 3,
             ]);
 
         DB::table('film')->insert([
             'name' => '120 Battements Par Minute',
             'director' => 'Robin Campillo',
-            'category_id' => 3,
+            'category_id' => 2,
             ]);
 
     }

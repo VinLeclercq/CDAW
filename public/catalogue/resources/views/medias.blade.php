@@ -28,11 +28,23 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label for="Gender" class="col"><h3>Genre(s)</h3></label>
+                        <label for="Genre" class="col"><h3>Genre(s)</h3></label>
                         <div class="col">
-                            <p Id="Gender" class="p-justified">{{$film->category->name}}</p>
+                            <p Id="Genre" class="p-justified">{{$film->category->name}}</p>
                         </div>
                     </div>
+                    <div class="row">
+                        <a data-bs-toggle="modal" data-bs-target="#modifyFilm">
+                            <button type="button" class="btn btn-primary">Modifier</button>
+                        </a>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <a data-bs-toggle="modal" data-bs-target="#deleteFilm">
+                            <button type="button" class="btn btn-secondary">Supprimer</button>
+                        </a>
+                    </div>
+                    <br />
                 </div>
             </div>
         </div>

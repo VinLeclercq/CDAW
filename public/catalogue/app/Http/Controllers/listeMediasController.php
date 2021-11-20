@@ -65,14 +65,30 @@ class listeMediasController extends Controller
 
     }
 
-    public function formModifyFilm()
+    public function formModifyFilm($filmId)
     {
-
+        $categories = Category::all();
+        $film = film::find($id);
+        return view('modifierMedia', ["categories" => $categories, "film" => $film]);
     }
 
-    public function modifyFilm()
+    public function modifyFilm($filmId, Request $request)
     {
+        $film = film::find($filmId);
 
+        $name = $request->input("name");
+        $director = $request->input("director");
+        $category_id = $request->input("category");
+
+        $data = [
+            "name" => $name,
+            "director" => $director,
+            "category_id" => $category_id,
+        ];
+
+        $film->update($data);
+
+        return redirect('/films');
     }
 
     public function deleteFilm()
