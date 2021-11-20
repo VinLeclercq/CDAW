@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/listeMedias', 'App\Http\Controllers\listeMediasController@getListeMedias');
-//Route::get('/{type}/{annee}', 'App\Http\Controllers\listeMediasController@getListeMediasWithParameters');
+
 
 Route::get('categories', 'App\Http\Controllers\listeMediasController@getCategories');
 
@@ -27,7 +26,12 @@ Route::post('addFilm', 'App\Http\Controllers\listeMediasController@createFilm');
 Route::get('modifyFilm/{filmId}', 'App\Http\Controllers\listeMediasController@formModifyFilm');
 Route::post('modifyFilm/{filmId}', 'App\Http\Controllers\listeMediasController@modifyFilm');
 
-Route::delete('deleteFilm', 'App\Http\Controllers\listeMediasController@deleteFilm');
+Route::delete('deleteFilm/{filmId}', 'App\Http\Controllers\listeMediasController@deleteFilm');
+
+
+/*
+Route::get('/listeMedias', 'App\Http\Controllers\listeMediasController@getListeMedias');
+Route::get('/{type}/{annee}', 'App\Http\Controllers\listeMediasController@getListeMediasWithParameters');
 
 Route::get('/', function () {
     return 'hello world :-)';
@@ -62,3 +66,4 @@ Route::get('/foPaFer', function(){
 Route::get('/{title}', function($title){
     return $title;
 })->whereAlpha('title');
+*/

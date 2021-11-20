@@ -91,9 +91,13 @@ class listeMediasController extends Controller
         return redirect('/films');
     }
 
-    public function deleteFilm()
+    public function deleteFilm($filmId)
     {
+        $film = film::find($filmId);
 
+        $film->delete();
+
+        return redirect('/films');
     }
 
 }

@@ -51,9 +51,11 @@
                     </div>
                     <br />
                     <div class="row">
-                        <a href="{{ url('/addFilm')}}">
-                            <button type="button" class="btn btn-secondary">Supprimer</button>
-                        </a>
+                        <form action="{{ url('/deleteFilm', $film->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input class="btn btn-secondary" id="submitButton" type="submit" value="Supprimer">
+                        </form>
                     </div>
                     <br />
                 </div>
