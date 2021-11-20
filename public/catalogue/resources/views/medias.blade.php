@@ -6,7 +6,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
                         <h1>Ceci est un média</h1>
-                        <span class="subheading">qu'est-ce qu'il est bien codé.../span>
+                        <span class="subheading">qu'est-ce qu'il est bien codé...
                         </div>
                     </div>
                 </div>
