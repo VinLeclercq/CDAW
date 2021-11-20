@@ -68,11 +68,11 @@ class listeMediasController extends Controller
     public function formModifyFilm($filmId)
     {
         $categories = Category::all();
-        $film = film::find($id);
+        $film = film::find($filmId);
         return view('modifierMedia', ["categories" => $categories, "film" => $film]);
     }
 
-    public function modifyFilm($filmId, Request $request)
+    public function modifyFilm(Request $request, $filmId)
     {
         $film = film::find($filmId);
 

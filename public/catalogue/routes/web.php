@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/listeMedias', 'App\Http\Controllers\listeMediasController@getListeMedias');
-Route::get('/{type}/{annee}', 'App\Http\Controllers\listeMediasController@getListeMediasWithParameters');
+//Route::get('/listeMedias', 'App\Http\Controllers\listeMediasController@getListeMedias');
+//Route::get('/{type}/{annee}', 'App\Http\Controllers\listeMediasController@getListeMediasWithParameters');
 
 Route::get('categories', 'App\Http\Controllers\listeMediasController@getCategories');
 
@@ -25,7 +25,7 @@ Route::get('addFilm', 'App\Http\Controllers\listeMediasController@formCreateFilm
 Route::post('addFilm', 'App\Http\Controllers\listeMediasController@createFilm');
 
 Route::get('modifyFilm/{filmId}', 'App\Http\Controllers\listeMediasController@formModifyFilm');
-Route::put('modifyFilm/{filmId}', 'App\Http\Controllers\listeMediasController@modifyFilm');
+Route::post('modifyFilm/{filmId}', 'App\Http\Controllers\listeMediasController@modifyFilm');
 
 Route::delete('deleteFilm', 'App\Http\Controllers\listeMediasController@deleteFilm');
 

@@ -22,14 +22,14 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <p>Voilà, c'est bien mieux !</p>
                 <div class="my-5">
-                    <form url="modifyFilm" method="POST">
+                    <form action="{{ url('/modifyFilm', $film->id)}}" method="POST">
                         @csrf
                         <div class="form-floating">
-                            <input class="form-control" id="name" name="name" value="oui"/>
+                            <input class="form-control" id="name" name="name" value="{{$film->name}}"/>
                             <label for="nom">Nom</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control" id="director" name="director"/>
+                            <input class="form-control" id="director" name="director" value="{{$film->director}}"/>
                             <label for="realisateur">Réalisateur</label>
                         </div>
                         <select class="form-select" aria-label="Default select example" id="category" name="category">
@@ -38,12 +38,7 @@
                             @endforeach
                         </select>
                         <br />
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Film modifié !</div>
-                            </div>
-                        </div>
-                        <input class="btn btn-primary text-uppercase" id="submitButton" type="submit" value="Ajouter">
+                        <input class="btn btn-primary text-uppercase" id="submitButton" type="submit" value="Modifier">
                     </form>
                 </div>
             </div>

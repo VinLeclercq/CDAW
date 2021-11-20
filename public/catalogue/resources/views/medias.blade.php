@@ -15,8 +15,19 @@
 @endsection
 @section('content')
 <main class="mb-4">
-    @foreach ($films as $film)
+    
+
+    
         <div class="container px-4 px-lg-5">
+            <div class="row">
+                <a href="{{ url('/addFilm')}}">
+                    <button type="button" class="btn btn-primary">Nouveau film</button>
+                </a>
+            </div>
+            <br />
+
+            @foreach ($films as $film)
+
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col">
                     <h1 Id="Title">{{$film->name}}</p></h1>
@@ -34,20 +45,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        <a data-bs-toggle="modal" data-bs-target="#modifyFilm">
+                        <a href="{{ url('/modifyFilm', $film->id)}}">
                             <button type="button" class="btn btn-primary">Modifier</button>
                         </a>
                     </div>
                     <br />
                     <div class="row">
-                        <a data-bs-toggle="modal" data-bs-target="#deleteFilm">
+                        <a href="{{ url('/addFilm')}}">
                             <button type="button" class="btn btn-secondary">Supprimer</button>
                         </a>
                     </div>
                     <br />
                 </div>
             </div>
+            @endforeach
+
         </div>
-    @endforeach
+    
 </main>
 @endsection
