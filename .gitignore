@@ -1,7 +1,17 @@
-<<<<<<< Updated upstream
- .devcontainer/php/apache2/logs/**
+.devcontainer/php/apache2/logs/**
 .devcontainer/php/apache2/logs/access.log
-.gitignore
-=======
-.devcontainer/php/apache2/logs/** 
->>>>>>> Stashed changes
+
+/public/catalogue/node_modules
+/public/catalogue/public/hot
+/public/catalogue/public/storage
+/public/catalogue/storage/*.key
+/public/catalogue/vendor
+/public/catalogue/.env.backup
+/public/catalogue/.phpunit.result.cache
+/public/catalogue/docker-compose.override.yml
+/public/catalogue/Homestead.json
+/public/catalogue/Homestead.yaml
+/public/catalogue/npm-debug.log
+/public/catalogue/yarn-error.log
+/public/catalogue/.idea
+/public/catalogue/.vscode

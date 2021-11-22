@@ -9,7 +9,7 @@ services:
             - mysql
         volumes:
             - ..:/workspace
-            - ../public:/var/www/html/
+            - ../public:/var/www/html
             - ./php/apache2/sites-enabled:/etc/apache2/sites-enabled:cached
             - ./php/apache2/logs:/var/log/apache2:delegated
         ports:

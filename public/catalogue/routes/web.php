@@ -67,3 +67,6 @@ Route::get('/{title}', function($title){
     return $title;
 })->whereAlpha('title');
 */
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
