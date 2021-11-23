@@ -47,8 +47,6 @@ class listeMediasController extends Controller
 
     public function createFilm(Request $request)
     {
-        var_dump($request);
-
         $name = $request->input("name");
         $director = $request->input("director");
         $category_id = $request->input("category");
