@@ -15,9 +15,9 @@
 @endsection
 @section('content')
 <main class="mb-4">
-    
 
-    
+
+
         <div class="container px-4 px-lg-5">
             <div class="row">
                 <a href="{{ url('/addFilm')}}">
@@ -30,39 +30,41 @@
 
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col">
-                    <h1 Id="Title">{{$film->name}}</p></h1>
+                    <h2 Id="Title">{{$film->name}}</p></h2>
                     <hr/>
                     <div class="row">
-                        <label for="Author" class="col"><h3>Réalisateur</h3></label>
                         <div class="col">
-                            <p Id="Author" class="p-justified">{{$film->director}}</p>
+                            <div class="row">
+                                <label for="Author" class="col"><h4 style="margin: 20px">Réalisateur</h4></label>
+                                <span style="margin: 10px" Id="Author" class="col">{{$film->director}}</span>
+                            </div>
+                            <div class="row">
+                                <label for="Genre" class="col"><h4 style="margin: 15px">Genre(s)</h4></label>
+                                <span style="margin: 10px" Id="Genre", class="col">{{$film->category->name}}</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <a href="{{ url('/modifyFilm', $film->id)}}">
+                                    <button type="button" class="btn btn-primary">Modifier</button>
+                                </a>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <form action="{{ url('/deleteFilm', $film->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="btn btn-secondary" id="submitButton" type="submit" value="Supprimer">
+                                </form>
+                            </div>
+                            <br />
                         </div>
                     </div>
-                    <div class="row">
-                        <label for="Genre" class="col"><h3>Genre(s)</h3></label>
-                        <div class="col">
-                            <p Id="Genre" class="p-justified">{{$film->category->name}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <a href="{{ url('/modifyFilm', $film->id)}}">
-                            <button type="button" class="btn btn-primary">Modifier</button>
-                        </a>
-                    </div>
-                    <br />
-                    <div class="row">
-                        <form action="{{ url('/deleteFilm', $film->id)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <input class="btn btn-secondary" id="submitButton" type="submit" value="Supprimer">
-                        </form>
-                    </div>
-                    <br />
                 </div>
             </div>
             @endforeach
 
         </div>
-    
+
 </main>
 @endsection
