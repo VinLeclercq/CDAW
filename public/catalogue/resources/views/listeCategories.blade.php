@@ -7,3 +7,4 @@
             <b>{{$category->name}}</b><br>
         @endforeach
     </div>
+@endsection

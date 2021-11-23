@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class RouteTest extends TestCase{
-    
+
      /**
      * A basic test example.
      *
@@ -14,14 +14,13 @@ class RouteTest extends TestCase{
      */
     public function testRoutes()
     {
-        $appURL = env('APP_URL');
+        $appURL = env('http://localhost:8080/catalogue/public');
 
         $urls = [
             '/categories',
             '/films',
             '/oneFilm',
-            'addFilm',
-            'modifyFilm/1'
+            '/addFilm'
         ];
 
         echo  PHP_EOL;
@@ -37,6 +36,5 @@ class RouteTest extends TestCase{
             }
             echo  PHP_EOL;
         }
-
     }
 }
