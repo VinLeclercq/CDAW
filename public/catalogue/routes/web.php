@@ -24,7 +24,7 @@ Route::get('addFilm', 'App\Http\Controllers\listeMediasController@formCreateFilm
 Route::post('addFilm', 'App\Http\Controllers\listeMediasController@createFilm');
 
 Route::get('modifyFilm/{filmId}', 'App\Http\Controllers\listeMediasController@formModifyFilm');
-Route::post('modifyFilm/{filmId}', 'App\Http\Controllers\listeMediasController@modifyFilm');
+Route::put('modifyFilm/{filmId}', 'App\Http\Controllers\listeMediasController@modifyFilm');
 
 Route::delete('deleteFilm/{filmId}', 'App\Http\Controllers\listeMediasController@deleteFilm');
 

@@ -24,6 +24,7 @@
                 <div class="my-5">
                     <form action="{{ url('/modifyFilm', $film->id)}}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="form-floating">
                             <input class="form-control" id="name" name="name" value="{{$film->name}}"/>
                             <label for="nom">Nom</label>
