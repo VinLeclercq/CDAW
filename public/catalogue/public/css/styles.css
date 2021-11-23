@@ -3010,7 +3010,7 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #3672c7;
   border-color: #4c86d7;
-  box-shadow: 0 0 0 0.25rem rgba(38, 151, 175, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(76, 134, 215, 0.5);
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
@@ -3018,7 +3018,7 @@ textarea.form-control-lg {
   border-color: #4c86d7;
 }
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(38, 151, 175, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(76, 134, 215, 0.5);
 }
 .btn-primary:disabled, .btn-primary.disabled {
   color: #fff;
@@ -3040,7 +3040,7 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #ff8e8e;
   border-color: #ed7b7b;
-  box-shadow: 0 0 0 0.25rem rgba(130, 138, 145, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(237, 123, 123, 0.5);
 }
 .btn-check:checked + .btn-secondary, .btn-check:active + .btn-secondary, .btn-secondary:active, .btn-secondary.active, .show > .btn-secondary.dropdown-toggle {
   color: #fff;
@@ -3048,7 +3048,7 @@ textarea.form-control-lg {
   border-color: #ed7b7b;
 }
 .btn-check:checked + .btn-secondary:focus, .btn-check:active + .btn-secondary:focus, .btn-secondary:active:focus, .btn-secondary.active:focus, .show > .btn-secondary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(130, 138, 145, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(237, 123, 123, 0.5);
 }
 .btn-secondary:disabled, .btn-secondary.disabled {
   color: #fff;
