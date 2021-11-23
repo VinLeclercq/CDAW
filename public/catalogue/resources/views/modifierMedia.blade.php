@@ -1,6 +1,6 @@
-@extends('template');
+@extends('template')
 
-@section('header');
+@section('header')
 <header class="masthead" style="background-image: url({{asset('assets/img/pirate_des_caraibes.jpg')}})">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
