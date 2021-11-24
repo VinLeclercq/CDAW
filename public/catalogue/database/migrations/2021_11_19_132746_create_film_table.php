@@ -13,12 +13,19 @@ class CreateFilmTable extends Migration
      */
     public function up()
     {
-        Schema::create('film', function (Blueprint $table) {
+        Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories');
             $table->string('name');
-            $table->string('director');
+            $table->integer('episode_nb')->nullable();
+            $table->integer('duration_time')->nullable();
+            $table->date('release_date');
+            $table->date('ending_date')->nullable();
             $table->timestamps();
+            $table->integer('total_duration_time');
+            $table->string('description');
+            $table->boolean('type');
+            $table->string('status');
+            $table->foreignId('category_id')->constrained('categories');
         });
     }
 
