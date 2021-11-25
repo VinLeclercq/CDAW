@@ -720,3 +720,9 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Mon Nov 22 10:52:22.242655 2021] [php:notice] [pid 321] [client 172.19.0.1:60574] Xdebug: [Step Debug] Could not connect to debugging client. Tried: 172.19.0.1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(
 [Mon Nov 22 10:52:25.187398 2021] [php:notice] [pid 321] [client 172.19.0.1:60574] Xdebug: [Step Debug] Could not connect to debugging client. Tried: 172.19.0.1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(
 [Mon Nov 22 10:52:25.187766 2021] [php:notice] [pid 321] [client 172.19.0.1:60574] Xdebug: [Step Debug] Could not connect to debugging client. Tried: 172.19.0.1:9003 (from REMOTE_ADDR HTTP header), localhost:9003 (fallback through xdebug.client_host/xdebug.client_port) :-(
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Thu Nov 25 11:59:30.032280 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/8.0.13 configured -- resuming normal operations
+[Thu Nov 25 11:59:30.061059 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Thu Nov 25 19:18:48.714298 2021] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.51 (Debian) PHP/8.0.13 configured -- resuming normal operations
+[Thu Nov 25 19:18:48.714715 2021] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
