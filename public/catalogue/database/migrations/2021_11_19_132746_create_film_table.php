@@ -22,7 +22,7 @@ class CreateFilmTable extends Migration
             $table->date('ending_date')->nullable();
             $table->timestamps();
             $table->integer('total_duration_time');
-            $table->string('description');
+            $table->text('description');
             $table->boolean('type');
             $table->string('status');
             $table->foreignId('category_id')->constrained('categories');
