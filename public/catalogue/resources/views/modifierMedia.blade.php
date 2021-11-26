@@ -26,19 +26,39 @@
                         @csrf
                         @method('PUT')
                         <div class="form-floating">
-                            <input class="form-control" id="name" name="name" value="{{$media->name}}"/>
-                            <label for="nom">Nom</label>
+                            <input class="form-control" id="name" name="name"/>
+                            <label for="nom">Titre</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="film" name="type" value="film">
+                            <label for="film">Film</label>
+                            <input type="radio" id="série" name="type" value="série">
+                            <label for="série">Série</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control" id="director" name="director" value="{{$media->director}}"/>
-                            <label for="realisateur">Réalisateur</label>
+                            <input class="form-control" id="duration" name="duration"/>
+                            <label for="duration">Durée</label>
                         </div>
-                        <select class="form-select" aria-label="Default select example" id="category" name="category">
-                            @foreach ($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
-                            @endforeach
+                        <div>
+                            <label for="nom">Date de sortie</label>
+                            <input type="date" id="release" name="release"/>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control" id="synopsis" name="synopsis"/>
+                            <label for="synopsis">Synopsis</label>
+                        </div>
+                        <p>Status</p>
+                        <select class="form-select" id="status" name="status">
+                            <option value="En cours">En cours</option>
+                            <option value="Fini">Fini</option>
+                            <option value="Abandonné">Abandonné</option>
                         </select>
-                        <br />
+                        <p>Genres</p>
+                        @foreach ($categories as $category)
+                            <input type="checkbox" id="category_{{$category->id}}" name="categories[]" value="{{$category->id}}">
+                            <label for="{{$category->name}}"> {{$category->name}}</label><br>
+                        @endforeach
+                        <br/>
                         <input class="btn btn-primary text-uppercase" id="submitButton" type="submit" value="Modifier">
                     </form>
                 </div>

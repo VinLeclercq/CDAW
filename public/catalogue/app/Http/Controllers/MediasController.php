@@ -47,7 +47,6 @@ class MediasController extends Controller
         $release = $request->input("release");
         $synopsis  = $request->input("synopsis");
         $status = $request->input("status");
-
         $categories_id = $request->input("categories");
 
         $data = [
@@ -80,18 +79,32 @@ class MediasController extends Controller
     public function modifyMedia(Request $request, $mediaId)
     {
         $media = Media::find($mediaId);
+        $media->categories()->detach();
 
         $name = $request->input("name");
-        $director = $request->input("director");
-        $category_id = $request->input("category");
+        $type = $request->input("type");
+        $duration = $request->input("duration");
+        $release = $request->input("release");
+        $synopsis  = $request->input("synopsis");
+        $status = $request->input("status");
+        $categories_id = $request->input("categories");
 
         $data = [
             "name" => $name,
-            "director" => $director,
-            "category_id" => $category_id,
+            "duration_time" => $duration,
+            "release_date" => $release,
+            "description" => $synopsis,
+            "type" => $type,
+            "status" => $status,
         ];
 
-        Media::whereID($mediaId)->update($data);
+        Media::find($mediaId)->update($data);
+
+        foreach($categories_id as $c_id)
+        {
+            $c = Category::find($c_id);
+            $media->categories()->attach($c);
+        }
         
         return redirect('/medias');
     }
@@ -99,9 +112,7 @@ class MediasController extends Controller
     public function deleteMedia($mediaId)
     {
         $media = Media::find($mediaId);
-
         $media->delete();
-
         return redirect('/medias');
     }
 
