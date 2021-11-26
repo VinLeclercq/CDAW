@@ -19,12 +19,6 @@ class MediasController extends Controller
         return view('listeMedias', ['type' => $type, 'annee' => $annee]);
     }
 
-    public function getCategories()
-    {
-        $categories = Category::all();
-        return view('listeCategories', ["categories" => $categories]);
-    }
-
     public function getAllMedias()
     {
         $medias = Media::all();
@@ -48,20 +42,32 @@ class MediasController extends Controller
     public function createMedia(Request $request)
     {
         $name = $request->input("name");
-        $director = $request->input("director");
-        $category_id = $request->input("category");
+        $type = $request->input("type");
+        $duration = $request->input("duration");
+        $release = $request->input("release");
+        $synopsis  = $request->input("synopsis");
+        $status = $request->input("status");
+
+        $categories_id = $request->input("categories");
 
         $data = [
             "name" => $name,
-            "director" => $director,
+            "duration_time" => $duration,
+            "release_date" => $release,
+            "description" => $synopsis,
+            "type" => $type,
+            "status" => $status,
         ];
 
         $media = Media::create($data);
-        $categories = Categories::findById($category_id);
-        $media->categories()->attach($categories);
+
+        foreach($categories_id as $c_id)
+        {
+            $c = Category::find($c_id);
+            $media->categories()->attach($c);
+        }
 
         return redirect('/medias');
-
     }
 
     public function formModifyMedia($mediaId)
