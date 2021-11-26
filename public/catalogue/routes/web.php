@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Route::get('categories', 'App\Http\Controllers\listeMediasController@getCategories');
 
 Route::get('films', 'App\Http\Controllers\listeMediasController@getAllFilms');
@@ -28,45 +26,6 @@ Route::put('modifyFilm/{filmId}', 'App\Http\Controllers\listeMediasController@mo
 
 Route::delete('deleteFilm/{filmId}', 'App\Http\Controllers\listeMediasController@deleteFilm');
 
-
-/*
-Route::get('/listeMedias', 'App\Http\Controllers\listeMediasController@getListeMedias');
-Route::get('/{type}/{annee}', 'App\Http\Controllers\listeMediasController@getListeMediasWithParameters');
-
-Route::get('/', function () {
-    return 'hello world :-)';
-    // return view('welcome');
-});
-
-Route::get('/DeulePrime', function(){
-    return view('template');
-});
-
-Route::get('/listeFilms', function(){
-    return view('listeMedias');
-});
-
-Route::get('/{name}/{forname}', function($name, $forname){
-    return 'bonjour '.$name.' '.$forname;
-});
-
-Route::get('/foPaFer', function(){
-    echo('<!doctype html>
-    <html lang="fr">
-    <head>
-    <meta charset="UTF-8">
-    <title>Mauvaise façon</title>
-    </head>
-    <body>
-    <p>Le fichier risque d être longggggg</p>
-    </body>
-    </html>') ;
-});
-
-Route::get('/{title}', function($title){
-    return $title;
-})->whereAlpha('title');
-*/
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

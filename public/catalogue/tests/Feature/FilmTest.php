@@ -23,7 +23,7 @@ class FilmTest extends TestCase
 
         $response->assertStatus(302);   
     }
-
+    
     public function test_delete_film()
     {
         $data = [

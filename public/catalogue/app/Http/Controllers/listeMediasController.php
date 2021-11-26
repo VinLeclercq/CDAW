@@ -84,8 +84,8 @@ class listeMediasController extends Controller
             "category_id" => $category_id,
         ];
 
-        $film->update($data);
-
+        film::whereID($filmId)->update($data);
+        
         return redirect('/films');
     }
 
