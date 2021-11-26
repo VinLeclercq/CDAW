@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PlaylistTable extends Migration
+class CreateUserModerateCommentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class PlaylistTable extends Migration
      */
     public function up()
     {
-        Schema::create('playlist', function (Blueprint $table) {
-            $table->id();
+        Schema::create('moderate', function (Blueprint $table) {
             $table->foreignId("ID_user");
-            $table->string("name");
-            $table->boolean("is_public");
+            $table->foreignId("ID_comment");
+            $table->string("message");
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class PlaylistTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('playlist');
+        Schema::dropIfExists('moderate');
     }
 }

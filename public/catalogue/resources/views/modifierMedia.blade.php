@@ -6,8 +6,8 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
-                        <h1>Modifier un film</h1>
-                        <span class="subheading">Votre film est mal catégorisé ? Contribuez !</span>
+                        <h1>Modifier un media</h1>
+                        <span class="subheading">Votre media est mal catégorisé ? Contribuez !</span>
                         </div>
                     </div>
                 </div>
@@ -22,15 +22,15 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <p>Voilà, c'est bien mieux !</p>
                 <div class="my-5">
-                    <form action="{{ url('/modifyFilm', $film->id)}}" method="POST">
+                    <form action="{{ url('/modifyMedia', $media->id)}}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-floating">
-                            <input class="form-control" id="name" name="name" value="{{$film->name}}"/>
+                            <input class="form-control" id="name" name="name" value="{{$media->name}}"/>
                             <label for="nom">Nom</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control" id="director" name="director" value="{{$film->director}}"/>
+                            <input class="form-control" id="director" name="director" value="{{$media->director}}"/>
                             <label for="realisateur">Réalisateur</label>
                         </div>
                         <select class="form-select" aria-label="Default select example" id="category" name="category">

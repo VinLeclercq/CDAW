@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             //$table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('is_modo');
-            $table->timestamp('blocked_date');
-            $table->date('time_blocked');
+            $table->boolean('is_modo')->default(false);
+            $table->timestamp('blocked_date')->nullable();
+            $table->date('time_blocked')->nullable();
             //$table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('avatar_path', 2048)->nullable();

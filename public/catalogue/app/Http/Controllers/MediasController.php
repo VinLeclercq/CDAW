@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\film;
+use App\Models\Media;
 
-class listeMediasController extends Controller
+class MediasController extends Controller
 {
     public function getListeMedias()
     {
@@ -25,27 +25,27 @@ class listeMediasController extends Controller
         return view('listeCategories', ["categories" => $categories]);
     }
 
-    public function getAllFilms()
+    public function getAllMedias()
     {
-        $films = film::with('category')->get();
+        $medias = Media::all();
 
-        return view('medias', ["films" => $films]);
+        return view('medias', ["medias" => $medias]);
     }
 
-    public function getOneFilm()
+    public function getOneMedia()
     {
-        $film = film::where('id', 1)->with('category')->get();
+        $media = Media::where('id', 1)->with('category')->get();
 
-        return view('medias', ["films" => $film]);
+        return view('medias', ["medias" => $media]);
     }
 
-    public function formCreateFilm()
+    public function formCreateMedia()
     {
         $categories = Category::all();
         return view('nouveauMedia', ["categories" => $categories]);
     }
 
-    public function createFilm(Request $request)
+    public function createMedia(Request $request)
     {
         $name = $request->input("name");
         $director = $request->input("director");
@@ -54,25 +54,26 @@ class listeMediasController extends Controller
         $data = [
             "name" => $name,
             "director" => $director,
-            "category_id" => $category_id,
         ];
 
-        Film::create($data);
+        $media = Media::create($data);
+        $categories = Categories::findById($category_id);
+        $media->categories()->attach($categories);
 
-        return redirect('/films');
+        return redirect('/medias');
 
     }
 
-    public function formModifyFilm($filmId)
+    public function formModifyMedia($mediaId)
     {
         $categories = Category::all();
-        $film = film::find($filmId);
-        return view('modifierMedia', ["categories" => $categories, "film" => $film]);
+        $media = Media::find($mediaId);
+        return view('modifierMedia', ["categories" => $categories, "media" => $media]);
     }
 
-    public function modifyFilm(Request $request, $filmId)
+    public function modifyMedia(Request $request, $mediaId)
     {
-        $film = film::find($filmId);
+        $media = Media::find($mediaId);
 
         $name = $request->input("name");
         $director = $request->input("director");
@@ -84,18 +85,18 @@ class listeMediasController extends Controller
             "category_id" => $category_id,
         ];
 
-        film::whereID($filmId)->update($data);
+        Media::whereID($mediaId)->update($data);
         
-        return redirect('/films');
+        return redirect('/medias');
     }
 
-    public function deleteFilm($filmId)
+    public function deleteMedia($mediaId)
     {
-        $film = film::find($filmId);
+        $media = Media::find($mediaId);
 
-        $film->delete();
+        $media->delete();
 
-        return redirect('/films');
+        return redirect('/medias');
     }
 
 }

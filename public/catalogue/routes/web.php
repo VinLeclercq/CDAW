@@ -13,18 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('categories', 'App\Http\Controllers\listeMediasController@getCategories');
+Route::get('categories', 'App\Http\Controllers\MediasController@getCategories');
 
-Route::get('films', 'App\Http\Controllers\listeMediasController@getAllFilms');
-Route::get('oneFilm', 'App\Http\Controllers\listeMediasController@getOneFilm');
+Route::get('medias', 'App\Http\Controllers\MediasController@getAllMedias');
+Route::get('oneMedia', 'App\Http\Controllers\MediasController@getOneMedia');
 
-Route::get('addFilm', 'App\Http\Controllers\listeMediasController@formCreateFilm');
-Route::post('addFilm', 'App\Http\Controllers\listeMediasController@createFilm');
+Route::get('addMedia', 'App\Http\Controllers\MediasController@formCreateMedia');
+Route::post('addMedia', 'App\Http\Controllers\MediasController@createMedia');
 
-Route::get('modifyFilm/{filmId}', 'App\Http\Controllers\listeMediasController@formModifyFilm');
-Route::put('modifyFilm/{filmId}', 'App\Http\Controllers\listeMediasController@modifyFilm');
+Route::get('modifyMedia/{mediaId}', 'App\Http\Controllers\MediasController@formModifyMedia');
+Route::put('modifyMedia/{mediaId}', 'App\Http\Controllers\MediasController@modifyMedia');
 
-Route::delete('deleteFilm/{filmId}', 'App\Http\Controllers\listeMediasController@deleteFilm');
+Route::delete('deleteMedia/{mediaId}', 'App\Http\Controllers\MediasController@deleteMedia');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

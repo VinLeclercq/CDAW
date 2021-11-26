@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UserSubscribeToPlaylistTable extends Migration
+class CreateMediaBelongsToPlaylistTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class UserSubscribeToPlaylistTable extends Migration
      */
     public function up()
     {
-        Schema::create('subscribe', function (Blueprint $table) {
-            $table->foreignId("ID_playlist");
-            $table->foreignId("ID_user");
+        Schema::create('belongs_to', function (Blueprint $table) {
+            $table->foreignId("ID_media");
+            $table->foreignId("ID_comment");
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class UserSubscribeToPlaylistTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscribe');
+        Schema::dropIfExists('belongs_to');
     }
 }

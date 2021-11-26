@@ -7,18 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Media;
 
-class Category extends Model
+class Person extends Model
 {
     use HasFactory;
 
-    protected $table = 'categories';
+    protected $table = 'person';
 
     protected $guarded = ['id'];
     protected $hidden = [];
 
     public function medias()
     {
-        return $this->belongsToMany(Media::class, 'defined', 'ID_media', 'ID_category');
+        return $this->belongsToMany(Media::class, 'compose', 'ID_media', 'ID_person');
     }
-
 }
