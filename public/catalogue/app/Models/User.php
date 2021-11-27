@@ -10,6 +10,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\Media;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -25,6 +27,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'forename',
         'email',
         'password',
     ];
@@ -58,4 +61,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function media_watched()
+    {
+        return $this->belongsToMany(Media::class, 'watched', 'ID_media', 'ID_user');
+    }
+
+    public function media_liked()
+    {
+        return $this->belongsToMany(Media::class, 'liked', 'ID_media', 'ID_user');
+    }
 }

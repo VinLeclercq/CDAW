@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWatchedTable extends Migration
+class CreateLikedTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateWatchedTable extends Migration
      */
     public function up()
     {
-        Schema::create('watched', function (Blueprint $table) {
+        Schema::create('liked', function (Blueprint $table) {
             $table->bigInteger('ID_user')->unsigned()->index();
             $table->foreign("ID_user")->references('id')->on('users')->onDelete('cascade');
 
@@ -21,8 +21,7 @@ class CreateWatchedTable extends Migration
             $table->foreign('ID_media')->references('id')->on('media')->onDelete('cascade');
 
             $table->primary(['ID_media', 'ID_user']);
-
-            $table->date("date");
+            
             $table->timestamps();
         });
     }
