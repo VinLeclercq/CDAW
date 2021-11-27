@@ -14,8 +14,14 @@ class CreateUserModerateCommentTable extends Migration
     public function up()
     {
         Schema::create('moderate', function (Blueprint $table) {
-            $table->foreignId("ID_user");
-            $table->foreignId("ID_comment");
+            $table->bigInteger('ID_comment')->unsigned()->index();
+            $table->foreign("ID_comment")->references('id')->on('comment')->onDelete('cascade');
+
+            $table->bigInteger("ID_user")->unsigned()->index();
+            $table->foreign('ID_user')->references('id')->on('users')->onDelete('cascade');
+
+            $table->primary(['ID_comment', 'ID_user']);
+
             $table->string("message");
             $table->timestamps();
         });

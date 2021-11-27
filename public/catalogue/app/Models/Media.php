@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Person;
 use App\Models\User;
 use App\Models\Playlist;
+use App\Models\Comment;
 
 class Media extends Model
 {
@@ -41,5 +42,10 @@ class Media extends Model
     public function playlists()
     {
         return $this->belongsToMany(Playlist::class, 'belongs_to', 'ID_media', 'ID_playlist');
+    }
+
+    public function comments()
+    {
+        return $this->belongsTo(Comment::class);
     }
 }

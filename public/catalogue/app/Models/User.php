@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Media;
 use App\Models\Playlist;
+use App\Models\Comment;
 
 class User extends Authenticatable
 {
@@ -81,5 +82,15 @@ class User extends Authenticatable
     public function playlist_subscribed()
     {
         return $this->belongsToMany(Playlist::class, 'subscribe', 'ID_playlist', 'ID_user');
+    }
+
+    public function comments_posted()
+    {
+        return $this->belongsTo(Comment::class);
+    }
+
+    public function moderated()
+    {
+        return $this->belongsToMany(Comment::Class, 'moderate', 'ID_comment', 'ID_user');
     }
 }

@@ -61,31 +61,31 @@ INSERT INTO subscribe (`ID_playlist`, `ID_user`) VALUES ('', '');
 INSERT INTO comment (`title`, `content`, `ID_user`, `ID_media`) VALUES ('', '', '', '');
 ```
 
-
-
-
-
-
-
 - Consulter nouveaux commentaires pas encore modérés
 ```
-SELECT m.id, c.id, titre, texte
-FROM Comment c, Moderation m
-WHERE NOT m.id = c.id
+SELECT m.name, u.forename, u.name, c.title, c.content
+FROM comment c, users u, media m
+
+WHERE c.id NOT IN (
+    SELECT ID_comment
+    FROM moderate
+	)
+AND u.id = c.ID_user
+AND m.id = c.ID_media
 ```
 
 - Consulter commentaires d'un utilisateur donné
 ```
-SELECT *
-FROM Comment
-WHERE user_id = ''
+SELECT * 
+FROM comment 
+WHERE ID_user = 1; 
 ```
 
 - Promouvoir utilisateur
 ```
-UPDATE User
-SET is_moderator = true
-WHERE id = ''
+UPDATE users 
+SET is_modo = true 
+WHERE id = 1; 
 ```
 
 # Statistiques
