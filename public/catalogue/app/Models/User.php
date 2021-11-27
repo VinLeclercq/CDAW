@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Media;
+use App\Models\Playlist;
 
 class User extends Authenticatable
 {
@@ -70,5 +71,10 @@ class User extends Authenticatable
     public function media_liked()
     {
         return $this->belongsToMany(Media::class, 'liked', 'ID_media', 'ID_user');
+    }
+
+    public function playlist_owned()
+    {
+        return $this->belongsToMany(Playlist::class, 'own', 'ID_playlist', 'ID_user');
     }
 }

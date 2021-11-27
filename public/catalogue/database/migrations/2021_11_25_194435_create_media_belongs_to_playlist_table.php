@@ -14,8 +14,14 @@ class CreateMediaBelongsToPlaylistTable extends Migration
     public function up()
     {
         Schema::create('belongs_to', function (Blueprint $table) {
-            $table->foreignId("ID_media");
-            $table->foreignId("ID_comment");
+            $table->bigInteger('ID_media')->unsigned()->index();
+            $table->foreign("ID_media")->references('id')->on('media')->onDelete('cascade');
+
+            $table->bigInteger("ID_playlist")->unsigned()->index();
+            $table->foreign('ID_playlist')->references('id')->on('playlist')->onDelete('cascade');
+
+            $table->primary(['ID_media', 'ID_playlist']);
+
             $table->timestamps();
         });
     }

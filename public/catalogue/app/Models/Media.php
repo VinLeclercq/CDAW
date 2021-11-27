@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Person;
 use App\Models\User;
+use App\Models\Playlist;
 
 class Media extends Model
 {
@@ -35,5 +36,10 @@ class Media extends Model
     public function users_liked()
     {
         return $this->belongsToMany(User::class, 'liked', 'ID_media', 'ID_user');
+    }
+
+    public function playlists()
+    {
+        return $this->belongsToMany(Playlist::class, 'belongs_to', 'ID_media', 'ID_playlist');
     }
 }

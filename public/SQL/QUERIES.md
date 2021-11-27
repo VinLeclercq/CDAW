@@ -39,15 +39,34 @@ ORDER BY w.date ASC;
 
 - Bloquer Utilisateur
 ```
-UPDATE User
-SET blocked_date = CURDATE()
-WHERE id = ''
+UPDATE users 
+SET blocked_date = CURDATE(), time_blocked = CURRENT_TIME() 
+WHERE id = ''; 
 ```
 
 - Créer playlist et ajouter médias
 ```
-INSERT INTO Playlist(user_id, name, is_private) VALUES( , '', )
+INSERT INTO playlist (`name`, `is_public`) VALUES ('', '');
+INSERT INTO own (`ID_playlist`, `ID_user`) VALUES ('', '');
+INSERT INTO belongs_to (`ID_media`, `ID_playlist`) VALUES ('', '')
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - S'abonner à une playlist d'un autre User
 ```
