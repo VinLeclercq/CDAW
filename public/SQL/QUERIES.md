@@ -1,40 +1,40 @@
 # Requêtes utiles
 - Création compte Utilisateur
 ```
-INSERT INTO User (login, name, firstname, avatar, email, password, role, block_date, unblock_date) VALUES('', '', '', '', '', '', '', NULL, NULL)
+INSERT INTO users (name, forename, email, password) VALUES('', '', '', '')
 ```
 
 - Mise à jour profil
 ```
-UPDATE User
-SET name = '', firstname = '', avatar = '', email = '', password = ''
+UPDATE users
+SET name = '', forename = '', avatar_path = '', email = '', password = ''
 WHERE id = x
 ```
 
 - Rechercher média (nom, type, ordonner)
 ```
 SELECT *
-FROM Media
-WHERE title LIKE '%title%' AND type = ''
-ORDER BY title ASC
+FROM media
+WHERE name LIKE '%title%' AND type = ''
+ORDER BY name ASC
 ```
 
 - Marquer média comme vu
 ```
-INSERT INTO Watch (user_id, media_id, date, is_like) VALUES( , , xxxx/xx/xx, )
+INSERT INTO watched (`ID_user`, `ID_media`, `date`) VALUES ('', '', 'xxxx-xx-xx');
 ```
 
 - Aimer média
 ```
-CF Marquer comme vu
+INSERT INTO liked (`ID_user`, `ID_media`) VALUES ('1', '1');
 ```
 
 - Consulter historique visionnage par date
 ```
-SELECT m.title, m.director, w.date
-FROM Media m, Watch w
-WHERE w.user_id = '' AND w.media_id = ''
-ORDER BY w.date ASC
+SELECT m.name, w.date
+FROM media m, watched w 
+WHERE m.id = w.ID_media AND w.ID_user = 'ID_USER'
+ORDER BY w.date ASC; 
 ```
 
 - Bloquer Utilisateur
