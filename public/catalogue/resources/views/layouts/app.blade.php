@@ -16,9 +16,6 @@
         <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
 
         {{-- @livewireStyles --}}
-
-        <!-- Scripts -->
-        <script src="{{ asset(mix('js/app.js')) }}" defer></script>
     </head>
     <body>
         <x-jet-banner />
