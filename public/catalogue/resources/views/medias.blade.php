@@ -5,8 +5,8 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
-                        <h1>Ceci est un média</h1>
-                        <span class="subheading">qu'est-ce qu'il est bien codé...
+                        <h1>Ceci est une liste de médias</h1>
+                        <span class="subheading">films et séries</span>
                         </div>
                     </div>
                 </div>
