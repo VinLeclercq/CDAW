@@ -51,27 +51,30 @@ INSERT INTO own (`ID_playlist`, `ID_user`) VALUES ('', '');
 INSERT INTO belongs_to (`ID_media`, `ID_playlist`) VALUES ('', '')
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 - S'abonner à une playlist d'un autre User
 ```
-INSERT INTO Subscribed(user_id, playlist_id) VALUES( , )
+INSERT INTO subscribe (`ID_playlist`, `ID_user`) VALUES ('', '');
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - Ajouter commentaire à média
 ```

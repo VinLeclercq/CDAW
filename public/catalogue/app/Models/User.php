@@ -77,4 +77,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Playlist::class, 'own', 'ID_playlist', 'ID_user');
     }
+
+    public function playlist_subscribed()
+    {
+        return $this->belongsToMany(Playlist::class, 'subscribe', 'ID_playlist', 'ID_user');
+    }
 }

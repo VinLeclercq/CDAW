@@ -19,6 +19,11 @@ class Playlist extends Model
         return $this->belongsToMany(User::class, 'own', 'ID_playlist', 'ID_user');
     }
 
+    public function users_subscribed()
+    {
+        return $this->belongsToMany(User::class, 'subscribe', 'ID_playlist', 'ID_user');
+    }
+
     public function medias_in_playlist()
     {
         return $this->belongsToMany(Media::class, 'belongs_to', 'ID_media', 'ID_playlist');
