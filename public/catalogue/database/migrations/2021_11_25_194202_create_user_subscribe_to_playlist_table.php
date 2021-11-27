@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UserFlagUserTable extends Migration
+class CreateUserSubscribeToPlaylistTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class UserFlagUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('flag', function (Blueprint $table) {
-            $table->foreignId("ID1");
-            $table->foreignId("ID2");
-            $table->string("message");
+        Schema::create('subscribe', function (Blueprint $table) {
+            $table->foreignId("ID_playlist");
+            $table->foreignId("ID_user");
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class UserFlagUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('flag');
+        Schema::dropIfExists('subscribe');
     }
 }

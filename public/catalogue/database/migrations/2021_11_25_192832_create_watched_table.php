@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PersonTable extends Migration
+class CreateWatchedTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class PersonTable extends Migration
      */
     public function up()
     {
-        Schema::create('person', function (Blueprint $table) {
-            $table->id();
-            $table->string("name");
-            $table->string("forename");
-            $table->boolean("is_actor");
-            $table->boolean("is_director");
+        Schema::create('watched', function (Blueprint $table) {
+            $table->foreignId("ID_person");
+            $table->foreignId("ID_media");
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class PersonTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('person');
+        Schema::dropIfExists('watched');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class WatchedTable extends Migration
+class CreateUserFlagUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class WatchedTable extends Migration
      */
     public function up()
     {
-        Schema::create('watched', function (Blueprint $table) {
-            $table->foreignId("ID_person");
-            $table->foreignId("ID_media");
+        Schema::create('flag', function (Blueprint $table) {
+            $table->foreignId("ID_flagger");
+            $table->foreignId("ID_flagged");
+            $table->string("message");
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class WatchedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('watched');
+        Schema::dropIfExists('flag');
     }
 }

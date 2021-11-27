@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UserModerateCommentTable extends Migration
+class CreateUserHavePlaylistTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class UserModerateCommentTable extends Migration
      */
     public function up()
     {
-        Schema::create('moderate', function (Blueprint $table) {
+        Schema::create('have', function (Blueprint $table) {
+            $table->foreignId("ID_playlist");
             $table->foreignId("ID_user");
-            $table->foreignId("ID_comment");
-            $table->string("message");
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class UserModerateCommentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('moderate');
+        Schema::dropIfExists('have');
     }
 }

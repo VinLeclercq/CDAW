@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFilmTable extends Migration
+class CreateMediaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,15 +17,17 @@ class CreateFilmTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('episode_nb')->nullable();
-            $table->integer('duration_time')->nullable();
+            //Duartion of a film or an episode
+            $table->integer('duration_time');
             $table->date('release_date');
             $table->date('ending_date')->nullable();
-            $table->timestamps();
-            $table->integer('total_duration_time');
+            //Duration of the whole series
+            $table->integer('total_duration_time')->nullable();
             $table->text('description');
-            $table->boolean('type');
-            $table->string('status');
-            $table->foreignId('category_id')->constrained('categories');
+            $table->enum('type', ['Film', 'Série']);
+            $table->enum('status', ['En cours', 'Fini', 'Abandonné']);
+            //To rebuild to have multiple categories
+            $table->timestamps();
         });
     }
 
@@ -36,6 +38,6 @@ class CreateFilmTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('film');
+        Schema::dropIfExists('media');
     }
 }
