@@ -22,7 +22,7 @@
                     <li class="nav-item dropdown">
 					 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
 						<button class="border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-							<img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+							<img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->forename }}" />
 						</button>
 					{{-- @else
 						<span class="inline-flex rounded-md">
@@ -36,7 +36,7 @@
 						</span> --}}
 					@endif
                         <a id="navbarDropdown" data-bs-toggle="dropdown" class="nav-link dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            {{ Auth::user()->forename }} <span class="caret"></span>
                         </a>
 
 
