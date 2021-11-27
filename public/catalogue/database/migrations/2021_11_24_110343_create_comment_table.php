@@ -17,10 +17,9 @@ class CreateCommentTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('content');
-            $table->integer('response_nb');
-            $table->boolean('is_signaled');
-            $table->foreignId('ID_user');
-            $table->foreignId('ID_media');
+            $table->boolean('is_signaled')->default(false);
+            $table->foreignId('ID_user')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('ID_media')->constrained('media')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

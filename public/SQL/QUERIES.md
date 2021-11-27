@@ -56,30 +56,16 @@ INSERT INTO belongs_to (`ID_media`, `ID_playlist`) VALUES ('', '')
 INSERT INTO subscribe (`ID_playlist`, `ID_user`) VALUES ('', '');
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 - Ajouter commentaire à média
 ```
-INSERT INTO Commentaire(title, content, nb_respones, id_parent_comment, is_signaled, id_user, id_media) VALUES('', '', NULL, , FALSE, , )
+INSERT INTO comment (`title`, `content`, `ID_user`, `ID_media`) VALUES ('', '', '', '');
 ```
+
+
+
+
+
+
 
 - Consulter nouveaux commentaires pas encore modérés
 ```
