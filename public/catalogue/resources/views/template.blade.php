@@ -21,7 +21,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{ route('medias') }}">
                     <img src="{{asset('assets/img/deule-prime-logo.png')}}" alt="DeulePrimeLogo">
                 </a>
 
@@ -29,7 +29,7 @@
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="listFilms.html">Films</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="listSeries.html">Séries</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="logIn.html">Connexion</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('login') }}">Connexion</a></li>
                     </ul>
                 </div>
 
