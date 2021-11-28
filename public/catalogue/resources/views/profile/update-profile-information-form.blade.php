@@ -1,5 +1,4 @@
 <x-jet-form-section submit="updateProfileInformation">
-    <script src="{{asset('js/app.js')}}"></script>
     <x-slot name="title">
         {{ __('Profile Information') }}
     </x-slot>
@@ -11,7 +10,7 @@
     <x-slot name="form">
         <!-- Profile Photo -->
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-            <div x-data="{photoName: null, photoPreview: null}" class="row col-span-6 sm:col-span-4">
+            <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
                 <input type="file" class="hidden"
                             wire:model="photo"
@@ -25,28 +24,28 @@
                                     reader.readAsDataURL($refs.photo.files[0]);
                             " />
 
-                <label for="photo" value="{{ __('Photo') }}" />
+                <x-jet-label for="photo" value="{{ __('Photo') }}" />
 
                 <!-- Current Profile Photo -->
-                <div class="row" show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_path }}" alt="{{ $this->user->name }}" style="height: 100px; width: 125px; object-fit:cover;  border-radius: 50%;">
+                <div class="mt-2" x-show="! photoPreview">
+                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
                 </div>
 
                 <!-- New Profile Photo Preview -->
-                <div class="row" show="photoPreview">
+                <div class="mt-2" x-show="photoPreview">
                     <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
-                          bind:style="'background-image: url(\'' + photoPreview + '\');'">
+                          x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
                     </span>
                 </div>
 
-                <button class="col mt-2 mr-2 btn-secondary" type="button" x-on:click.prevent="$refs.photo.click()">
+                <x-jet-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
                     {{ __('Select A New Photo') }}
-                </button>
+                </x-jet-secondary-button>
 
                 @if ($this->user->profile_photo_path)
-                    <button type="button" class="col mt-2 btn-secondary" wire:click="deleteProfilePhoto">
+                    <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
                         {{ __('Remove Photo') }}
-                    </button>
+                    </x-jet-secondary-button>
                 @endif
 
                 <x-jet-input-error for="photo" class="mt-2" />
@@ -55,8 +54,8 @@
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
-            <label for="name" value="{{ __('Name') }}"></label>
-            <input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
+            <x-jet-label for="name" value="{{ __('Name') }}" />
+            <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
