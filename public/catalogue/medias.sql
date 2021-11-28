@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : mysql
--- Généré le : sam. 27 nov. 2021 à 21:32
+-- Généré le : dim. 28 nov. 2021 à 11:31
 -- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.20
 
@@ -414,7 +414,7 @@ CREATE TABLE `users` (
   `blocked_date` timestamp NULL DEFAULT NULL,
   `time_blocked` date DEFAULT NULL,
   `current_team_id` bigint UNSIGNED DEFAULT NULL,
-  `avatar_path` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `profile_photo_path` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'https://tse4.mm.bing.net/th?id=OIP.KF9wUPhIEegIHxTKdK9GRAHaEK&pid=Api',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -423,17 +423,17 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `forename`, `email`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `is_modo`, `blocked_date`, `time_blocked`, `current_team_id`, `avatar_path`, `created_at`, `updated_at`) VALUES
-(3, 'Erwan', 'Merly', 'erwan.merly@test.com', 'password', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'Leclercq', 'Vinciane', 'vinciane.leclercq@test.com', 'password', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'Keuninck', 'Billaume', 'billaume.keuninck@test.com', 'Pa$$w0rd', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'Leroux', 'Benjamin', 'benjamin.leroux', 'pass', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'Nickler', 'Lila', 'lila.nickler@p.com', 'a', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'Baey', 'Marie', 'marie.baey@p.com', 'oui', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'Delecluse', 'Raphaël', 'raphael.delecluse@test.com', 'azerty', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 'Lejeune', 'Théo', 'tleujeune@hacker.com', 'bonjourjesuisunmotdepasse', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 'Oureib', 'Paul', 'poureib@oui.com', 'umineko', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, 'Caboche Rio', 'Vicent', 'vicent.c.rio@best.com', 'patate', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `forename`, `email`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `is_modo`, `blocked_date`, `time_blocked`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(3, 'Erwan', 'Merly', 'erwan.merly@test.com', 'password', NULL, NULL, 1, NULL, NULL, NULL, 'https://tse4.mm.bing.net/th?id=OIP.KF9wUPhIEegIHxTKdK9GRAHaEK&pid=Api', NULL, NULL),
+(4, 'Leclercq', 'Vinciane', 'vinciane.leclercq@test.com', 'password', NULL, NULL, 1, NULL, NULL, NULL, 'https://tse4.mm.bing.net/th?id=OIP.KF9wUPhIEegIHxTKdK9GRAHaEK&pid=Api', NULL, NULL),
+(5, 'Keuninck', 'Billaume', 'billaume.keuninck@test.com', 'Pa$$w0rd', NULL, NULL, 0, NULL, NULL, NULL, 'https://tse4.mm.bing.net/th?id=OIP.KF9wUPhIEegIHxTKdK9GRAHaEK&pid=Api', NULL, NULL),
+(6, 'Leroux', 'Benjamin', 'benjamin.leroux', 'pass', NULL, NULL, 0, NULL, NULL, NULL, 'https://tse4.mm.bing.net/th?id=OIP.KF9wUPhIEegIHxTKdK9GRAHaEK&pid=Api', NULL, NULL),
+(7, 'Nickler', 'Lila', 'lila.nickler@p.com', 'a', NULL, NULL, 0, NULL, NULL, NULL, 'https://tse4.mm.bing.net/th?id=OIP.KF9wUPhIEegIHxTKdK9GRAHaEK&pid=Api', NULL, NULL),
+(8, 'Baey', 'Marie', 'marie.baey@p.com', 'oui', NULL, NULL, 0, NULL, NULL, NULL, 'https://tse4.mm.bing.net/th?id=OIP.KF9wUPhIEegIHxTKdK9GRAHaEK&pid=Api', NULL, NULL),
+(9, 'Delecluse', 'Raphaël', 'raphael.delecluse@test.com', 'azerty', NULL, NULL, 0, NULL, NULL, NULL, 'https://tse4.mm.bing.net/th?id=OIP.KF9wUPhIEegIHxTKdK9GRAHaEK&pid=Api', NULL, NULL),
+(10, 'Lejeune', 'Théo', 'tleujeune@hacker.com', 'bonjourjesuisunmotdepasse', NULL, NULL, 0, NULL, NULL, NULL, 'https://tse4.mm.bing.net/th?id=OIP.KF9wUPhIEegIHxTKdK9GRAHaEK&pid=Api', NULL, NULL),
+(11, 'Oureib', 'Paul', 'poureib@oui.com', 'umineko', NULL, NULL, 0, NULL, NULL, NULL, 'https://tse4.mm.bing.net/th?id=OIP.KF9wUPhIEegIHxTKdK9GRAHaEK&pid=Api', NULL, NULL),
+(12, 'Caboche Rio', 'Vicent', 'vicent.c.rio@best.com', 'patate', NULL, NULL, 0, NULL, NULL, NULL, 'https://tse4.mm.bing.net/th?id=OIP.KF9wUPhIEegIHxTKdK9GRAHaEK&pid=Api', NULL, NULL);
 
 -- --------------------------------------------------------
 
