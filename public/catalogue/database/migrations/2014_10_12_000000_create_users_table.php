@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->date('time_blocked')->nullable();
             //$table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->default("https://tse4.mm.bing.net/th?id=OIP.KF9wUPhIEegIHxTKdK9GRAHaEK&pid=Api");
+            $table->string('profile_photo_path', 2048)->default("https://i.pinimg.com/736x/ff/02/4c/ff024ce397bee6cf74d642ee4c83d610--film-d-ponyo-sur-la-falaise.jpg");
             $table->timestamps();
         });
     }

@@ -21,8 +21,9 @@
                 @else
                     <li class="nav-item dropdown">
 					 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-						<button class="border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-							<img class="h-8 w-8 rounded-full object-cover img-thumbnail" src="{{ Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->forename }}" />
+						<button class="img-circular" style="border-radius: 50%">
+                            {{-- <img class="profil-pic" src="{{ Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->forename }}" width="40px" height="30" /> --}}
+                            <img src="{{ Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->forename }}" style="border-radius: 50%" width="125px" height="100"/>
 						</button>
 					 @else
 						<span class="inline-flex rounded-md">

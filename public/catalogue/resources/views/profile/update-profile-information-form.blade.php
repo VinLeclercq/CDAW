@@ -1,4 +1,5 @@
 <x-jet-form-section submit="updateProfileInformation">
+    <script src="{{asset('js/app.js')}}"></script>
     <x-slot name="title">
         {{ __('Profile Information') }}
     </x-slot>
@@ -10,7 +11,7 @@
     <x-slot name="form">
         <!-- Profile Photo -->
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-            <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
+            <div x-data="{photoName: null, photoPreview: null}" class="row col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
                 <input type="file" class="hidden"
                             wire:model="photo"
@@ -27,23 +28,23 @@
                 <label for="photo" value="{{ __('Photo') }}" />
 
                 <!-- Current Profile Photo -->
-                <div class="mt-2" show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_path }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
+                <div class="row" show="! photoPreview">
+                    <img src="{{ $this->user->profile_photo_path }}" alt="{{ $this->user->name }}" style="height: 100px; width: 125px; object-fit:cover;  border-radius: 50%;">
                 </div>
 
                 <!-- New Profile Photo Preview -->
-                <div class="mt-2" x-show="photoPreview">
+                <div class="row" show="photoPreview">
                     <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
                           bind:style="'background-image: url(\'' + photoPreview + '\');'">
                     </span>
                 </div>
 
-                <button class="mt-2 mr-2 btn-secondary" type="button" x-on:click.prevent="$refs.photo.click()">
+                <button class="col mt-2 mr-2 btn-secondary" type="button" x-on:click.prevent="$refs.photo.click()">
                     {{ __('Select A New Photo') }}
                 </button>
 
                 @if ($this->user->profile_photo_path)
-                    <button type="button" class="mt-2 btn-secondary" wire:click="deleteProfilePhoto">
+                    <button type="button" class="col mt-2 btn-secondary" wire:click="deleteProfilePhoto">
                         {{ __('Remove Photo') }}
                     </button>
                 @endif
