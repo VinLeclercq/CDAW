@@ -29,3 +29,33 @@ A partir de cette page vous pouvez:
 - voir (Read) les différents films.
 - Modifier (Update) un film en cliquant sur le bouton "Modifier" sous un film.
 - Supprimer (Delete) un film en cliquant sur le bouton "Supprimer" sous un film.
+
+
+# Jalon 3
+### Erwan Merly - Vinciane Leclercq
+
+Le jalon 3 est la troisième étape à réaliser dans le contexte du module CDAW.
+Cette étape comprend la mise en place des systèmes suivants :
+- Connexion/déconnexion
+- Création de compte 
+- Routes publiques et protégées 
+- Tests
+
+## Au préalable
+Penser à créer la base de données comme vu dans le jalon 2.
+
+## Tests
+Les tests sont lanceables via les commandes suivantes :
+``php artisan test --filter MediaTest``
+``php artisan test --filter RouteTest``
+
+## Connexion et inscription
+Accessible via la barre de navigation sur la page ``php artisan test --filter ExampleTest`` **(page d'accueil du site)**.
+Elle ramène vers une page secondaire. Le retour au menu principal se fait via le clique sur le logo.
+
+## Déconnexion et profil
+Une fois connecté la barre de navigation se met à jour. Ainsi, on retrouve les informations sur l'utilisateur connecté et on peut se déconnecter ainsi qu'accéder à son profil pour faire des modifications.
+
+## Routes publiques et protégée
+L'ajout de média est possible depuis la page d'accueil. Néanmoins, étant protégée par la connexion, il est nécessaire d'être identifiée pour y avoir accès (de même pour l'accès au profil).
+Enfin, la barre de navigation utilise les fonctionnalités de Livewire pour se modifier dynamiquement en fonction de la session en cours.
