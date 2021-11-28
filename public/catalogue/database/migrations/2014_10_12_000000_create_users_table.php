@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_modo')->default(false);
             $table->timestamp('blocked_date')->nullable();
             $table->date('time_blocked')->nullable();
-            //$table->rememberToken();
+            $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->default("https://i.pinimg.com/736x/ff/02/4c/ff024ce397bee6cf74d642ee4c83d610--film-d-ponyo-sur-la-falaise.jpg");
             $table->timestamps();
