@@ -22,9 +22,9 @@
                     <li class="nav-item dropdown">
 					 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
 						<button class="border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-							<img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->forename }}" />
+							<img class="h-8 w-8 rounded-full object-cover img-thumbnail" src="{{ Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->forename }}" />
 						</button>
-					{{-- @else
+					 @else
 						<span class="inline-flex rounded-md">
 							<button type="button" class="nav-item">
 								{{ Auth::user()->name }}
@@ -33,31 +33,30 @@
 									<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
 								</svg>
 							</button>
-						</span> --}}
+						</span>
 					@endif
                         <a id="navbarDropdown" data-bs-toggle="dropdown" class="nav-link dropdown-toggle" href="#" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->forename }} <span class="caret"></span>
                         </a>
 
 
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item"  href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                                        {{ __('Profile') }}
-                                    </a>
-                                </li>
+                        <ul class="dropdown-menu">
                             <li>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+                                <a class="dropdown-item"  href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                                    {{ __('Profile') }}
+                                </a>
                             </li>
-                            </ul>
-
+                                <li>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
                     </li>
                 @endguest
             </ul>
