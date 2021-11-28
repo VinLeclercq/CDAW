@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('categories', 'App\Http\Controllers\CategoriesController@getCategories');
 
-Route::get('medias', 'App\Http\Controllers\MediasController@getAllMedias');
+Route::get('medias', 'App\Http\Controllers\MediasController@getAllMedias')->name('medias');
 Route::get('oneMedia', 'App\Http\Controllers\MediasController@getOneMedia');
 
-Route::get('addMedia', 'App\Http\Controllers\MediasController@formCreateMedia');
+Route::get('addMedia', 'App\Http\Controllers\MediasController@formCreateMedia')->middleware('auth');
 Route::post('addMedia', 'App\Http\Controllers\MediasController@createMedia');
 
 Route::get('modifyMedia/{mediaId}', 'App\Http\Controllers\MediasController@formModifyMedia');
