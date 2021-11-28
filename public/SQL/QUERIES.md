@@ -117,7 +117,6 @@ AND w.date <= '2021-12-31'
 
 - Nombre commentaires sur période donnée
 ```
-SELECT COUNT(id)
 SELECT COUNT(c.id) count
 FROM comment c
 WHERE c.created_at >= '2020-01-01'

@@ -4,45 +4,61 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use App\Models\film;
+use App\Models\Media;
 
-class FilmTest extends TestCase
+class MediaTest extends TestCase
 {
-
-    public function test_add_film()
+    public function test_add_media()
     {
-        $this->post('/addFilm', ['name' => 'Oui Oui', 'director' => 'Non Non', 'category' => 2]);
+        $data = [
+            'name' => 'Test', 
+            'duration' => '120', 
+            'release' => '2021-11-21', 
+            'synopsis' => 'Media Test', 
+            'type' => 'Film', 
+            'status' => 'Fini'
+        ];
 
-        $film = film::where('name', 'Oui Oui')->first();
-        $this->assertNotNull($film);
+        $response = $this->post('/addMedia', $data);
+
+        $media = Media::where('name', 'Test')->first();
+
+        $this->assertNotNull($media);
     }
-
-    public function test_add_film_redirection()
+    
+    public function test_add_media_redirection()
     {
-        $response = $this->post('/addFilm', ['name' => 'Oui Oui', 'director' => 'Non Non', 'category' => 2]);
+        $data = [
+            'name' => 'Redirect', 
+            'duration' => '200', 
+            'release' => '2021-05-11', 
+            'synopsis' => 'Test redirection', 
+            'type' => 'Film', 
+            'status' => 'Fini'
+        ];
+
+        $response = $this->post('/addMedia', $data);
 
         $response->assertStatus(302);   
     }
     
-    public function test_delete_film()
+    public function test_delete_media()
     {
         $data = [
-            'name' => 'Test Delete',
-            'director' => 'Deleter',
-            'category_id' => 3
+            'name' => 'Test', 
+            'duration_time' => '120', 
+            'release_date' => '2021-11-21', 
+            'description' => 'Media Test', 
+            'type' => 'Film', 
+            'status' => 'Fini'
         ];
 
-        film::create($data);
-        $film = film::where($data)->first();
-
+        Media::create($data);
+        $film = Media::where($data)->first();
         $idDelete = $film->id;
-
         $this->assertNotNull($film);
-
-        $this->delete('/deleteFilm/' . $idDelete);
-
-        $filmDeleted = film::find($idDelete);
-
+        $this->delete('/deleteMedia/' . $idDelete);
+        $filmDeleted = Media::find($idDelete);
         $this->assertNull($filmDeleted);
 
     }

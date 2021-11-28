@@ -60,11 +60,15 @@ class MediasController extends Controller
 
         $media = Media::create($data);
 
-        foreach($categories_id as $c_id)
+        if($categories_id != NULL)
         {
-            $c = Category::find($c_id);
-            $media->categories()->attach($c);
+            foreach($categories_id as $c_id)
+            {
+                $c = Category::find($c_id);
+                $media->categories()->attach($c);
+            }
         }
+        
 
         return redirect('/medias');
     }
