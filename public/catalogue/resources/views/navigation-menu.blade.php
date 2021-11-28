@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/dashboard') }}">
+        <a class="navbar-brand" href="{{ url('/medias') }}">
             <img src="{{asset('assets/img/deule-prime-logo.png')}}" alt="DeulePrimeLogo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,3 +65,5 @@
     </div>
 
 </nav>
+
+@yield('page')
