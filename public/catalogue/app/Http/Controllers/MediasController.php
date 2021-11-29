@@ -16,6 +16,12 @@ class MediasController extends Controller
         return view('medias', ["medias" => $medias]);
     }
 
+    public function getMediaDetails($mediaID)
+    {
+        $media = Media::find($mediaID);
+        return view('mediaDetails', ["media" => $media]);
+    }
+
     public function formCreateMedia()
     {
         $categories = Category::all();

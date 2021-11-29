@@ -25,6 +25,8 @@ Route::put('modifyMedia/{mediaId}', 'App\Http\Controllers\MediasController@modif
 
 Route::delete('deleteMedia/{mediaId}', 'App\Http\Controllers\MediasController@deleteMedia');
 
+Route::get('medias/{id}', 'App\Http\Controllers\MediasController@getMediaDetails');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

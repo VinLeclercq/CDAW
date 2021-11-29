@@ -27,6 +27,7 @@ class CreateMediaTable extends Migration
             $table->enum('type', ['Film', 'Série']);
             $table->enum('status', ['En cours', 'Fini', 'Abandonné']);
             $table->string('poster_url')->nullable();
+            $table->string('backdrop_url')->nullable();
             //To rebuild to have multiple categories
             $table->timestamps();
         });
