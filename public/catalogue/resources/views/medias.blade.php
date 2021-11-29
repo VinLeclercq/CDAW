@@ -36,7 +36,11 @@
                         <div class="col">
                             <div class="row">
                                 <label for="Author" class="col"><h4 style="margin: 20px">Réalisateur</h4></label>
-                                <span style="margin: 10px" Id="Author" class="col">{{$media->director}}</span>
+                                @foreach($media->directors as $director)
+                                    <span style="margin: 10px" Id="Author" class="col">
+                                        {{$director->forename}} {{$director->name}}
+                                    </span>
+                                @endforeach
                             </div>
                             <div class="row">
                                 <label for="Genre" class="col"><h4 style="margin: 15px">Genre(s)</h4></label>

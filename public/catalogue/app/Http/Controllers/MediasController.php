@@ -8,29 +8,12 @@ use App\Models\Media;
 
 class MediasController extends Controller
 {
-    public function getListeMedias()
-    {
-        return view('listeMedias');
-    }
-
-    public function getListeMediasWithParameters($type, $annee)
-    {
-        echo $type.$annee;
-        return view('listeMedias', ['type' => $type, 'annee' => $annee]);
-    }
 
     public function getAllMedias()
     {
         $medias = Media::all();
 
         return view('medias', ["medias" => $medias]);
-    }
-
-    public function getOneMedia()
-    {
-        $media = Media::where('id', 1)->with('category')->get();
-
-        return view('medias', ["medias" => $media]);
     }
 
     public function formCreateMedia()

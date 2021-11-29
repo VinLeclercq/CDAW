@@ -51,6 +51,6 @@ class Media extends Model
 
     public function directors()
     {
-        return $this->belongsToMany(Person::class, 'act', 'ID_media', 'ID_person');
+        return $this->belongsToMany(Person::class, 'direct', 'ID_media', 'ID_person');
     }
 }
