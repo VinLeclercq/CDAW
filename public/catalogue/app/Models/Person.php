@@ -16,8 +16,13 @@ class Person extends Model
     protected $guarded = ['id'];
     protected $hidden = [];
 
-    public function medias()
+    public function act()
     {
-        return $this->belongsToMany(Media::class, 'compose', 'ID_media', 'ID_person');
+        return $this->belongsToMany(Media::class, 'act', 'ID_media', 'ID_person');
+    }
+
+    public function direct()
+    {
+        return $this->belongsToMany(Media::class, 'direct', 'ID_media', 'ID_person');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePersonComposeMediaTable extends Migration
+class CreatePersonDirectMediaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePersonComposeMediaTable extends Migration
      */
     public function up()
     {
-        Schema::create('compose', function (Blueprint $table) {
+        Schema::create('direct', function (Blueprint $table) {
             $table->bigInteger('ID_media')->unsigned()->index();
             $table->foreign("ID_media")->references('id')->on('media')->onDelete('cascade');
 
@@ -33,6 +33,6 @@ class CreatePersonComposeMediaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('compose');
+        Schema::dropIfExists('direct');
     }
 }

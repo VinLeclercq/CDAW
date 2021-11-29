@@ -15,3 +15,5 @@
 /public/catalogue/yarn-error.log
 /public/catalogue/.idea
 /public/catalogue/.vscode
+/public/catalogue/composer.lock
+/public/catalogue/vendor/livewire/livewire.js

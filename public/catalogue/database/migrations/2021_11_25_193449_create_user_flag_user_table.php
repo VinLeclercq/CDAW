@@ -14,8 +14,14 @@ class CreateUserFlagUserTable extends Migration
     public function up()
     {
         Schema::create('flag', function (Blueprint $table) {
-            $table->foreignId("ID_flagger");
-            $table->foreignId("ID_flagged");
+            $table->bigInteger('ID_flagger')->unsigned()->index();
+            $table->foreign("ID_flagger")->references('id')->on('users')->onDelete('cascade');
+
+            $table->bigInteger("ID_flagged")->unsigned()->index();
+            $table->foreign('ID_flagged')->references('id')->on('users')->onDelete('cascade');
+
+            $table->primary(['ID_flagger', 'ID_flagged']);
+
             $table->string("message");
             $table->timestamps();
         });

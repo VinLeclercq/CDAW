@@ -17,8 +17,7 @@ class CreatePersonTable extends Migration
             $table->id();
             $table->string("name");
             $table->string("forename");
-            $table->boolean("is_actor");
-            $table->boolean("is_director");
+            $table->date("birthdate")->nullable();
             $table->timestamps();
         });
     }

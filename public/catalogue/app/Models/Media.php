@@ -24,11 +24,6 @@ class Media extends Model
         return $this->belongsToMany(Category::class, 'defined', 'ID_media', 'ID_category');
     }
 
-    public function persons()
-    {
-        return $this->belongsToMany(Person::class, 'composed', 'ID_media', 'ID_person');
-    }
-
     public function users_watched()
     {
         return $this->belongsToMany(User::class, 'watched', 'ID_media', 'ID_user');
@@ -47,5 +42,15 @@ class Media extends Model
     public function comments()
     {
         return $this->belongsTo(Comment::class);
+    }
+
+    public function actors()
+    {
+        return $this->belongsToMany(Person::class, 'act', 'ID_media', 'ID_person');
+    }
+
+    public function directors()
+    {
+        return $this->belongsToMany(Person::class, 'act', 'ID_media', 'ID_person');
     }
 }

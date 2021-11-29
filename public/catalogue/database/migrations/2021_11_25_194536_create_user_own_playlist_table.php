@@ -33,6 +33,6 @@ class CreateUserOwnPlaylistTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('have');
+        Schema::dropIfExists('own');
     }
 }

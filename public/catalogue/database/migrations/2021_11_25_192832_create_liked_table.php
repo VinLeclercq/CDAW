@@ -33,6 +33,6 @@ class CreateLikedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('watched');
+        Schema::dropIfExists('liked');
     }
 }

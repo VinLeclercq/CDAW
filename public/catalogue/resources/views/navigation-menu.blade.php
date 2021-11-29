@@ -14,10 +14,15 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
+                
+                <li><a class="nav-link" href="{{ route('medias') }}">{{ __('Accueil') }}</a></li>
+                <li><a class="nav-link" href="{{ route('login') }}">{{ __('Films') }}</a></li>
+                <li><a class="nav-link" href="{{ route('login') }}">{{ __('Séries') }}</a></li>
+
                 <!-- Authentication Links -->
                 @guest
-                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                    <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a></li>
+                    <li><a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a></li>
                 @else
                     <li class="nav-item dropdown">
 					 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
