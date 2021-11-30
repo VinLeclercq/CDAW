@@ -41,7 +41,7 @@ class Media extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'id');
+        return $this->hasMany(Comment::class, 'ID_Media');
     }
 
     public function actors()
