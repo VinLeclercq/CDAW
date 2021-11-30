@@ -40,4 +40,8 @@
         <p>{{$category->name}}</p>
     @endforeach
 
+    <a href="{{url()->current().'/comments'}}">
+        <button class="btn btn-primary">Commentaires</button>
+    </a>
+
 @endsection
