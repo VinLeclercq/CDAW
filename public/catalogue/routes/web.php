@@ -27,6 +27,7 @@ Route::delete('deleteMedia/{mediaId}', 'App\Http\Controllers\MediasController@de
 
 Route::get('medias/{id}', 'App\Http\Controllers\MediasController@getMediaDetails');
 
+Route::get('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@getCategories');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
