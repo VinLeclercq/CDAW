@@ -23,7 +23,8 @@
                 <button type="button" class="btn btn-primary">Nouvelle playlist</button>
             {{-- </a> --}}
         </div>
-        
+
+        {{$playlists}}
         @foreach ($playlists as $playlist)
 
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -32,10 +33,17 @@
                 <h2 Id="Title">{{$playlist->name}}</p></h2>
                 <hr/>
 
-                <div id="playlist" class="carousel slide" data-ride="carousel">
+                @foreach ($playlist->medias_in_playlist as $media)
+                <figure>
+                <img src="{{$media['poster_link']}}">
+                    <figcaption class="text-truncate">{{$media['title']}}</figcaption>
+                    </figure>
+                @endforeach
+
+                {{-- <div id="playlist" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         @foreach ($playlist->medias_in_playlist as $media)
-                            <div class="carousel-item active">
+                            <div class="carousel-item" {{ $loop->first ? 'active' : '' }}>
                                 <img class="d-block w-100" src="{{$media->poster_url}}" alt="{{$media->name}}">
                             </div>
                         @endforeach
@@ -48,7 +56,7 @@
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="sr-only">Next</span>
                     </a>
-                </div>
+                </div> --}}
             </div>
         </div>
         @endforeach

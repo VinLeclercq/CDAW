@@ -13,7 +13,7 @@ class CommentsController extends Controller
     {
         $media = Media::find($mediaID);
         $comments = $media->comments->load('user');
-        
+
         return view('mediaComments', ["comments" => $comments, "media" => $media]);
     }
 
@@ -48,7 +48,7 @@ class CommentsController extends Controller
         $commentID = $request->input("commentID");
         $comment = Comment::find($commentID);
         $comment->delete();
-        return redirect( url()->current() );
+        return redirect( url()->current());
     }
 
 }
