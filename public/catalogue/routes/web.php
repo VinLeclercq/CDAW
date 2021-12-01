@@ -31,7 +31,7 @@ Route::get('medias/{id}/comments', 'App\Http\Controllers\CommentsController@getM
 Route::post('medias/{id}/comments', 'App\Http\Controllers\CommentsController@postComment')->middleware('auth');
 Route::delete('medias/{id}/comments', 'App\Http\Controllers\CommentsController@deleteComment');
 
-Route::get('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@getCategories');
+Route::get('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@getUserPlaylist');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

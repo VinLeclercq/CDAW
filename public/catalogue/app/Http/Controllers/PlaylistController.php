@@ -37,7 +37,7 @@ class PlaylistController extends Controller
     public function getUserPlaylist($userId)
     {
         $user = User::find($userId);
-        $playlists = $user->playlist_owned();
+        $playlists = $user->playlist_owned;
         return view('myPlaylists', ['playlists' => $playlists]);
     }
 

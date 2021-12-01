@@ -23,19 +23,20 @@
                 <button type="button" class="btn btn-primary">Nouvelle playlist</button>
             {{-- </a> --}}
         </div>
-        {{-- @foreach ($playlists as $playlist)
+        
+        @foreach ($playlists as $playlist)
 
         <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col"> --}}
+            <div class="col">
 
-                {{-- <h2 Id="Title">{{$playlist->name}}</p></h2>
-                <hr/> --}}
+                <h2 Id="Title">{{$playlist->name}}</p></h2>
+                <hr/>
 
-                {{-- <div id="playlist" class="carousel slide" data-ride="carousel">
+                <div id="playlist" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         @foreach ($playlist->medias_in_playlist as $media)
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="{{$media->profile_photo_path}}" alt="{{$media->name}}">
+                                <img class="d-block w-100" src="{{$media->poster_url}}" alt="{{$media->name}}">
                             </div>
                         @endforeach
                     </div>
@@ -47,10 +48,10 @@
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="sr-only">Next</span>
                     </a>
-                </div> --}}
-            {{-- </div>
+                </div>
+            </div>
         </div>
-        @endforeach --}}
+        @endforeach
     </div>
 </main>
 @endsection
