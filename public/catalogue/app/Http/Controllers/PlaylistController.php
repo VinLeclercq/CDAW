@@ -15,29 +15,29 @@ class PlaylistController extends Controller
     //     return view('playlists', ["playlists" => $playlists]);
     // }
 
-    public function createPlaylist(Request $request)
-    {
-        $name = $request->input("name");
+    // public function createPlaylist(Request $request)
+    // {
+    //     $name = $request->input("name");
 
 
-        $data = [
-            "name" => $name
-        ];
+    //     $data = [
+    //         "name" => $name
+    //     ];
 
-        $playlist = Playlist::create($data);
-    }
+    //     $playlist = Playlist::create($data);
+    // }
 
-    public function deletePlaylist($playlistId)
-    {
-        $playlist = Playlist::find($playlistId);
-        $playlist->delete();
-        return redirect('/playlists');
-    }
+    // public function deletePlaylist($playlistId)
+    // {
+    //     $playlist = Playlist::find($playlistId);
+    //     $playlist->delete();
+    //     return redirect('/playlists');
+    // }
 
     public function getUserPlaylist($userId)
     {
         $user = User::find($userId);
-        $playlists = $user->playlist_owned;
+        $playlists = $user->playlist_owned();
         return view('myPlaylists', ['playlists' => $playlists]);
     }
 

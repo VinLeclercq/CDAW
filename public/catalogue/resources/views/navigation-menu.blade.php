@@ -14,7 +14,7 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
-                
+
                 <li><a class="nav-link" href="{{ route('medias') }}">{{ __('Accueil') }}</a></li>
                 <li><a class="nav-link" href="{{ route('login') }}">{{ __('Films') }}</a></li>
                 <li><a class="nav-link" href="{{ route('login') }}">{{ __('Séries') }}</a></li>
@@ -48,15 +48,20 @@
 
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item"  href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                                    {{ __('Profile') }}
+                                <a class="dropdown-item"  href="{{url('/myPlaylists', Auth::user()->id)}}" >
+                                    {{ __('Mes playlists') }}
                                 </a>
                             </li>
-                                <li>
+                            <li>
+                                <a class="dropdown-item"  href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                                    {{ __('Mon profile') }}
+                                </a>
+                            </li>
+                            <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Déconnexion') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf

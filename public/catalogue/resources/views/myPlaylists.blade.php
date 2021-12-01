@@ -6,7 +6,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                <h1>Mes playlistes</h1>
+                <h1>Mes playlists</h1>
                 <span class="subheading">Tout le monde sur le même bâteau</span>
                 </div>
             </div>
@@ -20,18 +20,18 @@
     <div class="container px-4 px-lg-5">
         <div class="row">
             {{-- <a href="{{ url('/addMedia')}}"> --}}
-                <button type="button" class="btn btn-primary">Nouvelle playliste</button>
+                <button type="button" class="btn btn-primary">Nouvelle playlist</button>
             {{-- </a> --}}
         </div>
-        @foreach ($playlists as $playlist)
+        {{-- @foreach ($playlists as $playlist)
 
         <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col">
+            <div class="col"> --}}
 
-                <h2 Id="Title">{{$playlist->name}}</p></h2>
-                <hr/>
+                {{-- <h2 Id="Title">{{$playlist->name}}</p></h2>
+                <hr/> --}}
 
-                <div id="playlist" class="carousel slide" data-ride="carousel">
+                {{-- <div id="playlist" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         @foreach ($playlist->medias_in_playlist as $media)
                             <div class="carousel-item active">
@@ -47,10 +47,10 @@
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="sr-only">Next</span>
                     </a>
-                </div>
-            </div>
+                </div> --}}
+            {{-- </div>
         </div>
-        @endforeach
+        @endforeach --}}
     </div>
 </main>
 @endsection

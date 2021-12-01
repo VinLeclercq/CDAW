@@ -13,6 +13,7 @@ class Playlist extends Model
     use HasFactory;
 
     protected $table = 'playlist';
+    protected $guarded = ['id'];
 
     public function users_owning()
     {
