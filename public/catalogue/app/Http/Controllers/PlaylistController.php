@@ -39,9 +39,6 @@ class PlaylistController extends Controller
     {
         $user = User::find($userId);
         $playlists = $user->playlist_owned;
-
-        var_dump($playlists);
-
         return view('myPlaylists', ['playlists' => $playlists]);
     }
 
