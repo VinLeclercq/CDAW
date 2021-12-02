@@ -32,7 +32,6 @@
                 <div class="col">
 
                     <h2 Id="Title">{{$media->name}}</p></h2>
-                    <hr/>
                     <div class="row">
 
                         <div class="col">
@@ -75,6 +74,7 @@
                             <br />
                         </div>
                     </div>
+                    <hr/>
                 </div>
             </div>
             @endforeach

@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Support\Facades\Log;
+
 use App\Models\Media;
+use App\Models\Person;
 
 class DBData extends Model
 {
@@ -68,23 +71,73 @@ class DBData extends Model
                 "description" => $film["overview"],
                 "duration_time" => $film["runtime"],
                 "type" => "Film",
+                "status" => "Fini",
+                "db_id" => $film["id"],
             ];
         }
         curl_close($curl);
         return $dataArray;
     }
 
+    public static function setMovieCrewFromDB($movieArray)
+    {
+        $key = "187cf9fba8a31a9d85cf232a13033069";
+        $curl = curl_init();
+
+        foreach($movieArray as $movie)
+        {
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://api.themoviedb.org/3/movie/".$movie->db_id."/credits?language=fr-FR&api_key=".$key,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "GET",
+            ));
+
+            $crew = json_decode(curl_exec($curl), true);
+            
+            $actors = $crew["cast"];
+            foreach($actors as $actor)
+            {
+                $a = Person::firstOrCreate(
+                    ['name' => $actor["name"]],
+                );
+
+                $movie->actors()->syncWithoutDetaching($a);
+            }
+        
+            $crew = $crew["crew"];
+            foreach($crew as $member)
+            {
+                if($member["job"] == "Director")
+                {
+                    $d = Person::firstOrCreate(
+                        ['name' => $member["name"]]
+                    );
+                    
+                    $movie->directors()->syncWithoutDetaching($d);
+                }
+            }
+        }
+        
+    }
+
     public static function getMoviesFromDB()
     {
         $idArray = array();
         $dataArray = array();
+        $movieArray = array();
 
         $idArray = DBData::getIdTop();
         $dataArray = DBData::getDetailsMovie($idArray);
-        //var_dump($dataArray);
         foreach($dataArray as $data)
         {
-            Media::create($data);
+            array_push($movieArray, Media::create($data));
         }
+
+        DBData::setMovieCrewFromDB($movieArray);
     }
 }
