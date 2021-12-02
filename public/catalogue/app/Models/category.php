@@ -18,7 +18,7 @@ class Category extends Model
 
     public function medias()
     {
-        return $this->belongsToMany(Media::class, 'defined', 'ID_media', 'ID_category');
+        return $this->belongsToMany(Media::class, 'defined', 'ID_category', 'ID_media');
     }
 
 }

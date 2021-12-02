@@ -18,11 +18,11 @@ class Person extends Model
 
     public function act()
     {
-        return $this->belongsToMany(Media::class, 'act', 'ID_media', 'ID_person');
+        return $this->belongsToMany(Media::class, 'act', 'ID_person', 'ID_media');
     }
 
     public function direct()
     {
-        return $this->belongsToMany(Media::class, 'direct', 'ID_media', 'ID_person');
+        return $this->belongsToMany(Media::class, 'direct', 'ID_person', 'ID_media');
     }
 }
