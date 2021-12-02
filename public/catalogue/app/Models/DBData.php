@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\Log;
 
 use App\Models\Media;
 use App\Models\Person;
+use App\Models\Category;
 
 class DBData extends Model
 {
     use HasFactory;
 
-    public static function getIdTop()
+    public static function getIdTopMovie()
     {
         $key = "187cf9fba8a31a9d85cf232a13033069";
         $idArray = array();
@@ -45,9 +46,8 @@ class DBData extends Model
     public static function getDetailsMovie($idArray)
     {
         $key = "187cf9fba8a31a9d85cf232a13033069";
-        $dataArray = array();
         $curl = curl_init();
-        foreach($idArray as $i => $id)
+        foreach($idArray as $id)
         {
             curl_setopt_array($curl, array(
                 CURLOPT_URL => "https://api.themoviedb.org/3/movie/".$id."?language=fr-FR&api_key=".$key,
@@ -62,8 +62,7 @@ class DBData extends Model
             
             $film = json_decode(curl_exec($curl), true);
 
-            $dataArray[$i] =  
-            [   
+            $data = [   
                 "backdrop_url" => "https://image.tmdb.org/t/p/original".$film["backdrop_path"],
                 "poster_url" => "https://image.tmdb.org/t/p/original".$film["poster_path"],
                 "release_date" => $film["release_date"],
@@ -74,15 +73,22 @@ class DBData extends Model
                 "status" => "Fini",
                 "db_id" => $film["id"],
             ];
+
+            $f = Media::create($data);
+
+            foreach($film["genres"] as $category) {
+                $c = Category::where('name', $category["name"])->get();
+                $f->categories()->syncWithoutDetaching($c);
+            }
         }
         curl_close($curl);
-        return $dataArray;
     }
 
-    public static function setMovieCrewFromDB($movieArray)
+    public static function getMovieCrewFromDB()
     {
         $key = "187cf9fba8a31a9d85cf232a13033069";
         $curl = curl_init();
+        $movieArray = Media::where("type", "Film")->get();
 
         foreach($movieArray as $movie)
         {
@@ -122,22 +128,74 @@ class DBData extends Model
                 }
             }
         }
-        
+        curl_close($curl);
+    }
+
+    public static function getMovieCategoriesFromDB()
+    {
+        $key = "187cf9fba8a31a9d85cf232a13033069";
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.themoviedb.org/3/genre/movie/list?language=fr-FR&api_key=".$key,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+        ));
+
+        $categories = json_decode(curl_exec($curl), true)["genres"];
+
+        foreach($categories as $category)
+        {
+            Category::firstOrCreate(
+                ['name' => $category["name"]],
+            );
+        }
+
+        curl_close($curl);
+    }
+
+    public static function getTVCategoriesFromDB()
+    {
+        $key = "187cf9fba8a31a9d85cf232a13033069";
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.themoviedb.org/3/genre/tv/list?language=fr-FR&api_key=".$key,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+        ));
+
+        $categories = json_decode(curl_exec($curl), true)["genres"];
+
+        foreach($categories as $category)
+        {
+            Category::firstOrCreate(
+                ['name' => $category["name"]],
+            );
+        }
+
+        curl_close($curl);
     }
 
     public static function getMoviesFromDB()
     {
         $idArray = array();
-        $dataArray = array();
-        $movieArray = array();
+        
+        DBData::getMovieCategoriesFromDB();
+        DBData::getTVCategoriesFromDB();
 
-        $idArray = DBData::getIdTop();
-        $dataArray = DBData::getDetailsMovie($idArray);
-        foreach($dataArray as $data)
-        {
-            array_push($movieArray, Media::create($data));
-        }
-
-        DBData::setMovieCrewFromDB($movieArray);
+        $idArray = DBData::getIdTopMovie();
+        DBData::getDetailsMovie($idArray);
+        DBData::getMovieCrewFromDB();
     }
 }
