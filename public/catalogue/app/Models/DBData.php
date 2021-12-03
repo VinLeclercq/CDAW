@@ -272,7 +272,7 @@ class DBData extends Model
         foreach($seriesArray as $series)
         {
             curl_setopt_array($curl, array(
-                CURLOPT_URL => "https://api.themoviedb.org/3/movie/".$series->db_id."/credits?language=fr-FR&api_key=".$key,
+                CURLOPT_URL => "https://api.themoviedb.org/3/tv/".$series->db_id."/credits?language=fr-FR&api_key=".$key,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => "",
                 CURLOPT_MAXREDIRS => 10,

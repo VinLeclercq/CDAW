@@ -10,12 +10,18 @@
                     <span class="subheading">
                         {{substr($media->release_date, 0, 4)}} 
                         ·
-                        @foreach($media->directors as $director)
-                            {{$director->forename}} {{$director->name}}
-                            @if(!$loop->last)
-                                &
-                            @endif
-                        @endforeach
+
+                        @if($media->type = 'Film')
+                            @foreach($media->directors as $director)
+                                {{$director->forename}} {{$director->name}}
+                                @if(!$loop->last)
+                                    &
+                                @endif
+                            @endforeach
+                        @endif
+                        @if($media->type = 'Série')
+                        {{substr($media->last_date, 0, 4)}}
+                        @endif
                     </span>
                 </div>
             </div>
