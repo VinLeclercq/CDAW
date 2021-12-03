@@ -19,7 +19,22 @@
 <main class="mb-4">
     <div class="container px-4 px-lg-5">
         <div class="row">
-            <form action="{{ route('playlist.add', [$userId])}}" method="POST">
+            <script>
+                function hide(){
+                    $ajout = document.getElementById("ajout");
+                    $btn = document.getElementById("btn");
+                    if ( $ajout.hidden == true ){
+                        $ajout.hidden = !ajout.hidden;
+                        $btn.value = "Abandonner";
+                        }
+                    else{
+                        $ajout.hidden = !ajout.hidden;
+                        $btn.value = "Ajouter une playlist";
+                    }
+                }
+            </script>
+            <input onclick="hide()" class="btn btn-primary text-uppercase" type="button" value="Ajouter une playlist" id="btn">
+            <form id="ajout" action="{{ route('playlist.add', [$userId])}}" method="POST">
                 @csrf
                 <div class="form-floating">
                     <input class="form-control" id="name" name="name"/>
