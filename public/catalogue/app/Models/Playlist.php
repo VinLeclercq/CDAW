@@ -11,7 +11,7 @@ use App\Models\Media;
 class Playlist extends Model
 {
     use HasFactory;
-
+    protected $casts = ['is_public' => 'boolean'];
     protected $table = 'playlist';
     protected $guarded = ['id'];
 

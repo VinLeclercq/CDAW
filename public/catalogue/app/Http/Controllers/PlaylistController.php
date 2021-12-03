@@ -17,15 +17,23 @@ class PlaylistController extends Controller
 
     public function createPlaylist(Request $request, $userId)
     {
-        $name = $request->input("name");
-
+        $name = $request->input('name');
+        if($request->has('is_public')){
+            $is_public = true;
+        }else{
+            $is_public = false;
+        }
 
         $data = [
+            "is_public" => $is_public,
             "name" => $name
         ];
 
-        Playlist::insert($data);
-        return redirect('/myPlaylists');
+        $playlist = Playlist::create($data);
+        $user = User::find($userId);
+        $playlist->users_owning()->attach($user);
+
+        return redirect()->back()->withInput();
     }
 
     public function deletePlaylist($playlistId)
@@ -39,7 +47,7 @@ class PlaylistController extends Controller
     {
         $user = User::find($userId);
         $playlists = $user->playlist_owned;
-        return view('myPlaylists', ['playlists' => $playlists]);
+        return view('myPlaylists', ['playlists' => $playlists, 'userId' => $userId]);
     }
 
     public function getUserSubscribedPlaylist($userId)
