@@ -59,7 +59,9 @@
                                 <label for="Author" class="col"><h4 style="margin: 20px">Réalisateur</h4></label>
                                     @foreach($media->directors as $director)
                                         <span style="margin: 10px" Id="Author" class="col">
-                                            {{$director->forename}} {{$director->name}}
+                                            <a href="{{url('/person', $director->id)}}">
+                                                {{$director->forename}} {{$director->name}}
+                                            </a>
                                         </span>
                                     @endforeach
                             </div>

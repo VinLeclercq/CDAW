@@ -24,7 +24,8 @@ class SearchController extends Controller
                 return view('mediasListe', ["medias" => $result]);
                 break;
             case "Personnes":
-                return Person::search($nameSearch)->get();
+                $people = Person::search($nameSearch)->paginate(50);
+                return view('personnesListe', ["people" => $people]);
                 break;
             case "Playlist":
                 return Playlist::search($nameSearch)->get();

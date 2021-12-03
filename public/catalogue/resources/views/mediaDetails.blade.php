@@ -27,13 +27,17 @@
 @section('content')
     <h2>Acteur(s)</h2>
     @foreach($media->actors as $actor)
-        <p>{{$actor->forename}} {{$actor->name}}</p>
+        <a href="{{url('/person', $actor->id)}}">
+            <p>{{$actor->forename}} {{$actor->name}}</p>
+        </a>
     @endforeach
     
     @if($media->type == 'Film')
         <h2>Réalisateur(s)</h2>
         @foreach($media->directors as $director)
-            <p>{{$director->forename}} {{$director->name}}</p>
+            <a href="{{url('/person', $director->id)}}">
+                <p>{{$director->forename}} {{$director->name}}</p>
+            </a>
         @endforeach        
     @endif
 

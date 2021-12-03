@@ -29,6 +29,7 @@
                 <li><a class="nav-link" href="{{ url('medias') }}">{{ __('Accueil') }}</a></li>
                 <li><a class="nav-link" href="{{ url('films') }}">{{ __('Films') }}</a></li>
                 <li><a class="nav-link" href="{{ url('series') }}">{{ __('Séries') }}</a></li>
+                <li><a class="nav-link" href="{{ url('medias') }}">{{ __('Playlist') }}</a></li>
 
                 <!-- Authentication Links -->
                 @guest

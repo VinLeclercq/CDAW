@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-use App\Models\Person;
-use App\Models\Media;
-use Illuminate\Http\Request;
-
 Route::get('categories', 'App\Http\Controllers\CategoriesController@getCategories');
 
 Route::get('medias', 'App\Http\Controllers\MediasController@getAllMedias');
@@ -43,6 +38,9 @@ Route::delete('medias/{id}/comments', 'App\Http\Controllers\CommentsController@d
 Route::get('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@getUserPlaylist')->middleware('auth');
 Route::post('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@createPlaylist')->middleware('auth')->name('playlist.add');
 Route::delete('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@deletePlaylist')->middleware('auth')->name('playlist.delete');
+
+Route::get('person', 'App\Http\Controllers\PersonController@getAllPeople');
+Route::get('person/{personId}', 'App\Http\Controllers\PersonController@getPersonDetails');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
