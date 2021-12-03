@@ -20,6 +20,8 @@
     <div class="container px-4 px-lg-5">
         <div class="row">
             <script>
+                document.getElementById("ajout").hidden;
+
                 function hide(){
                     $ajout = document.getElementById("ajout");
                     $btn = document.getElementById("btn");
@@ -34,6 +36,7 @@
                 }
             </script>
             <input onclick="hide()" class="btn btn-primary text-uppercase" type="button" value="Ajouter une playlist" id="btn">
+            <br>
             <form id="ajout" action="{{ route('playlist.add', [$userId])}}" method="POST">
                 @csrf
                 <div class="form-floating">
@@ -47,34 +50,25 @@
                 <input class="btn btn-primary text-uppercase" id="submitButton" type="submit" value="Ajouter">
             </form>
         </div>
-
+        <br>
         @foreach ($playlists as $playlist)
         <div class="row">
-            <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
-                <div class="MultiCarousel-inner">
-                    @foreach ($playlist->medias_in_playlist as $media)
-                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}" >
-                        <div class="card">
-                            <img src="{{$media->poster_url}}"  alt="media_poster">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$media->name}}</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
+            <div class="row">
+            <h2 Id="Title">{{$playlist->name}}</h2>
+            <form action="{{ route('playlist.delete', [$playlist->id])}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input class="btn btn-secondary" id="submitButton" type="submit" value="Supprimer">
+            </form>
             </div>
+            @foreach ($playlist->medias_in_playlist as $media)
+                <div>
+                    <a href="{{url('/medias', $media->id)}}">
+                        <img src="{{$media->poster_url}}"  alt="media_poster" height="100px">
+                        <h5 class="card-title">{{$media->name}}</h5>
+                    </a>
+                </div>
+            @endforeach
         </div>
 
         {{-- <div class="row gx-4 gx-lg-5 justify-content-center">

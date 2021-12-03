@@ -40,7 +40,7 @@ class PlaylistController extends Controller
     {
         $playlist = Playlist::find($playlistId);
         $playlist->delete();
-        return redirect('/playlists');
+        return redirect()->back()->withInput();
     }
 
     public function getUserPlaylist($userId)
