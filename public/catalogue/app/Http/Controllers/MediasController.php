@@ -26,7 +26,7 @@ class MediasController extends Controller
     public function formCreateMedia()
     {
         $categories = Category::all();
-        return view('nouveauMedia', ["categories" => $categories]);
+        return view('mediaNouveau', ["categories" => $categories]);
     }
 
     public function createMedia(Request $request)
@@ -66,7 +66,7 @@ class MediasController extends Controller
     {
         $categories = Category::all();
         $media = Media::find($mediaId);
-        return view('modifierMedia', ["categories" => $categories, "media" => $media]);
+        return view('mediaModifier', ["categories" => $categories, "media" => $media]);
     }
 
     public function modifyMedia(Request $request, $mediaId)
