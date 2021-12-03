@@ -18,16 +18,11 @@ use App\Models\Person;
 use App\Models\Media;
 use Illuminate\Http\Request;
 
-Route::get('test', function (Request $request) {
-    $className = $request->input("type");
-    $query = $request->input("query");
-    $class = "App\Models\\$className";
-    return $class::search($query)->get();
-});
-
 Route::get('categories', 'App\Http\Controllers\CategoriesController@getCategories');
 
-Route::get('medias', 'App\Http\Controllers\MediasController@getAllMedias')->name('medias');
+Route::get('medias', 'App\Http\Controllers\MediasController@getAllMedias');
+Route::get('films', 'App\Http\Controllers\MediasController@getAllFilms');
+Route::get('series', 'App\Http\Controllers\MediasController@getAllSeries');
 
 Route::get('search', 'App\Http\Controllers\SearchController@search');
 
@@ -41,7 +36,7 @@ Route::delete('deleteMedia/{mediaId}', 'App\Http\Controllers\MediasController@de
 
 Route::get('medias/{id}', 'App\Http\Controllers\MediasController@getMediaDetails');
 
-Route::get('medias/{id}/comments', 'App\Http\Controllers\CommentsController@getMediaComments')->middleware('auth');
+Route::get('medias/{id}/comments', 'App\Http\Controllers\CommentsController@getMediaComments');
 Route::post('medias/{id}/comments', 'App\Http\Controllers\CommentsController@postComment')->middleware('auth');
 Route::delete('medias/{id}/comments', 'App\Http\Controllers\CommentsController@deleteComment')->middleware('auth');
 

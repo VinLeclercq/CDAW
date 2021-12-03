@@ -1,7 +1,3 @@
-@php
-    $typeSearch = "oui";
-@endphp
-
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/medias') }}">
@@ -30,9 +26,9 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
 
-                <li><a class="nav-link" href="{{ route('medias') }}">{{ __('Accueil') }}</a></li>
-                <li><a class="nav-link" href="{{ route('login') }}">{{ __('Films') }}</a></li>
-                <li><a class="nav-link" href="{{ route('login') }}">{{ __('Séries') }}</a></li>
+                <li><a class="nav-link" href="{{ url('medias') }}">{{ __('Accueil') }}</a></li>
+                <li><a class="nav-link" href="{{ url('films') }}">{{ __('Films') }}</a></li>
+                <li><a class="nav-link" href="{{ url('series') }}">{{ __('Séries') }}</a></li>
 
                 <!-- Authentication Links -->
                 @guest

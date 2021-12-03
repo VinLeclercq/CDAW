@@ -11,9 +11,21 @@ use App\Models\Playlist;
 class MediasController extends Controller
 {
 
-    public function getAllMedias(Request $request)
+    public function getAllMedias()
     {
         $medias = Media::paginate(20);
+        return view('mediasListe', ["medias" => $medias]);
+    }
+
+    public function getAllFilms()
+    {
+        $medias = Media::where('type', 'Film')->paginate(20);
+        return view('mediasListe', ["medias" => $medias]);
+    }
+
+    public function getAllSeries()
+    {
+        $medias = Media::where('type','Série')->paginate(20);
         return view('mediasListe', ["medias" => $medias]);
     }
 
