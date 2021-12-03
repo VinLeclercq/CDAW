@@ -23,7 +23,20 @@
                 <a href="{{ url('/addMedia')}}">
                     <button type="button" class="btn btn-primary">Nouveau média</button>
                 </a>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Trier
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="">Les plus récents</a></li>
+                        <li><a class="dropdown-item" href="">Les plus anciens</a></li>
+                        <li><a class="dropdown-item" href="">Ordre alphabétique</a></li>
+                        <li><a class="dropdown-item" href="">Ordre alphabétique inversé</a></li>
+                    </ul>
+                </div>
             </div>
+
             <br />
 
             @foreach ($medias as $media)
@@ -82,6 +95,8 @@
                 </div>
             </div>
             @endforeach
+
+            {{$medias->links()}}
 
         </div>
 

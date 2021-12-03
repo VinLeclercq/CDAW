@@ -267,7 +267,7 @@ class DBData extends Model
     {
         $key = "187cf9fba8a31a9d85cf232a13033069";
         $curl = curl_init();
-        $seriesArray = Media::where("type", "Film")->get();
+        $seriesArray = Media::where("type", "Série")->get();
 
         foreach($seriesArray as $series)
         {
@@ -282,15 +282,19 @@ class DBData extends Model
                 CURLOPT_CUSTOMREQUEST => "GET",
             ));
 
-            $actors = json_decode(curl_exec($curl), true)["cast"];
-            
-            foreach($actors as $actor)
-            {
-                $a = Person::firstOrCreate(
-                    ['name' => $actor["name"]],
-                );
+            $data = json_decode(curl_exec($curl), true);
 
-                $series->actors()->syncWithoutDetaching($a);
+            if(!empty($data["cast"])){
+                $actors = $data["cast"];
+            
+                foreach($actors as $actor)
+                {
+                    $a = Person::firstOrCreate(
+                        ['name' => $actor["name"]],
+                    );
+    
+                    $series->actors()->syncWithoutDetaching($a);
+                }
             }
         }
         curl_close($curl);

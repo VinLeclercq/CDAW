@@ -5,16 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Laravel\Scout\Searchable;
+
 use App\Models\Media;
 
 class Person extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $table = 'person';
 
     protected $guarded = ['id'];
     protected $hidden = [];
+
+    public function toSearchableArray()
+    {
+        $array = $this->only('name');
+        return $array;
+    }
 
     public function act()
     {

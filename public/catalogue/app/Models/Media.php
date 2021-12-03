@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Laravel\Scout\Searchable;
+
 use App\Models\Category;
 use App\Models\Person;
 use App\Models\User;
@@ -14,10 +16,17 @@ use App\Models\Comment;
 class Media extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $table = 'media';
 
     protected $guarded = ['id'];
+
+    public function toSearchableArray()
+    {
+        $array = $this->only('name');
+        return $array;
+    }
 
     public function categories()
     {

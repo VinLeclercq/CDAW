@@ -13,9 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+use App\Models\Person;
+use App\Models\Media;
+use Illuminate\Http\Request;
+
+Route::get('test', function (Request $request) {
+    $className = $request->input("type");
+    $query = $request->input("query");
+    $class = "App\Models\\$className";
+    return $class::search($query)->get();
+});
+
 Route::get('categories', 'App\Http\Controllers\CategoriesController@getCategories');
 
 Route::get('medias', 'App\Http\Controllers\MediasController@getAllMedias')->name('medias');
+
+Route::get('search', 'App\Http\Controllers\SearchController@search');
 
 Route::get('addMedia', 'App\Http\Controllers\MediasController@formCreateMedia')->middleware('auth');
 Route::post('addMedia', 'App\Http\Controllers\MediasController@createMedia');

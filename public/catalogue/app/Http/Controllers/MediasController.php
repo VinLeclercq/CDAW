@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Media;
+use App\Models\Person;
+use App\Models\Playlist;
 
 class MediasController extends Controller
 {
 
-    public function getAllMedias()
+    public function getAllMedias(Request $request)
     {
-        $medias = Media::all();
-
-        return view('medias', ["medias" => $medias]);
+        $medias = Media::paginate(20);
+        return view('mediasListe', ["medias" => $medias]);
     }
 
     public function getMediaDetails($mediaID)
@@ -58,7 +59,6 @@ class MediasController extends Controller
             }
         }
         
-
         return redirect('/medias');
     }
 

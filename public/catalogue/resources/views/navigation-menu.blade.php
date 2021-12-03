@@ -1,3 +1,7 @@
+@php
+    $typeSearch = "oui";
+@endphp
+
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/medias') }}">
@@ -10,7 +14,18 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto"></ul>
+            <ul class="navbar-nav mr-auto">
+                <form action="{{ url('/search')}}" method="GET">
+                    <select class="form-select" id="type" name="type">
+                        <option value="Films">Films</option>
+                        <option value="Séries">Séries</option>
+                        <option value="Personnes">Personnes</option>
+                        <option value="Playlist">Playlist</option>
+                    </select>
+
+                    <input class="form-control" id="nameSearch" name="nameSearch"/>
+                </form>
+            </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
