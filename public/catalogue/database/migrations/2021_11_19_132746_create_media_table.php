@@ -17,10 +17,11 @@ class CreateMediaTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('episode_nb')->nullable();
+            $table->integer('season_nb')->nullable();
             //Duartion of a film or an episode
             $table->integer('duration_time');
             $table->date('release_date');
-            $table->date('ending_date')->nullable();
+            $table->date('last_date')->nullable();
             //Duration of the whole series
             $table->integer('total_duration_time')->nullable();
             $table->text('description');

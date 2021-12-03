@@ -66,22 +66,22 @@ class User extends Authenticatable
 
     public function media_watched()
     {
-        return $this->belongsToMany(Media::class, 'watched', 'ID_media', 'ID_user');
+        return $this->belongsToMany(Media::class, 'watched', 'ID_user', 'ID_media');
     }
 
     public function media_liked()
     {
-        return $this->belongsToMany(Media::class, 'liked', 'ID_media', 'ID_user');
+        return $this->belongsToMany(Media::class, 'liked', 'ID_user', 'ID_media');
     }
 
     public function playlist_owned()
     {
-        return $this->belongsToMany(Playlist::class, 'own', 'ID_playlist', 'ID_user');
+        return $this->belongsToMany(Playlist::class, 'own', 'ID_user', 'ID_playlist');
     }
 
     public function playlist_subscribed()
     {
-        return $this->belongsToMany(Playlist::class, 'subscribe', 'ID_playlist', 'ID_user');
+        return $this->belongsToMany(Playlist::class, 'subscribe', 'ID_user', 'ID_playlist');
     }
 
     public function comments_posted()
@@ -91,6 +91,6 @@ class User extends Authenticatable
 
     public function moderated()
     {
-        return $this->belongsToMany(Comment::Class, 'moderate', 'ID_comment', 'ID_user');
+        return $this->belongsToMany(Comment::Class, 'moderate', 'ID_user', 'ID_comment');
     }
 }

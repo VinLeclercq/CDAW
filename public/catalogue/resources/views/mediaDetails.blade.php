@@ -30,10 +30,19 @@
         <p>{{$actor->forename}} {{$actor->name}}</p>
     @endforeach
     
-    <h2>Réalisateur(s)</h2>
-    @foreach($media->directors as $director)
-        <p>{{$director->forename}} {{$director->name}}</p>
-    @endforeach
+    @if($media->type == 'Film')
+        <h2>Réalisateur(s)</h2>
+        @foreach($media->directors as $director)
+            <p>{{$director->forename}} {{$director->name}}</p>
+        @endforeach        
+    @endif
+
+    @if ($media->type == "Série")
+        <h2>Nombre d'épisodes</h2>
+        <p>{{$media->episode_nb}}</p>
+        <h2>Nombre de saisons</h2>
+        <p>{{$media->season_nb}}</p>
+    @endif
 
     <h2>Genre(s)</h2>
     @foreach($media->categories as $category)

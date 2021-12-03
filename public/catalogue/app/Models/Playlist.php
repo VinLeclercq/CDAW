@@ -27,6 +27,6 @@ class Playlist extends Model
 
     public function medias_in_playlist()
     {
-        return $this->belongsToMany(Media::class, 'belongs_to', 'ID_media', 'ID_playlist');
+        return $this->belongsToMany(Media::class, 'belongs_to', 'ID_playlist', 'ID_media');
     }
 }

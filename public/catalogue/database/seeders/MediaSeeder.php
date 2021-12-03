@@ -18,5 +18,6 @@ class MediaSeeder extends Seeder
     public function run()
     {
         DBData::getMoviesFromDB();
+        DBData::getSeriesFromDB();
     }
 }

@@ -40,14 +40,18 @@
                             </a>
                         </div>
                         <div class="col">
+                    
+                            @if($media->type == "Film")
                             <div class="row">
                                 <label for="Author" class="col"><h4 style="margin: 20px">Réalisateur</h4></label>
-                                @foreach($media->directors as $director)
-                                    <span style="margin: 10px" Id="Author" class="col">
-                                        {{$director->forename}} {{$director->name}}
-                                    </span>
-                                @endforeach
+                                    @foreach($media->directors as $director)
+                                        <span style="margin: 10px" Id="Author" class="col">
+                                            {{$director->forename}} {{$director->name}}
+                                        </span>
+                                    @endforeach
                             </div>
+                            @endif
+                            
                             <div class="row">
                                 <label for="Genre" class="col"><h4 style="margin: 15px">Genre(s)</h4></label>
                                 @foreach($media->categories as $category)
