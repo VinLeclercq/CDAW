@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('categories', 'App\Http\Controllers\CategoriesController@getCategories');
-
 Route::get('medias', 'App\Http\Controllers\MediasController@getAllMedias');
 Route::get('films', 'App\Http\Controllers\MediasController@getAllFilms');
 Route::get('series', 'App\Http\Controllers\MediasController@getAllSeries');

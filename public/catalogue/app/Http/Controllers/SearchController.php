@@ -12,7 +12,7 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
-        $nameSearch =$request->input('nameSearch');
+        $nameSearch = $request->input('nameSearch');
 
         switch($request->input("type")){
             case "Films":

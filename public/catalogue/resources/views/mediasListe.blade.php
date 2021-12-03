@@ -29,10 +29,10 @@
                         Trier
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="">Les plus récents</a></li>
-                        <li><a class="dropdown-item" href="">Les plus anciens</a></li>
-                        <li><a class="dropdown-item" href="">Ordre alphabétique</a></li>
-                        <li><a class="dropdown-item" href="">Ordre alphabétique inversé</a></li>
+                        <li><a class="dropdown-item" href="{{url()->current() . '?field=name&order=asc'}}">Ordre alphabétique</a></li>
+                        <li><a class="dropdown-item" href="{{url()->current() . '?field=name&order=desc'}}">Ordre alphabétique inverse</a></li>
+                        <li><a class="dropdown-item" href="{{url()->current() . '?field=release_date&order=desc'}}">Les plus récents</a></li>
+                        <li><a class="dropdown-item" href="{{url()->current() . '?field=release_date&order=asc'}}">Les plus anciens</a></li>
                     </ul>
                 </div>
             </div>
@@ -44,7 +44,7 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col">
 
-                    <h2 Id="Title">{{$media->name}}</p></h2>
+                    <h2 Id="Title">{{$media->name}}</h2> {{substr($media->release_date, 0, 4)}}</p>
                     <div class="row">
 
                         <div class="col">

@@ -11,21 +11,30 @@ use App\Models\Playlist;
 class MediasController extends Controller
 {
 
-    public function getAllMedias()
+    public function getAllMedias(Request $request)
     {
-        $medias = Media::paginate(20);
+        $field = $request->input('field') ?: "name";
+        $order = $request->input('order') ?: "asc" ;
+
+        $medias = Media::orderBy($field, $order)->paginate(20);
         return view('mediasListe', ["medias" => $medias]);
     }
 
-    public function getAllFilms()
+    public function getAllFilms(Request $request)
     {
-        $medias = Media::where('type', 'Film')->paginate(20);
+        $field = $request->input('field') ?: "name";
+        $order = $request->input('order') ?: "asc" ;
+
+        $medias = Media::where('type', 'Film')->orderBy($field, $order)->paginate(20);
         return view('mediasListe', ["medias" => $medias]);
     }
 
-    public function getAllSeries()
+    public function getAllSeries(Request $request)
     {
-        $medias = Media::where('type','Série')->paginate(20);
+        $field = $request->input('field') ?: "name";
+        $order = $request->input('order') ?: "asc" ;
+
+        $medias = Media::where('type','Série')->orderBy($field, $order)->paginate(20);
         return view('mediasListe', ["medias" => $medias]);
     }
 
