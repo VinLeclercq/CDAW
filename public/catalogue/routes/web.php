@@ -40,6 +40,12 @@ Route::delete('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@d
 Route::get('person', 'App\Http\Controllers\PersonController@getAllPeople');
 Route::get('person/{personId}', 'App\Http\Controllers\PersonController@getPersonDetails');
 
+Route::get('addPerson', 'App\Http\Controllers\PersonController@formAddPerson');
+Route::post('addPerson', 'App\Http\Controllers\PersonController@addPerson');
+
+Route::get('modifyPerson/{personId}', 'App\Http\Controllers\PersonController@formModifyPerson');
+Route::put('modifyPerson/{personId}', 'App\Http\Controllers\PersonController@modifyPerson');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

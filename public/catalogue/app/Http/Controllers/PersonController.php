@@ -18,4 +18,18 @@ class PersonController extends Controller
         $person = Person::find($idPerson);
         return view('personneDetails', ["person" => $person]);
     }
+
+    public function formAddPerson()
+    {
+        return view('personneNouveau');
+    }
+
+    public function addPerson(Request $request)
+    {
+        $data = [
+            "name" => $request->input("name"),
+        ];
+        Person::create($data);
+        return redirect("/medias");
+    }
 }
