@@ -40,11 +40,13 @@ Route::delete('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@d
 Route::get('person', 'App\Http\Controllers\PersonController@getAllPeople');
 Route::get('person/{personId}', 'App\Http\Controllers\PersonController@getPersonDetails');
 
-Route::get('addPerson', 'App\Http\Controllers\PersonController@formAddPerson');
+Route::get('addPerson', 'App\Http\Controllers\PersonController@formAddPerson')->middleware('auth');
 Route::post('addPerson', 'App\Http\Controllers\PersonController@addPerson');
 
 Route::get('modifyPerson/{personId}', 'App\Http\Controllers\PersonController@formModifyPerson');
 Route::put('modifyPerson/{personId}', 'App\Http\Controllers\PersonController@modifyPerson');
+
+Route::delete('deletePerson/{personId}', 'App\Http\Controllers\PersonController@deletePerson');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
