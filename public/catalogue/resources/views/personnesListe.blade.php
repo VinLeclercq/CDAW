@@ -42,10 +42,28 @@
             @foreach ($people as $person)
 
             <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col">
-                    <a href="{{url('/person', $person->id)}}">
-                        <h2 Id="Nom">{{$person->name}}</p></h2>
-                    <a>
+                <div class="row">
+                    <div class="col">
+                        <a href="{{url('/person', $person->id)}}">
+                            <h2 Id="Nom">{{$person->name}}</p></h2>
+                        <a> 
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <a href="{{ url('/modifyPerson', $person->id)}}">
+                                <button type="button" class="btn btn-primary">Modifier</button>
+                            </a>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <form action="{{ url('/deletePerson', $person->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input class="btn btn-secondary" id="submitButton" type="submit" value="Supprimer">
+                            </form>
+                        </div>
+                        <br />
+                    </div>
                     <hr/>
                 </div>
             </div>
