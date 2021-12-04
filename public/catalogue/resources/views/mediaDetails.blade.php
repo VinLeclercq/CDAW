@@ -11,7 +11,7 @@
                         {{substr($media->release_date, 0, 4)}} 
                         ·
 
-                        @if($media->type = 'Film')
+                        @if($media->type == 'Film')
                             @foreach($media->directors as $director)
                                 {{$director->forename}} {{$director->name}}
                                 @if(!$loop->last)
@@ -19,8 +19,9 @@
                                 @endif
                             @endforeach
                         @endif
-                        @if($media->type = 'Série')
-                        {{substr($media->last_date, 0, 4)}}
+
+                        @if($media->type == 'Série')
+                            {{substr($media->last_date, 0, 4)}}
                         @endif
                     </span>
                 </div>
@@ -37,7 +38,14 @@
             <p>{{$actor->forename}} {{$actor->name}}</p>
         </a>
     @endforeach
-    
+
+    @if($media->type == 'Série')
+        <h2>Nombre d'épisodes</h2>
+        <p>{{$media->episode_nb}}</p>
+        <h2>Nombre de saisons</h2>
+        <p>{{$media->season_nb}}</p>
+    @endif
+
     @if($media->type == 'Film')
         <h2>Réalisateur(s)</h2>
         @foreach($media->directors as $director)
@@ -45,13 +53,6 @@
                 <p>{{$director->forename}} {{$director->name}}</p>
             </a>
         @endforeach        
-    @endif
-
-    @if ($media->type == "Série")
-        <h2>Nombre d'épisodes</h2>
-        <p>{{$media->episode_nb}}</p>
-        <h2>Nombre de saisons</h2>
-        <p>{{$media->season_nb}}</p>
     @endif
 
     <h2>Genre(s)</h2>
