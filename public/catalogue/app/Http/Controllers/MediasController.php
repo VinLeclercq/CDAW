@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Media;
+use App\Models\User;
 use App\Models\Person;
 use App\Models\Playlist;
 
@@ -20,6 +21,18 @@ class MediasController extends Controller
         return view('mediasListe', ["medias" => $medias]);
     }
 
+    public function getAllMediasPlaylists(Request $request, $userId)
+    {
+        $user = User::find($userId);
+        $playlists = $user->playlist_owned;
+
+        $field = $request->input('field') ?: "name";
+        $order = $request->input('order') ?: "asc" ;
+
+        $medias = Media::orderBy($field, $order)->paginate(20);
+        return view('mediasListe', ["medias" => $medias, "playlists" => $playlists]);
+    }
+
     public function getAllFilms(Request $request)
     {
         $field = $request->input('field') ?: "name";
@@ -27,6 +40,30 @@ class MediasController extends Controller
 
         $medias = Media::where('type', 'Film')->orderBy($field, $order)->paginate(20);
         return view('mediasListe', ["medias" => $medias]);
+    }
+
+    public function getAllFilmsPlaylists(Request $request, $userId)
+    {
+        $field = $request->input('field') ?: "name";
+        $order = $request->input('order') ?: "asc" ;
+
+        $user = User::find($userId);
+        $playlists = $user->playlist_owned;
+
+        $medias = Media::where('type', 'Film')->orderBy($field, $order)->paginate(20);
+        return view('mediasListe', ["medias" => $medias, "playlists" => $playlists]);
+    }
+
+    public function getAllSeriesPlaylists(Request $request, $userId)
+    {
+        $field = $request->input('field') ?: "name";
+        $order = $request->input('order') ?: "asc" ;
+
+        $user = User::find($userId);
+        $playlists = $user->playlist_owned;
+
+        $medias = Media::where('type','Série')->orderBy($field, $order)->paginate(20);
+        return view('mediasListe', ["medias" => $medias, "playlists" => $playlists]);
     }
 
     public function getAllSeries(Request $request)
@@ -79,7 +116,7 @@ class MediasController extends Controller
                 $media->categories()->attach($c);
             }
         }
-        
+
         return redirect('/medias');
     }
 
@@ -119,7 +156,7 @@ class MediasController extends Controller
             $c = Category::find($c_id);
             $media->categories()->attach($c);
         }
-        
+
         return redirect('/medias');
     }
 

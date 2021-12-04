@@ -17,7 +17,6 @@
 
 @section('content')
 <main class="mb-4">
-
         <div class="container px-4 px-lg-5">
             <div class="row">
                 <a href="{{ url('/addMedia')}}">
@@ -51,9 +50,22 @@
                             <a href="{{url('/medias', $media->id)}}">
                                 <img src="{{$media->poster_url}}" alt="media_poster" height="150">
                             </a>
+                            <div>
+                                <a  data-bs-toggle="dropdown" class="dropdown-toggle">
+                                    <img src="{{asset('assets/plus.sgv')}}">
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    @foreach ($playlists as $playlist)
+                                    <form action="{{ route('playlist.addMedia', [$playlist->id, $media->id])}}" method="POST">
+                                        @csrf
+                                        <li><input class="dropdown-item" type="submit" value="{{$playlist->name}}"></li>
+                                    </form>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                         <div class="col">
-                    
+
                             @if($media->type == "Film")
                             <div class="row">
                                 <label for="Author" class="col"><h4 style="margin: 20px">Réalisateur</h4></label>
@@ -66,7 +78,7 @@
                                     @endforeach
                             </div>
                             @endif
-                            
+
                             <div class="row">
                                 <label for="Genre" class="col"><h4 style="margin: 15px">Genre(s)</h4></label>
                                 @foreach($media->categories as $category)

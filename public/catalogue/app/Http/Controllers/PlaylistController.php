@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Playlist;
 use App\Models\User;
+use App\Models\Media;
 
 class PlaylistController extends Controller
 {
@@ -55,6 +56,20 @@ class PlaylistController extends Controller
         $user = User::find($userId);
         $playlists = $user->users_subscribed;
         return view('suscription', ['playlists' => $playlists]);
+    }
+
+    public function addMediaToPlaylist($playlistId, $mediaId){
+        $media = Media::find($mediaId);
+        $playlist = Playlist::find($playlistId);
+        $playlist->medias_in_playlist()->attach($media);
+        return redirect()->back()->withInput();
+    }
+
+    public function dellMediaFromPlaylist($playlistId, $mediaId){
+        $media = Media::find($mediaId);
+        $playlist = Playlist::find($playlistId);
+        $playlist->medias_in_playlist()->detach($media);
+        return redirect()->back()->withInput();
     }
 
 }

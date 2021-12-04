@@ -62,11 +62,18 @@
             </form>
             </div>
             @foreach ($playlist->medias_in_playlist as $media)
-                <div>
-                    <a href="{{url('/medias', $media->id)}}">
-                        <img src="{{$media->poster_url}}"  alt="media_poster" height="100px">
-                        <h5 class="card-title">{{$media->name}}</h5>
-                    </a>
+                <div class="row">
+                    <div class="col">
+                        <a href="{{url('/medias', $media->id)}}">
+                            <img src="{{$media->poster_url}}"  alt="media_poster" height="100px">
+                            <h5 class="card-title">{{$media->name}}</h5>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <form action="{{route('playlist.removeMedia', [$playlist->id, $media->id])}}" method="POST">
+                            @csrf
+                            <input class="btn btn-secondary" id="submitButton" type="submit" value="Supprimer de la playlist">
+                        </form>
                 </div>
             @endforeach
         </div>

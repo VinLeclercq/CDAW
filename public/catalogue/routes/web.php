@@ -14,8 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('medias', 'App\Http\Controllers\MediasController@getAllMedias');
+Route::get('{userId}/medias', 'App\Http\Controllers\MediasController@getAllMediasPlaylists')->middleware('auth')->name('medias.show');
+Route::post('{userId}/medias/{playlistId}', 'App\Http\Controllers\PlaylistController@addMediaToPlaylist')->middleware('auth')->name('playlist.addMedia');
+
 Route::get('films', 'App\Http\Controllers\MediasController@getAllFilms');
+Route::get('films', 'App\Http\Controllers\MediasController@getAllFilmsPlaylists')->middleware('auth')->name('films.show');
+
 Route::get('series', 'App\Http\Controllers\MediasController@getAllSeries');
+Route::get('series', 'App\Http\Controllers\MediasController@getAllSeriesPlaylists')->middleware('auth')->name('series.show');
 
 Route::get('search', 'App\Http\Controllers\SearchController@search');
 
@@ -36,6 +42,7 @@ Route::delete('medias/{id}/comments', 'App\Http\Controllers\CommentsController@d
 Route::get('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@getUserPlaylist')->middleware('auth');
 Route::post('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@createPlaylist')->middleware('auth')->name('playlist.add');
 Route::delete('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@deletePlaylist')->middleware('auth')->name('playlist.delete');
+Route::post('myPlaylists/{userId}/{playlistId}', 'App\Http\Controllers\PlaylistController@dellMediaFromPlaylist')->middleware('auth')->name('playlist.removeMedia');
 
 Route::get('person', 'App\Http\Controllers\PersonController@getAllPeople');
 Route::get('person/{personId}', 'App\Http\Controllers\PersonController@getPersonDetails');
