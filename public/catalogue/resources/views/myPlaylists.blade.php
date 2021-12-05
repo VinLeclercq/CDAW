@@ -21,7 +21,7 @@
         <div class="row">
             <input onclick="hide()" class="btn btn-primary text-uppercase" type="button" value="Ajouter une playlist" id="btn">
             <br>
-            <form id="ajout" action="{{ route('playlist.add', [Auth::user()->id])}}" method="POST" hidden>
+            <form id="ajout" action="{{ route('playlist.add', [Auth::user()])}}" method="POST" hidden>
                 @csrf
                 <div class="form-floating">
                     <input class="form-control" id="name" name="name"/>
@@ -54,32 +54,30 @@
         @foreach ($playlists as $playlist)
         <div class="row gx-4 gx-lg-5 justify-content-center h-divider">
             <div class="row container">
-                <a href="{{ route('playlist.details', [$playlist->id])}}">
-                    <div class="col-4">
-                        <h2 Id="Title">{{$playlist->name}}</h2>
-                    </div>
-                </a>
-                <div class=" mx-auto col-4 justify-content-center">
-                    @if ($playlist->is_public)
-                    <div class="col-2">
-                            <i class="fas fa-unlock"></i>
-                        </div>
-                        <div class="col">
-                            <h3 Id="isPublic">Public</h3>
-                    @else
-                    <div class="col-2">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <div class="col">
-                            <h3 Id="isPublic">Privé</h3>
-                        @endif
-                    </div>
-                </div>
                 <div class="col-4">
+                    <a href="{{ route('playlist.details', [$playlist->id])}}">
+                        <h2 Id="Title">{{$playlist->name}}</h2>
+                    </a>
+                </div>
+                <div class=" mx-auto col-2 justify-content-center">
+                    @if ($playlist->is_public)
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <div class="col-4">
+                        <h3 Id="isPublic">Public</h3>
+                    @else
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="col-4">
+                        <h3 Id="isPublic">Privé</h3>
+                    @endif
+                </div>
+                <div class="col-2">
                     <form action="{{ route('playlist.delete', [$playlist->id])}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <input class="fas fa-trash" id="submitButton" type="submit" >
+                        <button  class="btn btn-outline-dark btn-sm"  type="submit" style=""><i class="fas fa-trash fa-lg"></i></button>
+                        {{-- <input class="btn btn-primary fas fa-trash" id="submitButton" type="submit" > --}}
                     </form>
                 </div>
             </div>
@@ -99,7 +97,7 @@
 
                 <div class="card">
                     <a href="{{ route('media.details', [$media->id])}}">
-                        <img class="mx-auto d-block" src="{{$media->poster_url}}" alt="media_poster" height="250px">
+                        <img class="mx-auto d-block" src="{{$media->poster_url}}"  alt="media_poster" height="250px">
                     </a>
                     <div class="card-body">
                         <a href="{{ route('media.details', [$media->id])}}">
@@ -107,7 +105,8 @@
                         </a>
                         <form class="mx-auto" action="{{route('playlist.removeMedia', [$playlist->id, $media->id])}}" method="POST">
                             @csrf
-                            <input class="mx-auto fas fa-times" id="submitButton" type="submit" style="color:#FA5656">
+                            <button  class="btn btn-secondary btn-sm"  type="submit"><i class="fas fa-times fa-2x"></i></button>
+                            {{-- <input class="btn btn-primary mx-auto fas fa-times" id="submitButton" type="submit" style="color:#FA5656"> --}}
                         </form>
                     </div>
                 </div>
