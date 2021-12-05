@@ -152,4 +152,4 @@ Durant notre projet, nous avons rencontré plusieurs difficultés :
 - Manque de temps (Eparpillement de notre part ? Trop grandes attentes ?)
 - Peu de présence de JavaScript et de place où l'utiliser (nécessaire ?)
 
-<u>Lien vers la vidéo YouTube de présentation :</u> youtube.com/
+<u>Lien vers la vidéo YouTube de présentation :</u> https://www.youtube.com/watch?v=S3GEXM9Ewfk
