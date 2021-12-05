@@ -29,12 +29,12 @@
                     <li><a class="nav-link" href="{{ url('medias') }}">{{ __('Accueil') }}</a></li>
                     <li><a class="nav-link" href="{{ url('films') }}">{{ __('Films') }}</a></li>
                     <li><a class="nav-link" href="{{ url('series') }}">{{ __('Séries') }}</a></li>
-                    <li><a class="nav-link" href="{{ url('medias') }}">{{ __('Playlist') }}</a></li>
+                    <li><a class="nav-link" href="{{ url('playlistsPublic') }}">{{ __('Playlist') }}</a></li>
                 @else
                     <li><a class="nav-link" href="{{ url(Auth::user()->id,'medias')}}">{{ __('Accueil') }}</a></li>
                     <li><a class="nav-link" href="{{ url(Auth::user()->id,'films')}}">{{ __('Films') }}</a></li>
                     <li><a class="nav-link" href="{{ url(Auth::user()->id,'series')}}">{{ __('Séries') }}</a></li>
-                    <li><a class="nav-link" href="{{ url(Auth::user()->id,'medias')}}">{{ __('Playlists') }}</a></li>
+                    <li><a class="nav-link" href="{{ url('playlistsPublic') }}">{{ __('Playlists') }}</a></li>
                 @endguest
 
                 <!-- Authentication Links -->

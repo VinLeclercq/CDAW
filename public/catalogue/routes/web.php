@@ -44,7 +44,10 @@ Route::get('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@getU
 Route::post('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@createPlaylist')->middleware('auth')->name('playlist.add');
 Route::delete('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@deletePlaylist')->middleware('auth')->name('playlist.delete');
 Route::post('myPlaylists/{userId}/{playlistId}', 'App\Http\Controllers\PlaylistController@dellMediaFromPlaylist')->middleware('auth')->name('playlist.removeMedia');
+
 Route::get('playlistDetails/{playlistId}', 'App\Http\Controllers\PlaylistController@getPlaylistById')->middleware('auth')->name('playlist.details');
+
+Route::get('playlistsPublic', 'App\Http\Controllers\PlaylistController@getAllPublicPlaylist')->middleware('auth')->name('playlist.public');
 
 Route::get('person', 'App\Http\Controllers\PersonController@getAllPeople');
 Route::get('person/{personId}', 'App\Http\Controllers\PersonController@getPersonDetails');

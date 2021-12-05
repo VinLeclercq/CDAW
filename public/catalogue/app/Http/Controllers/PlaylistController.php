@@ -49,11 +49,33 @@ class PlaylistController extends Controller
         return view('myPlaylists', ['playlists' => $playlists, 'userId' => $userId]);
     }
 
+    public function getAllPublicPlaylist(Request $request){
+        $field = $request->input('field') ?: "name";
+        $order = $request->input('order') ?: "asc" ;
+
+        $playlists = Playlist::where('is_public', true)->orderBy($field, $order)->paginate(20);
+        return view('playlistsPublic', ["playlists" => $playlists]);
+    }
+
     public function getUserSubscribedPlaylist($userId)
     {
         $user = User::find($userId);
         $playlists = $user->users_subscribed;
         return view('suscription', ['playlists' => $playlists]);
+    }
+
+    public function subscribeToPlaylist($userId, $playlistId){
+        $user = User::find($userId);
+        $playlist = Playlist::find($playlistId);
+        $playlist->users_subscribed()->attach($user);
+        return redirect()->back()->withInput();
+    }
+
+    public function unsubscribeToPlaylist($userId, $playlistId){
+        $user = User::find($userId);
+        $playlist = Playlist::find($playlistId);
+        $playlist->users_subscribed()->detach($user);
+        return redirect()->back()->withInput();
     }
 
     public function addMediaToPlaylist($playlistId, $mediaId){
