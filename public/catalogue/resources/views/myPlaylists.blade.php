@@ -77,15 +77,14 @@
                         @csrf
                         @method('DELETE')
                         <button  class="btn btn-outline-dark btn-sm"  type="submit" style=""><i class="fas fa-trash fa-lg"></i></button>
-                        {{-- <input class="btn btn-primary fas fa-trash" id="submitButton" type="submit" > --}}
                     </form>
                 </div>
             </div>
             @foreach ($playlist->medias_in_playlist as $media)
             @if ($loop->index == 3)
-                <div class="col-3">
+                <div class="col-3" height="100%">
                     <a href="{{ route('playlist.details', [$playlist->id])}}">
-                        <div class="card" height="100%">
+                        <div class="card" height="100%" >
                             <i class="m-auto fas fa-angle-right fa-5x"></i>
                             <p class="text-center">Clique ici pour voir plus de médias.</p>
                         </div>
@@ -93,20 +92,19 @@
                 </div>
                 @break
             @endif
-            <div class="col-3">
+            <div class="col-3" height="100%">
 
                 <div class="card" height="100%">
                     <a href="{{ route('media.details', [$media->id])}}">
                         <img class="mx-auto d-block" src="{{$media->poster_url}}"  alt="media_poster" height="250px">
                     </a>
-                    <div class="card-body">
+                    <div class="card-body" height="100%">
                         <a href="{{ route('media.details', [$media->id])}}">
                             <h5 class="card-title text-center" >{{$media->name}}</h5>
                         </a>
                         <form class="mx-auto" action="{{route('playlist.removeMedia', [$playlist->id, $media->id])}}" method="POST">
                             @csrf
                             <button  class="btn btn-secondary btn-sm"  type="submit"><i class="fas fa-times fa-2x"></i></button>
-                            {{-- <input class="btn btn-primary mx-auto fas fa-times" id="submitButton" type="submit" style="color:#FA5656"> --}}
                         </form>
                     </div>
                 </div>

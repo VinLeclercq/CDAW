@@ -27,11 +27,13 @@
             <i class="mx-auto fas fa-lock"></i>
             <h3 class="mx-auto" Id="isPublic">Privé</h3>
             @endif
-            <a href="{{route('playlist.modify.get', $playlist->id)}}">
-                <i class="m-auto fas fa-edit"></i>
+            <a class="mx-auto" href="{{route('playlist.modify.get', $playlist->id)}}">
+                <i class="m-auto fas fa-edit fa-lg" style="color: #4C96D7"></i>
             </a>
+        <br>
         </div>
     </div>
+    <br>
 
     <div class="container px px-lg">
         <div class="col">
