@@ -95,4 +95,28 @@ class PlaylistController extends Controller
         return redirect()->back()->withInput();
     }
 
+    public function formPlaylistModify($playlistId)
+    {
+        $playlist = Playlist::find($playlistId);
+        return view('playlistModifier', ["playlist" => $playlist]);
+    }
+
+    public function playlistModify(Request $request, $playlistId)
+    {
+        $playlist = Playlist::find($playlistId);
+
+        if($request->has('is_public')){
+            $is_public = true;
+        }else{
+            $is_public = false;
+        }
+
+        $data = [
+            "name" => $request->input("name"),
+            "is_public" => $is_public,
+        ];
+        $playlist->update($data);
+
+        return redirect()->back()->withInput();
+    }
 }
