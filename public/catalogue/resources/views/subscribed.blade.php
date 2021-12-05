@@ -6,8 +6,8 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                <h1>Toutes les playlists</h1>
-                <span class="subheading">A l'abordage!</span>
+                <h1>Mes abonnements</h1>
+                <span class="subheading">Trouvé votre nouvelle embarcation</span>
                 </div>
             </div>
         </div>
@@ -36,9 +36,9 @@
                     @endif
                 @endforeach --}}
 
-                <form action="{{ route('playlist.subscribe', [Auth::user()->id, $playlist->id])}}" method="POST">
+                <form action="{{ route('playlist.unsubscribe', [Auth::user()->id, $playlist->id])}}" method="POST">
                     @csrf
-                    <input class="btn btn-primary" id="submitButton" type="submit" value="S'abonner">
+                    <input class="btn btn-primary" id="submitButton" type="submit" value="Se desabonner">
                 </form>
                 @endauth
                 </div>

@@ -61,7 +61,7 @@ class PlaylistController extends Controller
     {
         $user = User::find($userId);
         $playlists = $user->users_subscribed;
-        return view('suscription', ['playlists' => $playlists]);
+        return view('subscribed', ['playlists' => $playlists]);
     }
 
     public function subscribeToPlaylist($userId, $playlistId){

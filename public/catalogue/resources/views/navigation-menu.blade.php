@@ -71,6 +71,11 @@
                                 </a>
                             </li>
                             <li>
+                                <a class="dropdown-item"  href="{{url(Auth::user()->id, 'susbscribed')}}" >
+                                    {{ __('Mes abonnements') }}
+                                </a>
+                            </li>
+                            <li>
                                 <a class="dropdown-item"  href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                                     {{ __('Mon profile') }}
                                 </a>

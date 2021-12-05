@@ -47,7 +47,11 @@ Route::post('myPlaylists/{userId}/{playlistId}', 'App\Http\Controllers\PlaylistC
 
 Route::get('playlistDetails/{playlistId}', 'App\Http\Controllers\PlaylistController@getPlaylistById')->middleware('auth')->name('playlist.details');
 
-Route::get('playlistsPublic', 'App\Http\Controllers\PlaylistController@getAllPublicPlaylist')->middleware('auth')->name('playlist.public');
+Route::get('playlistsPublic', 'App\Http\Controllers\PlaylistController@getAllPublicPlaylist')->name('playlist.public');
+Route::post('{userId}/playlistsPublic/{playlistId}', 'App\Http\Controllers\PlaylistController@subscribeToPlaylist')->middleware('auth')->name('playlist.subscribe');
+
+Route::get('{userId}/subscribed', 'App\Http\Controllers\PlaylistController@getUserSubscribedPlaylist')->middleware('auth')->name('subscribed');
+Route::post('{userId}/subscribed/{playlistId}', 'App\Http\Controllers\PlaylistController@unsubscribeToPlaylist')->middleware('auth')->name('unsubscribed');
 
 Route::get('person', 'App\Http\Controllers\PersonController@getAllPeople');
 Route::get('person/{personId}', 'App\Http\Controllers\PersonController@getPersonDetails');
