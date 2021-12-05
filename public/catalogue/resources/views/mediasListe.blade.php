@@ -19,9 +19,11 @@
 <main class="mb-4">
         <div class="container px-4 px-lg-5">
             <div class="row">
-                <a href="{{ url('/addMedia')}}">
-                    <button type="button" class="btn btn-primary">Nouveau média</button>
-                </a>
+                @auth
+                    <a href="{{ url('/addMedia')}}">
+                        <button type="button" class="btn btn-primary">Nouveau média</button>
+                    </a>
+                @endauth
 
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
