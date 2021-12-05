@@ -6,8 +6,8 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                <h1>Ceci est une liste de personnes</h1>
-                <span class="subheading">des gens</span>
+                <h1>Personnalités</h1>
+                <span class="subheading">Un océan de talents</span>
                 </div>
             </div>
         </div>

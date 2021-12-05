@@ -18,9 +18,13 @@
 @endsection
 
 @section('content')
-    @foreach ($comments as $comment)
-        <h5>{{$comment->media->name}}</h5>
-        <h2>{{$comment->title}}</h2>
-        <p>{{$comment->content}}</p>
-    @endforeach
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        @foreach ($comments as $comment)
+            <h5>{{$comment->media->name}}</h5>
+            <h2>{{$comment->title}}</h2>
+            <p>{{$comment->content}}</p>
+        @endforeach
+    </div>
+</main>
 @endsection

@@ -1,13 +1,13 @@
 @extends('template')
 
 @section('header')
-<header class="masthead" style="background-image: url({{asset('assets/img/pirate_des_caraibes.jpg')}})">
+<header class="masthead" style="background-image: url({{asset('assets/img/narnia.jpg')}})">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                <h1>Ceci est une liste de médias</h1>
-                <span class="subheading">films et séries</span>
+                <h1>Liste de médias</h1>
+                <span class="subheading">Des films, des séries, des trésors</span>
                 </div>
             </div>
         </div>
