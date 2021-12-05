@@ -30,7 +30,8 @@ class SearchController extends Controller
                 return view('personnesListe', ["people" => $people, "playlists" => $playlists]);
                 break;
             case "Playlist":
-                return Playlist::search($nameSearch)->get();
+                $playlists = Playlist::search($nameSearch)->where('is_public', true)->get();
+                return view('playlistsPublic', ["playlists" => $playlists]);
                 break;
             default:
                 return view('mediasListe', ["medias" => Media::paginate(20)]);
