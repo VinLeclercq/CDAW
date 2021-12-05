@@ -30,52 +30,56 @@
             <i class="m-auto fas fa-edit"></i>
         </div>
     </div>
-    <div class="col">
-        @foreach ($playlist->medias_in_playlist as $media)
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col">
-                    <h2 Id="Title">{{$media->name}}</h2> {{substr($media->release_date, 0, 4)}}</p>
-                    <div class="row">
-                        <div class="col-md-auto">
-                            @guest
-                            <a href="{{url('/medias', $media->id)}}">
-                                <img src="{{$media->poster_url}}" alt="media_poster" height="150">
-                            </a>
-                            @else
-                            <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
-                                <img src="{{$media->poster_url}}" alt="media_poster" height="150">
-                            </a>
-                            @endguest
-                        </div>
-                        <div class="col">
 
-                            @if($media->type == "Film")
-                            <div class="row">
-                                <label for="Author" class="col"><h4 style="margin: 20px">Réalisateur</h4></label>
-                                    @foreach($media->directors as $director)
-                                        <span style="margin: 10px" Id="Author" class="col">
-                                            <a href="{{url('/person', $director->id)}}">
-                                                {{$director->forename}} {{$director->name}}
-                                            </a>
+    <div class="container px px-lg">
+        <div class="col">
+            @foreach ($playlist->medias_in_playlist as $media)
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col">
+                        <h2 Id="Title">{{$media->name}}</h2> {{substr($media->release_date, 0, 4)}}</p>
+                        <div class="row">
+                            <div class="col-md-auto">
+                                @guest
+                                <a href="{{url('/medias', $media->id)}}">
+                                    <img src="{{$media->poster_url}}" alt="media_poster" height="150">
+                                </a>
+                                @else
+                                <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
+                                    <img src="{{$media->poster_url}}" alt="media_poster" height="150">
+                                </a>
+                                @endguest
+                            </div>
+                            <div class="col">
+
+                                @if($media->type == "Film")
+                                <div class="row">
+                                    <label for="Author" class="col"><h4 style="margin: 20px">Réalisateur</h4></label>
+                                        @foreach($media->directors as $director)
+                                            <span style="margin: 10px" Id="Author" class="col">
+                                                <a href="{{url('/person', $director->id)}}">
+                                                    {{$director->forename}} {{$director->name}}
+                                                </a>
+                                            </span>
+                                        @endforeach
+                                </div>
+                                @endif
+
+                                <div class="row">
+                                    <label for="Genre" class="col"><h4 style="margin: 15px">Genre(s)</h4></label>
+                                    @foreach($media->categories as $category)
+                                        <span style="margin: 10px" Id="Genre", class="col">
+                                            {{$category->name}}
                                         </span>
                                     @endforeach
-                            </div>
-                            @endif
-
-                            <div class="row">
-                                <label for="Genre" class="col"><h4 style="margin: 15px">Genre(s)</h4></label>
-                                @foreach($media->categories as $category)
-                                    <span style="margin: 10px" Id="Genre", class="col">
-                                        {{$category->name}}
-                                    </span>
-                                @endforeach
+                                </div>
                             </div>
                         </div>
+                        <hr/>
                     </div>
-                    <hr/>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     </div>
+
 </main>
 @endsection

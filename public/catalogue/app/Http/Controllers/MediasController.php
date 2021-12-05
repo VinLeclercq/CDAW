@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Media;
@@ -17,8 +18,10 @@ class MediasController extends Controller
         $field = $request->input('field') ?: "name";
         $order = $request->input('order') ?: "asc" ;
 
+        $playlists = Auth::user() == null ? [] : Auth::user()->playlist_owned;
+
         $medias = Media::orderBy($field, $order)->paginate(20);
-        return view('mediasListe', ["medias" => $medias]);
+        return view('mediasListe', ["medias" => $medias, "playlists" => $playlists]);
     }
 
     public function getAllMediasPlaylists(Request $request, $userId)

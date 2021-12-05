@@ -77,7 +77,7 @@
                             </li>
                             <li>
                                 <a class="dropdown-item"  href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                                    {{ __('Mon profile') }}
+                                    {{ __('Mon profil') }}
                                 </a>
                             </li>
                             <li>

@@ -81,14 +81,14 @@
                     @endforeach
                 </div>
             </div>
-            <br><br>
+            <br>
             <div class="container row-auto align-items-center">
                 @if($media->type == 'Série')
                     <h2>Nombre d'épisodes</h2>
                     <p>{{$media->episode_nb ?? ''}}</p>
                     <h2>Nombre de saisons</h2>
                     <p>{{$media->season_nb ?? ''}}</p>
-                    <br><br>
+                    
                 @endif
             </div>
             <div class="row-auto align-items-center">

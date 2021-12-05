@@ -19,25 +19,9 @@
 <main class="mb-4">
     <div class="container px-4 px-lg-5">
         <div class="row">
-            <script>
-                document.getElementById("ajout").hidden;
-
-                function hide(){
-                    $ajout = document.getElementById("ajout");
-                    $btn = document.getElementById("btn");
-                    if ( $ajout.hidden == true ){
-                        $ajout.hidden = !ajout.hidden;
-                        $btn.value = "Abandonner";
-                        }
-                    else{
-                        $ajout.hidden = !ajout.hidden;
-                        $btn.value = "Ajouter une playlist";
-                    }
-                }
-            </script>
             <input onclick="hide()" class="btn btn-primary text-uppercase" type="button" value="Ajouter une playlist" id="btn">
             <br>
-            <form id="ajout" action="{{ route('playlist.add', [$userId])}}" method="POST">
+            <form id="ajout" action="{{ route('playlist.add', [$userId])}}" method="POST" hidden>
                 @csrf
                 <div class="form-floating">
                     <input class="form-control" id="name" name="name"/>
@@ -45,11 +29,27 @@
                 </div>
                 <div>
                     <input type="checkbox" name="is_public" class="switch-input"}}/>
-                    <label for="is_public">Rendre la playlist public</label>
+                    <label for="is_public">Playlist publique</label>
                 </div>
                 <input class="btn btn-primary text-uppercase" id="submitButton" type="submit" value="Ajouter">
             </form>
         </div>
+
+        <script>
+            function hide(){
+                $ajout = document.getElementById("ajout");
+                $btn = document.getElementById("btn");
+                if ( $ajout.hidden == true ){
+                    $ajout.hidden = !ajout.hidden;
+                    $btn.value = "Abandonner";
+                    }
+                else{
+                    $ajout.hidden = !ajout.hidden;
+                    $btn.value = "Ajouter une playlist";
+                }
+            }
+        </script>
+
         <br>
         @foreach ($playlists as $playlist)
         <div class="row gx-4 gx-lg-5 justify-content-center h-divider">
@@ -96,18 +96,21 @@
                 @break
             @endif
             <div class="col-3">
-                <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
-                    <div class="card">
-                            <img class="mx-auto d-block" src="{{$media->poster_url}}"  alt="media_poster" height="250px">
-                        <div class="card-body">
+                
+                <div class="card">
+                    <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
+                        <img class="mx-auto d-block" src="{{$media->poster_url}}"  alt="media_poster" height="250px">
+                    </a>
+                    <div class="card-body">
+                        <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
                             <h5 class="card-title text-center" >{{$media->name}}</h5>
-                            <form class="mx-auto" action="{{route('playlist.removeMedia', [$playlist->id, $media->id])}}" method="POST">
-                                @csrf
-                                <input class="mx-auto fas fa-times" id="submitButton" type="submit" style="color:#FA5656">
-                            </form>
-                        </div>
+                        </a>    
+                        <form class="mx-auto" action="{{route('playlist.removeMedia', [$playlist->id, $media->id])}}" method="POST">
+                            @csrf
+                            <input class="mx-auto fas fa-times" id="submitButton" type="submit" style="color:#FA5656">
+                        </form>
                     </div>
-                </a>
+                </div>
             </div>
             @endforeach
         </div>
@@ -115,5 +118,8 @@
         @endforeach
         <br>
     </div>
+
+    
+
 </main>
 @endsection
