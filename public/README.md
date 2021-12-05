@@ -80,56 +80,56 @@ Une fois cette opération finalisée, on peut accéder au site internet sur l'UR
 
 ## Fonctionnalités implémentées
 
-Voice une liste des fonctionnalités disponibles :
+Voice une liste des fonctionnalités disponibles : ****(G)*** précise les fonctionnalités accéssibles aux visiteurs*
 
 ### Session
-- Connexion
-- Inscription
+- Connexion ***(G)***
+- Inscription ***(G)***
 - Déconnexion
 - Voir son profil
 - Modification de son profil **(WIP)**
-
+ 
 ### Contenu
-- Voir la liste des médias
-- Voir la liste des films
-- Voir la liste des séries
-    - Triables par ordre alphabétique et date de sortie
-- Voir les playlists *publiques*
+- Voir la liste des médias ***(G)***
+- Voir la liste des films ***(G)***
+- Voir la liste des séries ***(G)***
+    - Triables par ordre alphabétique et date de sortie ***(G)***
+- Voir les playlists *publiques* ***(G)***
 
 ### Recherche (contenant le texte entré)
-- Recherche de films
-- Recherche de séries
-- Recherche d'une personne (acteur, réalisateur)
-- Recherche de playlist
+- Recherche de films ***(G)***
+- Recherche de séries ***(G)***
+- Recherche d'une personne (acteur, réalisateur) ***(G)***
+- Recherche de playlist ***(G)***
     - **Ne sont pas triables**
 
 ### Médias
-- Accéder aux détails d'un média
+- Accéder aux détails d'un média ***(G)***
     - Varaiable selon le type (film ou série)
 - Modification des informations d'un média
 - Suppression d'un média
 - Ajout d'un média
 
 ### Personnes
-- Accéder aux détails d'une personne
+- Accéder aux détails d'une personne ***(G)***
     - Liste des films qu'iel à réaliser ou jouer dedans
 - Modification des informations de la personne
 - Suppression d'une personne
 - Ajout d'une personne
 
 ### Commentaire
-- Accéder aux commentaires sur un média
+- Accéder aux commentaires sur un média ***(G)***
 - Poster un commentaire sur un média
 - Supprimer **son propre** commentaire
 
 ### Playlist
-- Consultation de playlists
+- Consultation de playlists ***(G)***
 - Création d'une playlist *à soi*
 - Suppression d'une playlist *à soi*
 - Modification d'une playlist *à soi*
 - Ajout de média dans une playlist *à soi*
 - Suppression de média dans une playlist *à soi*
-- Accès aux détails d'une playlist
+- Accès aux détails d'une playlist ***(G)***
 - Abonnement à une playlist **publique** (via liste ou recherche)
 - Désabonnement à une playlist
 
@@ -151,3 +151,5 @@ Durant notre projet, nous avons rencontré plusieurs difficultés :
 - Prise en main du CSS et du HTML afin d'avoir un modèle esthétique, pratique et cohérent avec notre vision
 - Manque de temps (Eparpillement de notre part ? Trop grandes attentes ?)
 - Peu de présence de JavaScript et de place où l'utiliser (nécessaire ?)
+
+<u>Lien vers la vidéo YouTube de présentation :</u> youtube.com/
