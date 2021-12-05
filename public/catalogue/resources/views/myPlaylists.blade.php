@@ -85,7 +85,7 @@
             @if ($loop->index == 3)
                 <div class="col-3">
                     <a href="{{ route('playlist.details', [$playlist->id])}}">
-                        <div class="card">
+                        <div class="card" height="100%">
                             <i class="m-auto fas fa-angle-right fa-5x"></i>
                             <p class="text-center">Clique ici pour voir plus de médias.</p>
                         </div>
@@ -95,7 +95,7 @@
             @endif
             <div class="col-3">
 
-                <div class="card">
+                <div class="card" height="100%">
                     <a href="{{ route('media.details', [$media->id])}}">
                         <img class="mx-auto d-block" src="{{$media->poster_url}}"  alt="media_poster" height="250px">
                     </a>
