@@ -63,10 +63,15 @@ class MediasController extends Controller
     {
         $name = $request->input("name");
         $type = $request->input("type");
+        $episode = $request->input("episode_nb");
+        $saison = $request->input("season_nb");
         $duration = $request->input("duration");
         $release = $request->input("release");
+        $last = $request->input("last");
         $synopsis  = $request->input("synopsis");
         $status = $request->input("status");
+        $poster = $request->input("poster_url");
+        $backdrop = $request->input("backdrop_url");
         $categories_id = $request->input("categories");
 
         $data = [
@@ -76,6 +81,11 @@ class MediasController extends Controller
             "description" => $synopsis,
             "type" => $type,
             "status" => $status,
+            "poster_url" => $poster,
+            "backdrop_url" => $backdrop,
+            "episode_nb" => $episode,
+            "season_nb" => $saison,
+            "last_date" => $last,
         ];
 
         $media = Media::create($data);
@@ -106,10 +116,15 @@ class MediasController extends Controller
 
         $name = $request->input("name");
         $type = $request->input("type");
+        $episode = $request->input("episode_nb");
+        $saison = $request->input("season_nb");
         $duration = $request->input("duration");
         $release = $request->input("release");
+        $last = $request->input("last");
         $synopsis  = $request->input("synopsis");
         $status = $request->input("status");
+        $poster = $request->input("poster_url");
+        $backdrop = $request->input("backdrop_url");
         $categories_id = $request->input("categories");
 
         $data = [
@@ -119,6 +134,11 @@ class MediasController extends Controller
             "description" => $synopsis,
             "type" => $type,
             "status" => $status,
+            "poster_url" => $poster,
+            "backdrop_url" => $backdrop,
+            "episode_nb" => $episode,
+            "season_nb" => $saison,
+            "last_date" => $last,
         ];
 
         Media::find($mediaId)->update($data);

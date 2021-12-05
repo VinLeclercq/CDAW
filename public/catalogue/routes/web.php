@@ -41,6 +41,9 @@ Route::post('myPlaylists/{userId}/{playlistId}', 'App\Http\Controllers\PlaylistC
 
 Route::get('playlistDetails/{playlistId}', 'App\Http\Controllers\PlaylistController@getPlaylistById')->name('playlist.details');
 
+Route::get('playlistModify/{playlistId}', 'App\Http\Controllers\PlaylistController@formPlaylistModify')->name('playlist.modify.get');
+Route::put('playlistModify/{playlistId}', 'App\Http\Controllers\PlaylistController@playlistModify')->name('playlist.modify');
+
 Route::get('playlistsPublic', 'App\Http\Controllers\PlaylistController@getAllPublicPlaylist')->name('playlist.public');
 Route::post('playlistsPublic/{playlistId}', 'App\Http\Controllers\PlaylistController@subscribeToPlaylist')->middleware('auth')->name('playlist.subscribe');
 

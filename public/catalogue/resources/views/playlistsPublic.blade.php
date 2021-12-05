@@ -28,18 +28,17 @@
                 </a>
                 <div>
                 @auth
-                {{-- @foreach ($playlist->users_subscribed() as $subscriber)
-                    @if ($subscriber->id == Auth::user()->id)
-                        @break
+                    @if($playlist->users_subscribed()->where('ID_user', Auth::user()->id)->exists())
+                    <form action="{{ route('playlist.unsubscribe', [$playlist->id])}}" method="POST">
+                        @csrf
+                        <input class="btn btn-primary" id="submitButton" type="submit" value="Se désabonner">
+                    </form>
                     @else
-
-                    @endif
-                @endforeach --}}
-
-                <form action="{{ route('playlist.subscribe', [Auth::user()->id, $playlist->id])}}" method="POST">
-                    @csrf
-                    <input class="btn btn-primary" id="submitButton" type="submit" value="S'abonner">
-                </form>
+                    <form action="{{ route('playlist.subscribe', [$playlist->id])}}" method="POST">
+                        @csrf
+                        <input class="btn btn-primary" id="submitButton" type="submit" value="S'abonner">
+                    </form>
+                    @endif                    
                 @endauth
                 </div>
                 {{-- <h3 id="creator">{{$playlist->users_owning()->name}}</h3> --}}
