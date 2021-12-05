@@ -9,12 +9,10 @@ use App\Models\Media;
 
 class PlaylistController extends Controller
 {
-    // public function getAllPlaylist()
-    // {
-    //     $medias = Playlist::all();
-
-    //     return view('playlists', ["playlists" => $playlists]);
-    // }
+    public function getPlaylistById($playlistId){
+        $playlist = Playlist::find($playlistId);
+        return view('playlistDetails', ['playlist' => $playlist]);
+    }
 
     public function createPlaylist(Request $request, $userId)
     {

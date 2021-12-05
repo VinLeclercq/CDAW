@@ -34,7 +34,7 @@ Route::put('modifyMedia/{mediaId}', 'App\Http\Controllers\MediasController@modif
 Route::delete('deleteMedia/{mediaId}', 'App\Http\Controllers\MediasController@deleteMedia');
 
 Route::get('medias/{id}', 'App\Http\Controllers\MediasController@getMediaDetails');
-Route::get('{userID}/medias/{id}', 'App\Http\Controllers\MediasController@getMediaDetailsPlaylists')->middleware('auth')->name('medias.detail');
+Route::get('{userID}/medias/{id}', 'App\Http\Controllers\MediasController@getMediaDetailsPlaylists')->middleware('auth')->name('medias.details');
 
 Route::get('medias/{id}/comments', 'App\Http\Controllers\CommentsController@getMediaComments');
 Route::post('medias/{id}/comments', 'App\Http\Controllers\CommentsController@postComment')->middleware('auth');
@@ -44,6 +44,7 @@ Route::get('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@getU
 Route::post('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@createPlaylist')->middleware('auth')->name('playlist.add');
 Route::delete('myPlaylists/{userId}', 'App\Http\Controllers\PlaylistController@deletePlaylist')->middleware('auth')->name('playlist.delete');
 Route::post('myPlaylists/{userId}/{playlistId}', 'App\Http\Controllers\PlaylistController@dellMediaFromPlaylist')->middleware('auth')->name('playlist.removeMedia');
+Route::get('playlistDetails/{playlistId}', 'App\Http\Controllers\PlaylistController@getPlaylistById')->middleware('auth')->name('playlist.details');
 
 Route::get('person', 'App\Http\Controllers\PersonController@getAllPeople');
 Route::get('person/{personId}', 'App\Http\Controllers\PersonController@getPersonDetails');

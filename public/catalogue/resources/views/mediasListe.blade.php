@@ -51,7 +51,7 @@
                                 <img src="{{$media->poster_url}}" alt="media_poster" height="150">
                             </a>
                             @else
-                            <a href="{{ route('medias.detail', [Auth::user()->id, $media->id])}}">
+                            <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
                                 <img src="{{$media->poster_url}}" alt="media_poster" height="150">
                             </a>
                             @endguest

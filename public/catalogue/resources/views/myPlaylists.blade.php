@@ -52,12 +52,30 @@
         </div>
         <br>
         @foreach ($playlists as $playlist)
-        <div class="row">
-            <div class="row">
-                <div class="col">
-                    <h2 Id="Title">{{$playlist->name}}</h2>
+        <div class="row gx-4 gx-lg-5 justify-content-center h-divider">
+            <div class="row container">
+                <a href="{{ route('playlist.details', [$playlist->id])}}">
+                    <div class="col-4">
+                        <h2 Id="Title">{{$playlist->name}}</h2>
+                    </div>
+                </a>
+                <div class=" mx-auto col-4 justify-content-center">
+                    @if ($playlist->is_public)
+                    <div class="col-2">
+                            <i class="fas fa-unlock"></i>
+                        </div>
+                        <div class="col">
+                            <h3 Id="isPublic">Public</h3>
+                    @else
+                    <div class="col-2">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="col">
+                            <h3 Id="isPublic">Privé</h3>
+                        @endif
+                    </div>
                 </div>
-                <div class="col">
+                <div class="col-4">
                     <form action="{{ route('playlist.delete', [$playlist->id])}}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -66,23 +84,36 @@
                 </div>
             </div>
             @foreach ($playlist->medias_in_playlist as $media)
-                <div class="row">
-                    <div class="col">
-                        <a href="{{url('/medias', $media->id)}}">
-                            <img src="{{$media->poster_url}}"  alt="media_poster" height="100px">
-                            <h5 class="card-title">{{$media->name}}</h5>
-                        </a>
-                    </div>
-                    <div class="col">
-                        <form action="{{route('playlist.removeMedia', [$playlist->id, $media->id])}}" method="POST">
-                            @csrf
-                            <input class="fas fa-times" id="submitButton" type="submit" style="color:#FA5656">
-                        </form>
-                    </div>
+            @if ($loop->index == 3)
+                <div class="col-3">
+                    <a href="{{ route('playlist.details', [$playlist->id])}}">
+                        <div class="card">
+                            <i class="m-auto fas fa-angle-right fa-5x"></i>
+                            <p class="text-center">Clique ici pour voir plus de médias.</p>
+                        </div>
+                    </a>
                 </div>
+                @break
+            @endif
+            <div class="col-3">
+                <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
+                    <div class="card">
+                            <img class="mx-auto d-block" src="{{$media->poster_url}}"  alt="media_poster" height="250px">
+                        <div class="card-body">
+                            <h5 class="card-title text-center" >{{$media->name}}</h5>
+                            <form class="mx-auto" action="{{route('playlist.removeMedia', [$playlist->id, $media->id])}}" method="POST">
+                                @csrf
+                                <input class="mx-auto fas fa-times" id="submitButton" type="submit" style="color:#FA5656">
+                            </form>
+                        </div>
+                    </div>
+                </a>
+            </div>
             @endforeach
         </div>
+        <hr>
         @endforeach
+        <br>
     </div>
 </main>
 @endsection
