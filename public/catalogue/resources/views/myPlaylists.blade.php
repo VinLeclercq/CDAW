@@ -54,12 +54,16 @@
         @foreach ($playlists as $playlist)
         <div class="row">
             <div class="row">
-            <h2 Id="Title">{{$playlist->name}}</h2>
-            <form action="{{ route('playlist.delete', [$playlist->id])}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <input class="btn btn-secondary" id="submitButton" type="submit" value="Supprimer">
-            </form>
+                <div class="col">
+                    <h2 Id="Title">{{$playlist->name}}</h2>
+                </div>
+                <div class="col">
+                    <form action="{{ route('playlist.delete', [$playlist->id])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input class="fas fa-trash" id="submitButton" type="submit" >
+                    </form>
+                </div>
             </div>
             @foreach ($playlist->medias_in_playlist as $media)
                 <div class="row">
@@ -72,66 +76,11 @@
                     <div class="col">
                         <form action="{{route('playlist.removeMedia', [$playlist->id, $media->id])}}" method="POST">
                             @csrf
-                            <input class="btn btn-secondary" id="submitButton" type="submit" value="Supprimer de la playlist">
+                            <input class="fas fa-times" id="submitButton" type="submit" style="color:#FA5656">
                         </form>
                 </div>
             @endforeach
         </div>
-
-        {{-- <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col">
-
-                <div class="col-md-4" >
-                                <div class="item-box-blog">
-                                  <div class="item-box-blog-image">
-                                    <!--Date-->
-                                    <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">Augu 01</span> </div>
-                                    <!--Image-->
-                                    <figure> <img alt="" src="{{$media->poster_url}}"> </figure>
-                                  </div>
-                                  <div class="item-box-blog-body">
-                                    <!--Heading-->
-                                    <div class="item-box-blog-heading">
-                                        <h5>{{$media->name}}</h5>
-                                    </div>
-                                    <!--Data-->
-                                    <div class="item-box-blog-data" style="padding: px 15px;">
-                                      <p><i class="fa fa-comments-o"></i> {{$media->type}}</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-
-
-                <h2 Id="Title">{{$playlist->name}}</p></h2>
-                <hr/>
-
-                @foreach ($playlist->medias_in_playlist as $media)
-                <figure>
-                <img src="{{$media['poster_link']}}">
-                    <figcaption class="text-truncate">{{$media['title']}}</figcaption>
-                    </figure>
-                @endforeach
-
-                {{-- <div id="playlist" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        @foreach ($playlist->medias_in_playlist as $media)
-                            <div class="carousel-item" {{ $loop->first ? 'active' : '' }}>
-                                <img class="d-block w-100" src="{{$media->poster_url}}" alt="{{$media->name}}">
-                            </div>
-                        @endforeach
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-        </div> --}}
         @endforeach
     </div>
 </main>

@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('medias', 'App\Http\Controllers\MediasController@getAllMedias');
 Route::get('{userId}/medias', 'App\Http\Controllers\MediasController@getAllMediasPlaylists')->middleware('auth')->name('medias.show');
-Route::post('{userId}/medias/{playlistId}', 'App\Http\Controllers\PlaylistController@addMediaToPlaylist')->middleware('auth')->name('playlist.addMedia');
+Route::post('{userId}/{playlistId}', 'App\Http\Controllers\PlaylistController@addMediaToPlaylist')->middleware('auth')->name('playlist.addMedia');
 
 Route::get('films', 'App\Http\Controllers\MediasController@getAllFilms');
-Route::get('films', 'App\Http\Controllers\MediasController@getAllFilmsPlaylists')->middleware('auth')->name('films.show');
+Route::get('{userId}/films', 'App\Http\Controllers\MediasController@getAllFilmsPlaylists')->middleware('auth')->name('films.show');
 
 Route::get('series', 'App\Http\Controllers\MediasController@getAllSeries');
-Route::get('series', 'App\Http\Controllers\MediasController@getAllSeriesPlaylists')->middleware('auth')->name('series.show');
+Route::get('{userId}/series', 'App\Http\Controllers\MediasController@getAllSeriesPlaylists')->middleware('auth')->name('series.show');
 
 Route::get('search', 'App\Http\Controllers\SearchController@search');
 

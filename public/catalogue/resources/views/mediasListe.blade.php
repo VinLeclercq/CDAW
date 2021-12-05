@@ -50,19 +50,19 @@
                             <a href="{{url('/medias', $media->id)}}">
                                 <img src="{{$media->poster_url}}" alt="media_poster" height="150">
                             </a>
-                            <div>
-                                <a  data-bs-toggle="dropdown" class="dropdown-toggle">
-                                    <img src="{{asset('assets/plus.sgv')}}">
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    @foreach ($playlists as $playlist)
-                                    <form action="{{ route('playlist.addMedia', [$playlist->id, $media->id])}}" method="POST">
-                                        @csrf
-                                        <li><input class="dropdown-item" type="submit" value="{{$playlist->name}}"></li>
-                                    </form>
-                                    @endforeach
-                                </ul>
-                            </div>
+                        </div>
+                        <div class="col">
+                            <a  data-bs-toggle="dropdown" class="dropdown-toggle">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                @foreach ($playlists as $playlist)
+                                <form action="{{ route('playlist.addMedia', [$playlist->id, $media->id])}}" method="POST">
+                                    @csrf
+                                    <li><input class="dropdown-item" type="submit" value="{{$playlist->name}}"></li>
+                                </form>
+                                @endforeach
+                            </ul>
                         </div>
                         <div class="col">
 
