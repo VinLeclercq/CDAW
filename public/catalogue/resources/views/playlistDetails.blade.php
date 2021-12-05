@@ -26,9 +26,11 @@
             <i class="mx-auto fas fa-lock"></i>
             <h3 class="mx-auto" Id="isPublic">Privée</h3>
             @endif
+            @if($playlist->users_owning()->where('ID_user', Auth::user()->id)->exists())
             <a class="mx-auto" href="{{route('playlist.modify.get', $playlist->id)}}">
                 <i class="m-auto fas fa-edit fa-lg" style="color: #4C96D7"></i>
             </a>
+            @endif
         <br>
         </div>
     </div>
