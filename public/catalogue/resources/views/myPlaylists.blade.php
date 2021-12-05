@@ -21,7 +21,7 @@
         <div class="row">
             <input onclick="hide()" class="btn btn-primary text-uppercase" type="button" value="Ajouter une playlist" id="btn">
             <br>
-            <form id="ajout" action="{{ route('playlist.add', [$userId])}}" method="POST" hidden>
+            <form id="ajout" action="{{ route('playlist.add', [Auth::user()->id])}}" method="POST" hidden>
                 @csrf
                 <div class="form-floating">
                     <input class="form-control" id="name" name="name"/>
@@ -96,7 +96,7 @@
                 @break
             @endif
             <div class="col-3">
-                
+
                 <div class="card">
                     <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
                         <img class="mx-auto d-block" src="{{$media->poster_url}}"  alt="media_poster" height="250px">
@@ -104,7 +104,7 @@
                     <div class="card-body">
                         <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
                             <h5 class="card-title text-center" >{{$media->name}}</h5>
-                        </a>    
+                        </a>
                         <form class="mx-auto" action="{{route('playlist.removeMedia', [$playlist->id, $media->id])}}" method="POST">
                             @csrf
                             <input class="mx-auto fas fa-times" id="submitButton" type="submit" style="color:#FA5656">
@@ -119,7 +119,7 @@
         <br>
     </div>
 
-    
+
 
 </main>
 @endsection

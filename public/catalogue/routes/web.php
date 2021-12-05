@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('medias', 'App\Http\Controllers\MediasController@getAllMedias');
 Route::get('{userId}/medias', 'App\Http\Controllers\MediasController@getAllMediasPlaylists')->middleware('auth')->name('medias.show');
-Route::post('{userId}/{playlistId}', 'App\Http\Controllers\PlaylistController@addMediaToPlaylist')->middleware('auth')->name('playlist.addMedia');
+Route::post('{userId}/playlist/{playlistId}', 'App\Http\Controllers\PlaylistController@addMediaToPlaylist')->middleware('auth')->name('playlist.addMedia');
 
 Route::get('films', 'App\Http\Controllers\MediasController@getAllFilms');
 Route::get('{userId}/films', 'App\Http\Controllers\MediasController@getAllFilmsPlaylists')->middleware('auth')->name('films.show');
