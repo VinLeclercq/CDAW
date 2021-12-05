@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('medias', 'App\Http\Controllers\MediasController@getAllMedias');
-Route::post('{userId}/{playlistId}', 'App\Http\Controllers\PlaylistController@addMediaToPlaylist')->middleware('auth')->name('playlist.addMedia');
+Route::post('playlist/{userId}/{playlistId}', 'App\Http\Controllers\PlaylistController@addMediaToPlaylist')->middleware('auth')->name('playlist.addMedia');
 
 Route::get('films', 'App\Http\Controllers\MediasController@getAllFilms');
 Route::get('series', 'App\Http\Controllers\MediasController@getAllSeries');
@@ -42,10 +42,10 @@ Route::post('myPlaylists/{userId}/{playlistId}', 'App\Http\Controllers\PlaylistC
 Route::get('playlistDetails/{playlistId}', 'App\Http\Controllers\PlaylistController@getPlaylistById')->name('playlist.details');
 
 Route::get('playlistsPublic', 'App\Http\Controllers\PlaylistController@getAllPublicPlaylist')->name('playlist.public');
-Route::post('{userId}/playlistsPublic/{playlistId}', 'App\Http\Controllers\PlaylistController@subscribeToPlaylist')->middleware('auth')->name('playlist.subscribe');
+Route::post('playlistsPublic/{playlistId}', 'App\Http\Controllers\PlaylistController@subscribeToPlaylist')->middleware('auth')->name('playlist.subscribe');
 
-Route::get('{userId}/subscribed', 'App\Http\Controllers\PlaylistController@getUserSubscribedPlaylist')->middleware('auth')->name('subscribed');
-Route::post('{userId}/subscribed/{playlistId}', 'App\Http\Controllers\PlaylistController@unsubscribeToPlaylist')->middleware('auth')->name('unsubscribed');
+Route::get('subscribed', 'App\Http\Controllers\PlaylistController@getUserSubscribedPlaylist')->middleware('auth')->name('subscribed');
+Route::post('unsubscribe/{playlistId}', 'App\Http\Controllers\PlaylistController@unsubscribeToPlaylist')->middleware('auth')->name('playlist.unsubscribe');
 
 Route::get('person', 'App\Http\Controllers\PersonController@getAllPeople');
 Route::get('person/{personId}', 'App\Http\Controllers\PersonController@getPersonDetails');

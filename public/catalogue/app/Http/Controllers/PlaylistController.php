@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Playlist;
 use App\Models\User;
@@ -57,25 +58,27 @@ class PlaylistController extends Controller
         return view('playlistsPublic', ["playlists" => $playlists]);
     }
 
-    public function getUserSubscribedPlaylist($userId)
+    public function getUserSubscribedPlaylist()
     {
-        $user = User::find($userId);
-        $playlists = $user->users_subscribed;
+        $user = Auth::user();
+        $playlists = $user->playlist_subscribed;
         return view('subscribed', ['playlists' => $playlists]);
     }
 
-    public function subscribeToPlaylist($userId, $playlistId){
-        $user = User::find($userId);
+    public function subscribeToPlaylist($playlistId){
+        $user = Auth::user();
         $playlist = Playlist::find($playlistId);
         $playlist->users_subscribed()->attach($user);
         return redirect()->back()->withInput();
     }
 
-    public function unsubscribeToPlaylist($userId, $playlistId){
-        $user = User::find($userId);
+    public function unsubscribeToPlaylist($playlistId){
+        $user = Auth::user();
         $playlist = Playlist::find($playlistId);
-        $playlist->users_subscribed()->detach($user);
-        return redirect()->back()->withInput();
+
+        $user->playlist_subscribed()->detach($playlist);
+
+        return redirect()->back();
     }
 
     public function addMediaToPlaylist($playlistId, $mediaId){

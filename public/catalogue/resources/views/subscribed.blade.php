@@ -36,7 +36,7 @@
                     @endif
                 @endforeach --}}
 
-                <form action="{{ route('playlist.unsubscribe', [Auth::user()->id, $playlist->id])}}" method="POST">
+                <form action="{{ route('playlist.unsubscribe', [$playlist->id])}}" method="POST">
                     @csrf
                     <input class="btn btn-primary" id="submitButton" type="submit" value="Se desabonner">
                 </form>
@@ -57,7 +57,7 @@
                 @break
             @endif
             <div class="col-3">
-                <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
+                <a href="{{ route('media.details', [Auth::user()->id, $media->id])}}">
                     <div class="card">
                             <img class="mx-auto d-block" src="{{$media->poster_url}}"  alt="media_poster" height="250px">
                         <div class="card-body">

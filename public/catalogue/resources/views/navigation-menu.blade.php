@@ -65,7 +65,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item"  href="{{url(Auth::user()->id, 'susbscribed')}}" >
+                                <a class="dropdown-item"  href="{{route('subscribed')}}" >
                                     {{ __('Mes abonnements') }}
                                 </a>
                             </li>
@@ -77,7 +77,7 @@
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
+                                    document.getElementById('logout-form').submit();">
                                     {{ __('Déconnexion') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
