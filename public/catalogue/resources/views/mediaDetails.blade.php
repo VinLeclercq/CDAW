@@ -32,6 +32,7 @@
 @endsection
 
 @section('content')
+<div class="container px px-lg">
     @auth
     <div class="col offset-md-3">
         <div class="col align-self-center">
@@ -90,7 +91,7 @@
                     <br><br>
                 @endif
             </div>
-            <div class="row">
+            <div class="row-auto align-items-center">
                 <div class="container">
                     <h2>Genre(s)</h2>
                     @foreach($media->categories ?? '' as $category)
@@ -99,15 +100,18 @@
                 </div>
             </div>
         </div>
-    </div>
-    <br>
-    <div>
-        <h2>Synopsis</h2>
-        <p>{{$media->description}}</p>
-    </div>
 
-    <a href="{{url()->current().'/comments'}}">
-        <button class="btn btn-primary">Commentaires</button>
-    </a>
+        <br>
 
+        <div>
+            <h2>Synopsis</h2>
+            <p>{{$media->description}}</p>
+        </div>
+        
+        <a href="{{url()->current().'/comments'}}">
+            <button class="btn btn-primary">Commentaires</button>
+        </a>
+
+    </div>    
+</div>
 @endsection
