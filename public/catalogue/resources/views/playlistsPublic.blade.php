@@ -7,7 +7,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                 <h1>Toutes les playlists</h1>
-                <span class="subheading">A l'abordage!</span>
+                <span class="subheading">A l'abordage !</span>
                 </div>
             </div>
         </div>

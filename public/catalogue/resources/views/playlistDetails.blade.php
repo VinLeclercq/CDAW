@@ -1,13 +1,13 @@
 @extends('template')
 
 @section('header')
-<header class="masthead" style="background-image: url({{asset('assets/img/pirate_des_caraibes.jpg')}})">
+<header class="masthead" style="background-image: url({{asset('assets/img/titanic.jpg')}})">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                <h1>Mes playlists</h1>
-                <span class="subheading">Tout le monde sur le même bâteau</span>
+                <h1>{{$playlist->name}}</h1>
+                <span class="subheading">La pêche a été bonne</span>
                 </div>
             </div>
         </div>
@@ -18,14 +18,13 @@
 @section('content')
 <main class="mb-4">
     <div class="col-md-auto">
-        <div class="mx-auto card">
-            <h5 class="card-title text-center" >{{$playlist->name}}</h5>
+        <div class="mx-auto card justify-content-center">
             @if ($playlist->is_public)
             <i class="mx-auto fas fa-unlock"></i>
-            <h3 class="mx-auto" Id="isPublic">Public</h3>
+            <h3 class="mx-auto" Id="isPublic">Publique</h3>
             @else
             <i class="mx-auto fas fa-lock"></i>
-            <h3 class="mx-auto" Id="isPublic">Privé</h3>
+            <h3 class="mx-auto" Id="isPublic">Privée</h3>
             @endif
             <a class="mx-auto" href="{{route('playlist.modify.get', $playlist->id)}}">
                 <i class="m-auto fas fa-edit fa-lg" style="color: #4C96D7"></i>
