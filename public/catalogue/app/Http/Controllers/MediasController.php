@@ -20,7 +20,7 @@ class MediasController extends Controller
 
         $playlists = Auth::user() == null ? [] : Auth::user()->playlist_owned;
 
-        $medias = Media::orderBy($field, $order)->paginate(20);
+        $medias = Media::orderBy($field, $order)->paginate(20)->withQueryString();
         return view('mediasListe', ["medias" => $medias, "playlists" => $playlists]);
     }
 
@@ -31,7 +31,7 @@ class MediasController extends Controller
 
         $playlists = Auth::user() == null ? [] : Auth::user()->playlist_owned;
 
-        $medias = Media::where('type', 'Film')->orderBy($field, $order)->paginate(20);
+        $medias = Media::where('type', 'Film')->orderBy($field, $order)->paginate(20)->withQueryString();
         return view('mediasListe', ["medias" => $medias, "playlists" => $playlists]);
     }
 
@@ -42,7 +42,7 @@ class MediasController extends Controller
 
         $playlists = Auth::user() == null ? [] : Auth::user()->playlist_owned;
 
-        $medias = Media::where('type','Série')->orderBy($field, $order)->paginate(20);
+        $medias = Media::where('type','Série')->orderBy($field, $order)->paginate(20)->withQueryString();
         return view('mediasListe', ["medias" => $medias, "playlists" => $playlists]);
     }
 

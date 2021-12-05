@@ -18,15 +18,15 @@ class SearchController extends Controller
 
         switch($request->input("type")){
             case "Films":
-                $result = Media::search($nameSearch)->where('type', 'Film')->paginate(20);
+                $result = Media::search($nameSearch)->where('type', 'Film')->paginate(20)->withQueryString();
                 return view('mediasListe', ["medias" => $result, "playlists" => $playlists]);
                 break;
             case "Séries":
-                $result = Media::search($nameSearch)->where('type', 'Série')->paginate(20);
+                $result = Media::search($nameSearch)->where('type', 'Série')->paginate(20)->withQueryString();
                 return view('mediasListe', ["medias" => $result, "playlists" => $playlists]);
                 break;
             case "Personnes":
-                $people = Person::search($nameSearch)->paginate(50);
+                $people = Person::search($nameSearch)->paginate(50)->withQueryString();
                 return view('personnesListe', ["people" => $people, "playlists" => $playlists]);
                 break;
             case "Playlist":

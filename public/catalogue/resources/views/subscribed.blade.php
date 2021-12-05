@@ -27,20 +27,10 @@
                     </div>
                 </a>
                 <div>
-                @auth
-                {{-- @foreach ($playlist->users_subscribed() as $subscriber)
-                    @if ($subscriber->id == Auth::user()->id)
-                        @break
-                    @else
-
-                    @endif
-                @endforeach --}}
-
                 <form action="{{ route('playlist.unsubscribe', [$playlist->id])}}" method="POST">
                     @csrf
                     <input class="btn btn-primary" id="submitButton" type="submit" value="Se desabonner">
                 </form>
-                @endauth
                 </div>
                 {{-- <h3 id="creator">{{$playlist->users_owning()->name}}</h3> --}}
             </div>
@@ -57,7 +47,7 @@
                 @break
             @endif
             <div class="col-3">
-                <a href="{{ route('media.details', [Auth::user()->id, $media->id])}}">
+                <a href="{{ route('media.details', [$media->id])}}">
                     <div class="card">
                             <img class="mx-auto d-block" src="{{$media->poster_url}}"  alt="media_poster" height="250px">
                         <div class="card-body">
