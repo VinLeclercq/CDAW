@@ -78,6 +78,7 @@
                             @csrf
                             <input class="fas fa-times" id="submitButton" type="submit" style="color:#FA5656">
                         </form>
+                    </div>
                 </div>
             @endforeach
         </div>

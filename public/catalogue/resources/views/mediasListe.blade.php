@@ -45,12 +45,18 @@
 
                     <h2 Id="Title">{{$media->name}}</h2> {{substr($media->release_date, 0, 4)}}</p>
                     <div class="row">
-
-                        <div class="col">
+                        <div class="col-md-auto">
+                            @guest
                             <a href="{{url('/medias', $media->id)}}">
                                 <img src="{{$media->poster_url}}" alt="media_poster" height="150">
                             </a>
+                            @else
+                            <a href="{{ route('medias.detail', [Auth::user()->id, $media->id])}}">
+                                <img src="{{$media->poster_url}}" alt="media_poster" height="150">
+                            </a>
+                            @endguest
                         </div>
+                        @auth
                         <div class="col">
                             <a  data-bs-toggle="dropdown" class="dropdown-toggle">
                                 <i class="fas fa-plus"></i>
@@ -64,6 +70,7 @@
                                 @endforeach
                             </ul>
                         </div>
+                        @endauth
                         <div class="col">
 
                             @if($media->type == "Film")

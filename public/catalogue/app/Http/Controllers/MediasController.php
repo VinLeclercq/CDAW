@@ -81,6 +81,15 @@ class MediasController extends Controller
         return view('mediaDetails', ["media" => $media]);
     }
 
+    public function getMediaDetailsPlaylists($userID,$mediaID)
+    {
+        $media = Media::find($mediaID);
+
+        $user = User::find($userID);
+        $playlists = $user->playlist_owned;
+        return view('mediaDetails', ["media" => $media, "playlists" => $playlists]);
+    }
+
     public function formCreateMedia()
     {
         $categories = Category::all();

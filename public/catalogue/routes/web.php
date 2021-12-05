@@ -34,6 +34,7 @@ Route::put('modifyMedia/{mediaId}', 'App\Http\Controllers\MediasController@modif
 Route::delete('deleteMedia/{mediaId}', 'App\Http\Controllers\MediasController@deleteMedia');
 
 Route::get('medias/{id}', 'App\Http\Controllers\MediasController@getMediaDetails');
+Route::get('{userID}/medias/{id}', 'App\Http\Controllers\MediasController@getMediaDetailsPlaylists')->middleware('auth')->name('medias.detail');
 
 Route::get('medias/{id}/comments', 'App\Http\Controllers\CommentsController@getMediaComments');
 Route::post('medias/{id}/comments', 'App\Http\Controllers\CommentsController@postComment')->middleware('auth');
