@@ -95,6 +95,7 @@
                                 @endforeach
                             </div>
                         </div>
+                        @auth
                         <div class="col">
                             <div class="row">
                                 <a href="{{ url('/modifyMedia', $media->id)}}">
@@ -111,6 +112,7 @@
                             </div>
                             <br />
                         </div>
+                        @endauth
                     </div>
                     <hr/>
                 </div>
