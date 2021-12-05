@@ -24,48 +24,14 @@ class MediasController extends Controller
         return view('mediasListe', ["medias" => $medias, "playlists" => $playlists]);
     }
 
-    public function getAllMediasPlaylists(Request $request, $userId)
-    {
-        $user = User::find($userId);
-        $playlists = $user->playlist_owned;
-
-        $field = $request->input('field') ?: "name";
-        $order = $request->input('order') ?: "asc" ;
-
-        $medias = Media::orderBy($field, $order)->paginate(20);
-        return view('mediasListe', ["medias" => $medias, "playlists" => $playlists]);
-    }
-
     public function getAllFilms(Request $request)
     {
         $field = $request->input('field') ?: "name";
         $order = $request->input('order') ?: "asc" ;
 
-        $medias = Media::where('type', 'Film')->orderBy($field, $order)->paginate(20);
-        return view('mediasListe', ["medias" => $medias]);
-    }
-
-    public function getAllFilmsPlaylists(Request $request, $userId)
-    {
-        $field = $request->input('field') ?: "name";
-        $order = $request->input('order') ?: "asc" ;
-
-        $user = User::find($userId);
-        $playlists = $user->playlist_owned;
+        $playlists = Auth::user() == null ? [] : Auth::user()->playlist_owned;
 
         $medias = Media::where('type', 'Film')->orderBy($field, $order)->paginate(20);
-        return view('mediasListe', ["medias" => $medias, "playlists" => $playlists]);
-    }
-
-    public function getAllSeriesPlaylists(Request $request, $userId)
-    {
-        $field = $request->input('field') ?: "name";
-        $order = $request->input('order') ?: "asc" ;
-
-        $user = User::find($userId);
-        $playlists = $user->playlist_owned;
-
-        $medias = Media::where('type','Série')->orderBy($field, $order)->paginate(20);
         return view('mediasListe', ["medias" => $medias, "playlists" => $playlists]);
     }
 
@@ -74,22 +40,16 @@ class MediasController extends Controller
         $field = $request->input('field') ?: "name";
         $order = $request->input('order') ?: "asc" ;
 
+        $playlists = Auth::user() == null ? [] : Auth::user()->playlist_owned;
+
         $medias = Media::where('type','Série')->orderBy($field, $order)->paginate(20);
-        return view('mediasListe', ["medias" => $medias]);
+        return view('mediasListe', ["medias" => $medias, "playlists" => $playlists]);
     }
 
     public function getMediaDetails($mediaID)
     {
         $media = Media::find($mediaID);
-        return view('mediaDetails', ["media" => $media]);
-    }
-
-    public function getMediaDetailsPlaylists($userID,$mediaID)
-    {
-        $media = Media::find($mediaID);
-
-        $user = User::find($userID);
-        $playlists = $user->playlist_owned;
+        $playlists = Auth::user() == null ? [] : Auth::user()->playlist_owned;
         return view('mediaDetails', ["media" => $media, "playlists" => $playlists]);
     }
 

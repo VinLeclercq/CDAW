@@ -25,18 +25,12 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
-                @guest
-                    <li><a class="nav-link" href="{{ url('medias') }}">{{ __('Accueil') }}</a></li>
-                    <li><a class="nav-link" href="{{ url('films') }}">{{ __('Films') }}</a></li>
-                    <li><a class="nav-link" href="{{ url('series') }}">{{ __('Séries') }}</a></li>
-                    <li><a class="nav-link" href="{{ url('playlistsPublic') }}">{{ __('Playlist') }}</a></li>
-                @else
-                    <li><a class="nav-link" href="{{ url(Auth::user()->id,'medias')}}">{{ __('Accueil') }}</a></li>
-                    <li><a class="nav-link" href="{{ url(Auth::user()->id,'films')}}">{{ __('Films') }}</a></li>
-                    <li><a class="nav-link" href="{{ url(Auth::user()->id,'series')}}">{{ __('Séries') }}</a></li>
-                    <li><a class="nav-link" href="{{ url('playlistsPublic') }}">{{ __('Playlists') }}</a></li>
-                @endguest
-
+                
+                <li><a class="nav-link" href="{{ url('medias') }}">{{ __('Accueil') }}</a></li>
+                <li><a class="nav-link" href="{{ url('films') }}">{{ __('Films') }}</a></li>
+                <li><a class="nav-link" href="{{ url('series') }}">{{ __('Séries') }}</a></li>
+                <li><a class="nav-link" href="{{ url('playlistsPublic') }}">{{ __('Playlist') }}</a></li>
+                
                 <!-- Authentication Links -->
                 @guest
                     <li><a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a></li>

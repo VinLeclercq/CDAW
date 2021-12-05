@@ -98,11 +98,11 @@
             <div class="col-3">
 
                 <div class="card">
-                    <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
-                        <img class="mx-auto d-block" src="{{$media->poster_url}}"  alt="media_poster" height="250px">
+                    <a href="{{ route('media.details', [$media->id])}}">
+                        <img class="mx-auto d-block" src="{{$media->poster_url}}" alt="media_poster" height="250px">
                     </a>
                     <div class="card-body">
-                        <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
+                        <a href="{{ route('media.details', [$media->id])}}">
                             <h5 class="card-title text-center" >{{$media->name}}</h5>
                         </a>
                         <form class="mx-auto" action="{{route('playlist.removeMedia', [$playlist->id, $media->id])}}" method="POST">

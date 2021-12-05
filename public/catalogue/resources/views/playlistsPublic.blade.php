@@ -57,8 +57,7 @@
                 @break
             @endif
             <div class="col-3">
-                @auth
-                <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
+                <a href="{{ route('media.details', [$media->id])}}">
                     <div class="card">
                             <img class="mx-auto d-block" src="{{$media->poster_url}}"  alt="media_poster" height="250px">
                         <div class="card-body">
@@ -66,16 +65,6 @@
                         </div>
                     </div>
                 </a>
-                @else
-                <a href="{{url('/medias', $media->id)}}">
-                    <div class="card">
-                            <img class="mx-auto d-block" src="{{$media->poster_url}}"  alt="media_poster" height="250px">
-                        <div class="card-body">
-                            <h5 class="card-title text-center" >{{$media->name}}</h5>
-                        </div>
-                    </div>
-                </a>
-                @endauth
             </div>
             @endforeach
         </div>

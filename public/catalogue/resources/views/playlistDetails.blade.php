@@ -39,15 +39,9 @@
                         <h2 Id="Title">{{$media->name}}</h2> {{substr($media->release_date, 0, 4)}}</p>
                         <div class="row">
                             <div class="col-md-auto">
-                                @guest
-                                <a href="{{url('/medias', $media->id)}}">
+                                <a href="{{ route('media.details', [$media->id])}}">
                                     <img src="{{$media->poster_url}}" alt="media_poster" height="150">
                                 </a>
-                                @else
-                                <a href="{{ route('medias.details', [Auth::user()->id, $media->id])}}">
-                                    <img src="{{$media->poster_url}}" alt="media_poster" height="150">
-                                </a>
-                                @endguest
                             </div>
                             <div class="col">
 
